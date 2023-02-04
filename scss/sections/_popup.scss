@@ -29,6 +29,8 @@
   background-color: $white;
   border-radius: $border-radius-global;
 
+  overflow: hidden;
+
   header {
     display: flex;
     justify-content: space-between;
@@ -88,6 +90,8 @@
     grid-template-rows: repeat(3, 75px);
     grid-auto-flow: column;
     grid-gap: 2%;
+
+    margin-bottom: 20px;
 
   .casting {
     grid-row: span 3;

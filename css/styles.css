@@ -381,7 +381,7 @@ button.selected-btn {
 
 .button-container {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   flex-wrap: wrap;
 }
 .button-container button {
@@ -671,6 +671,7 @@ footer {
   margin: 80px auto;
   background-color: #ffffff;
   border-radius: 5px;
+  overflow: hidden;
 }
 .popup header {
   display: flex;
@@ -717,6 +718,7 @@ footer {
   grid-template-rows: repeat(3, 75px);
   grid-auto-flow: column;
   grid-gap: 2%;
+  margin-bottom: 20px;
 }
 .popup .people .casting {
   grid-row: span 3;
