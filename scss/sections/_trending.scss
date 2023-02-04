@@ -1,0 +1,73 @@
+.movie-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 2%;
+
+  margin-top: 30px;
+}
+
+.movie-item {
+
+  overflow: hidden;
+
+  .poster {
+    display: block;
+    position: relative;
+
+    margin-bottom: 12px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+
+    border-radius: $border-radius-global;
+  }
+
+  .poster:hover .poster-overlay {
+    opacity: 0.25;
+    transition: $transition-global;
+  }
+
+  h4 {
+    color: $black;
+    transition: $transition-global;
+  }
+
+  h4:hover {
+    color: $green;
+    transition: $transition-global;
+  }
+
+  .year {
+    font-weight: $fw-regular;
+    font-size: rem(14);
+    color: $grey;
+  }
+
+}
+
+.poster-overlay {
+  position: absolute;
+  top: 0;
+
+  background-color: $black;
+  opacity: 0;
+
+  width: 100%;
+  height: 100%;
+
+  transition: $transition-global;
+}
+
+@media screen and (max-width: $vw-tablet) {
+  .movie-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: $vw-mobile) {
+  .movie-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

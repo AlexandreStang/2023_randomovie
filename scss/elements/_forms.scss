@@ -1,0 +1,94 @@
+// LABELS
+label {
+  font-family: $ff-headings;
+  font-weight: $fw-bold;
+  font-size: rem(16);
+  text-transform: uppercase;
+
+  display: block;
+  margin: 0 0 rem(16) rem(12);
+}
+
+.range-label {
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    font-family: $ff-regular;
+    font-weight: $fw-bold;
+    margin-right: rem(12);
+    transition: $transition-global;
+  }
+}
+
+// INPUT & SELECT
+input,
+select {
+  font-family: $ff-headings;
+  font-weight: $fw-regular;
+  color: $grey;
+
+  background-color: transparent;
+  border: 1px solid $grey;
+  border-radius: $border-radius-global;
+
+  width: 100%;
+  height: rem(60);
+  padding: rem(16);
+}
+
+input:focus, select:focus {
+  border: 1px solid $green;
+  outline: none;
+}
+
+// SELECT
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.select-container {
+  position: relative;
+}
+
+.select-container::after {
+  position: absolute;
+  content: "▼";
+  color: $green;
+  font-size: 0.8rem;
+  top: 37.5%;
+  right: 7.5%;
+  pointer-events: none
+}
+
+// RANGE
+input[type="range"] {
+
+  padding: 0;
+
+}
+
+// CHECKBOX
+.checkbox-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+input[type=checkbox] {
+  //background-color: transparent;
+  width: 20px;
+
+  margin-bottom: 0;
+
+  +label {
+    font-family: $ff-regular;
+    font-weight: $fw-regular;
+    text-transform: initial;
+    color: $grey;
+    line-height: rem(28);
+
+    margin: 0 0 0 rem(16);
+  }
+}

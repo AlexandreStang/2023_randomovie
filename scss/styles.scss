@@ -1,0 +1,29 @@
+// GENERIC
+@import "generic/_reset";
+@import "generic/_normalize";
+
+// GLOBAL
+@import "global/_functions";
+@import "global/_variables";
+
+// ELEMENTS
+@import "elements/_bg";
+@import "elements/_buttons";
+@import "elements/_forms";
+@import "elements/_links";
+@import "elements/_sections";
+@import "elements/_separators";
+@import "elements/_text";
+@import "elements/_wrapper";
+
+// SECTIONS
+@import "sections/_footer";
+@import "sections/_hero";
+@import "sections/_popup";
+@import "sections/_trending";
+
+
+
+/*:root {
+  font-size: 20px;
+}*/

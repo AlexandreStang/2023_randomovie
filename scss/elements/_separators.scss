@@ -1,0 +1,16 @@
+.separator::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin: 36px 0;
+}
+
+.light-bg .separator::after {
+  background-color: $lighter-grey;
+}
+
+.dark-bg .separator::after {
+  background-color: $grey;
+  opacity: 0.5;
+}

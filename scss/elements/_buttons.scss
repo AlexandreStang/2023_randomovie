@@ -1,0 +1,74 @@
+// BUTTONS
+button {
+  font-family: $ff-headings;
+  font-weight: $fw-extra-bold;
+  font-size: rem(16);
+  text-transform: uppercase;
+  color: $white;
+
+  background-color: $green;
+  transition: $transition-global;
+
+  min-width: 150px;
+  height: 50px;
+  margin-right: 10px;
+
+  border: none;
+  border-radius: $border-radius-global;
+
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: $green-hover;
+  transition: $transition-global;
+  /*transform: translateY(-2px);*/
+}
+
+button:active {
+  background-color: $green-active;
+}
+
+// SMALL BUTTONS
+button.small-btn {
+  font-weight: $fw-bold;
+  text-transform: capitalize;
+
+  min-width: 125px;
+  height: 40px;
+}
+
+// SELECTED AND UNSELECTED BUTTONS
+button.unselected-btn {
+  color: $black;
+  background-color: $lighter-grey;
+  transition: $transition-global;
+}
+
+button.unselected-btn:hover {
+  background-color: $light-grey;
+  transition: $transition-global;
+}
+
+button.unselected-btn:active {
+  background-color: $light-grey-active;
+}
+
+
+button.selected-btn {
+  color: $white;
+  background-color: $black;
+  transition: $transition-global;
+}
+
+// BUTTON CONTAINER
+.button-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  button {
+    margin-top: 10px;
+  }
+
+}

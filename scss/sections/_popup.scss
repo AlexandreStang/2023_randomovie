@@ -1,0 +1,40 @@
+.popup-container {
+  position: absolute;
+  z-index: 990;
+
+  width: 100%;
+  height: 100%;
+}
+
+.popup-bg-overlay {
+  display: block;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-color: $black;
+  opacity: 0.7;
+}
+
+.popup {
+  position: relative;
+  z-index: 999;
+
+  max-width: 800px;
+  margin: $header-height auto;
+
+  background-color: $white;
+  border-radius: $border-radius-global;
+
+  header {
+    width: 100%;
+    background-color: $lightest-grey;
+
+    border-bottom: $light-grey;
+    border-radius: $border-radius-global $border-radius-global 0 0;
+  }
+
+}

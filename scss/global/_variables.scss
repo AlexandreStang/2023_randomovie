@@ -1,0 +1,37 @@
+// COLORS
+$transparent-black: rgba(30, 27, 36, 0);
+$black: #1e1b24;
+$grey: #747c92;
+  $light-grey-active: #a4a4b6;
+$light-grey: #cbcdd7;
+$lighter-grey: #D6D8DF;
+$lightest-grey: #F2F2F5;
+$white: #ffffff;
+  $green-active: #0f7059;
+  $green-hover: #1b966b;
+$green: #20A972;
+$yellow: #ffbc42;
+$red: #ff4365;
+
+// FONTS
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&family=Palanquin:wght@400;700&display=swap');
+
+$ff-headings: 'Open Sans', sans-serif;
+$ff-regular: 'Palanquin', sans-serif;
+
+$fw-regular: 400;
+$fw-bold: 700;
+$fw-extra-bold: 800;
+
+// DIMENSIONS
+$vw-mobile: 480px;
+$vw-tablet: 768px;
+$vw-small-screen: 1024px;
+$vw-large-screen: 1200px;
+
+$header-height: 80px;
+$border-radius-global: 5px;
+$wrapper: 1040px;
+
+// TRANSITION
+$transition-global: all 150ms ease-in-out !default;

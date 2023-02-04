@@ -1,0 +1,20 @@
+// LINKS
+a {
+  color: $green;
+  text-decoration: none;
+
+  transition: $transition-global;
+
+  cursor: pointer;
+}
+
+a:hover {
+  color: $black;
+  transition: $transition-global;
+}
+
+a:active {
+  color: $green-active;
+  transition: $transition-global;
+}
+
