@@ -594,7 +594,11 @@ footer {
   overflow: hidden;
 }
 .hero hgroup {
+  text-align: center;
   margin-top: 20px;
+}
+.hero .button-container {
+  justify-content: center;
 }
 
 .hero header {
@@ -796,6 +800,7 @@ img.poster {
 }
 
 ul {
+  display: block;
   list-style: none;
   padding: 0;
 }

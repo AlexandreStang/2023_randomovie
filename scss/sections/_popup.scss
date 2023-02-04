@@ -1,3 +1,5 @@
+$popup-inner-padding: 20px;
+
 .popup-container {
   position: absolute;
   z-index: 990;
@@ -38,7 +40,7 @@
     width: 100%;
     background-color: $lightest-grey;
 
-    padding: 20px;
+    padding: $popup-inner-padding;
 
     border-bottom: $light-grey 1px solid;
     border-radius: $border-radius-global $border-radius-global 0 0;
@@ -61,7 +63,7 @@
   aside {
     width: 40%;
     max-width: 280px;
-    margin-right: 20px;
+    margin-right: $popup-inner-padding;
 
     text-align: center;
   }
@@ -91,12 +93,20 @@
     grid-auto-flow: column;
     grid-gap: 2%;
 
-    margin-bottom: 20px;
+    margin-bottom: $popup-inner-padding;
 
-  .casting {
-    grid-row: span 3;
+    .casting {
+      grid-row: span 3;
+    }
+
   }
 
-  }
+}
+
+@media screen and (max-width: $vw-tablet) {
+
+}
+
+@media screen and (max-width: $vw-mobile) {
 
 }

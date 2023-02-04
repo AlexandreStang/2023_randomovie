@@ -5,7 +5,12 @@
   overflow: hidden;
 
   hgroup {
+    text-align: center;
     margin-top: 20px;
+  }
+
+  .button-container {
+    justify-content: center;
   }
 
 }
