@@ -30,11 +30,69 @@
   border-radius: $border-radius-global;
 
   header {
+    display: flex;
+    justify-content: space-between;
+
     width: 100%;
     background-color: $lightest-grey;
 
-    border-bottom: $light-grey;
+    padding: 20px;
+
+    border-bottom: $light-grey 1px solid;
     border-radius: $border-radius-global $border-radius-global 0 0;
+
+    a {
+      color: $grey;
+    }
+
+    .icon {
+      color: $light-grey;
+    }
+
+  }
+
+  .flex-container {
+    display: flex;
+    padding: 30px 24px;
+  }
+
+  aside {
+    width: 40%;
+    max-width: 280px;
+    margin-right: 20px;
+
+    text-align: center;
+  }
+
+  .popup-text {
+    flex: 1;
+  }
+
+  hgroup h1, p {
+    margin: 0;
+  }
+
+  .tagline-score {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+
+    h4 {
+      margin-bottom: 0;
+    }
+  }
+
+  .people {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, 75px);
+    grid-auto-flow: column;
+    grid-gap: 2%;
+
+  .casting {
+    grid-row: span 3;
+  }
+
   }
 
 }

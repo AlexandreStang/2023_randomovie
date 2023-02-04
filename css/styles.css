@@ -494,7 +494,7 @@ section {
   display: block;
   width: 100%;
   height: 1px;
-  margin: 36px 0;
+  margin: 20px 0;
 }
 
 .light-bg .separator::after {
@@ -504,6 +504,16 @@ section {
 .dark-bg .separator::after {
   background-color: #747c92;
   opacity: 0.5;
+}
+
+.green-separator::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  margin: 24px 0;
+  background-color: #20A972;
+  border-radius: 5px;
 }
 
 body {
@@ -524,17 +534,17 @@ h1 {
 }
 
 h4 {
-  font-size: 1.125rem;
+  font-size: 1rem;
 }
 
 hgroup {
   /*width: fit-content;*/
-  text-align: center;
   margin-bottom: 36px;
 }
 
 p {
   color: #747c92;
+  line-height: 1.75rem;
 }
 
 .green-txt {
@@ -663,10 +673,53 @@ footer {
   border-radius: 5px;
 }
 .popup header {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   background-color: #F2F2F5;
-  border-bottom: #cbcdd7;
+  padding: 20px;
+  border-bottom: #cbcdd7 1px solid;
   border-radius: 5px 5px 0 0;
+}
+.popup header a {
+  color: #747c92;
+}
+.popup header .icon {
+  color: #cbcdd7;
+}
+.popup .flex-container {
+  display: flex;
+  padding: 30px 24px;
+}
+.popup aside {
+  width: 40%;
+  max-width: 280px;
+  margin-right: 20px;
+  text-align: center;
+}
+.popup .popup-text {
+  flex: 1;
+}
+.popup hgroup h1, .popup p {
+  margin: 0;
+}
+.popup .tagline-score {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.popup .tagline-score h4 {
+  margin-bottom: 0;
+}
+.popup .people {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(3, 75px);
+  grid-auto-flow: column;
+  grid-gap: 2%;
+}
+.popup .people .casting {
+  grid-row: span 3;
 }
 
 .movie-grid {
@@ -679,15 +732,10 @@ footer {
 .movie-item {
   overflow: hidden;
 }
-.movie-item .poster {
+.movie-item .poster-link {
   display: block;
   position: relative;
   margin-bottom: 12px;
-}
-.movie-item img {
-  display: block;
-  width: 100%;
-  border-radius: 5px;
 }
 .movie-item .poster:hover .poster-overlay {
   opacity: 0.25;
@@ -727,6 +775,33 @@ footer {
     grid-template-columns: 1fr 1fr;
   }
 }
+.icon {
+  font-size: 1.25rem;
+}
+
+.left-side-icon {
+  margin-right: 10px;
+}
+
+.right-side-icon {
+  margin-left: 10px;
+}
+
+img.poster {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+ul li:not(:first-child) {
+  color: #747c92;
+  padding-bottom: 12px;
+}
+
 /*:root {
   font-size: 20px;
 }*/

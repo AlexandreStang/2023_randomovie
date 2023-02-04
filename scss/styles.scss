@@ -23,6 +23,39 @@
 @import "sections/_trending";
 
 
+.icon {
+  font-size: rem(20);
+}
+
+.left-side-icon {
+  margin-right: 10px;
+}
+
+.right-side-icon {
+  margin-left: 10px;
+}
+
+img.poster {
+  display: block;
+  width: 100%;
+  border-radius: $border-radius-global;
+}
+
+ul {
+
+  list-style: none;
+  padding: 0;
+
+  li:not(:first-child) {
+
+    color: $grey;
+    padding-bottom: 12px;
+
+  }
+
+}
+
+
 
 /*:root {
   font-size: 20px;
