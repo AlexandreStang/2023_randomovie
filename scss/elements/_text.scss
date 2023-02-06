@@ -59,3 +59,13 @@ p {
   }
 }
 
+// MEDIA
+@media screen and (max-width: $vw-mobile) {
+
+  h1 {
+    font-size: rem(24);
+    margin-bottom: rem(12);
+  }
+
+}
+
