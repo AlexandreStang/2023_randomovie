@@ -1,5 +1,3 @@
-$popup-inner-padding: 20px;
-
 .popup-container {
   position: absolute;
   z-index: 990;
@@ -86,17 +84,21 @@ $popup-inner-padding: 20px;
     }
   }
 
+  .tagline-score:first-child {
+    margin-right: 15px;
+  }
+
   .people {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: repeat(3, 75px);
+    grid-template-rows: repeat(3, auto);
     grid-auto-flow: column;
     grid-gap: 2%;
 
     margin-bottom: $popup-inner-padding;
 
     .casting {
-      grid-row: span 3;
+      grid-row: 1/-1;
     }
 
   }
@@ -104,9 +106,44 @@ $popup-inner-padding: 20px;
 }
 
 @media screen and (max-width: $vw-tablet) {
+  .popup {
 
+    .people {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(6, auto);
+    }
+
+  }
 }
 
 @media screen and (max-width: $vw-mobile) {
+
+  .popup {
+    header {
+      padding: 10px;
+    }
+
+    .flex-container {
+      display: flex;
+      padding: 20px 12px;
+    }
+
+    aside {
+      margin-right: 10px;
+    }
+  }
+
+}
+
+@media screen and (max-width: $vw-small-mobile) {
+
+  .popup {
+
+    .people {
+      display: block;
+      margin-bottom: 0;
+    }
+
+  }
 
 }
