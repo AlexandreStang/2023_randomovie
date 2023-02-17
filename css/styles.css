@@ -485,6 +485,17 @@ a:active {
   transition: all 150ms ease-in-out;
 }
 
+ul {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+ul li:not(:first-child) {
+  color: #747c92;
+  padding-bottom: 12px;
+}
+
 section {
   padding: 60px 0 80px 0;
 }
@@ -776,7 +787,7 @@ footer {
   position: relative;
   margin-bottom: 12px;
 }
-.movie-item .poster:hover .poster-overlay {
+.movie-item .poster-overlay:hover {
   opacity: 0.25;
   transition: all 150ms ease-in-out;
 }
@@ -830,17 +841,6 @@ img.poster {
   display: block;
   width: 100%;
   border-radius: 5px;
-}
-
-ul {
-  display: block;
-  list-style: none;
-  padding: 0;
-  margin-bottom: 0;
-}
-ul li:not(:first-child) {
-  color: #747c92;
-  padding-bottom: 12px;
 }
 
 /*:root {

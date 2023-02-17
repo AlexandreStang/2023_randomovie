@@ -13,11 +13,11 @@
 </head>
 <body>
 
-<div class="popup-container">
+<div class="popup-container" id="popup-container">
     <div class="popup light-bg">
         <header>
-            <a href="">Not what you’re looking for? Click here for another random movie!</a>
-            <a href=""><i class="fas fa-times icon right-side-icon"></i></a>
+            <a href=#" onclick="reloadPopup()">Not what you’re looking for? Click here for another random movie!</a>
+            <a href="#" onclick="closePopup()" class="right-side-icon"><i class="fas fa-times icon"></i></a>
         </header>
         <div class="flex-container">
             <aside>
@@ -87,7 +87,7 @@
         </header>
 
         <div class="welcome">
-            <hgroup>
+            <hgroup class="separator">
                 <h1>Looking for new cinematic experiences?</h1>
                 <p>Tell us what you're looking for and receive something random!</p>
             </hgroup>
@@ -134,7 +134,7 @@
                 </div>
 
                 <div class="button-container">
-                    <button type="submit" id="random-movie-submit">Search</button>
+                    <button onclick="loadPopup()" id="random-movie-submit">Search</button>
                 </div>
 
             </form>
@@ -151,7 +151,7 @@
 
 <section class="trending light-bg">
     <div class="wrapper">
-        <hgroup>
+        <hgroup class="separator">
             <h1>Want some options right away?</h1>
             <p>Check out what movies are trending right now!</p>
         </hgroup>

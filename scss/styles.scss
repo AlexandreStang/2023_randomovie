@@ -11,6 +11,7 @@
 @import "elements/_buttons";
 @import "elements/_forms";
 @import "elements/_links";
+@import "elements/_lists";
 @import "elements/_sections";
 @import "elements/_separators";
 @import "elements/_text";
@@ -41,21 +42,7 @@ img.poster {
   border-radius: $border-radius-global;
 }
 
-ul {
 
-  display: block;
-  list-style: none;
-  padding: 0;
-  margin-bottom: 0;
-
-  li:not(:first-child) {
-
-    color: $grey;
-    padding-bottom: 12px;
-
-  }
-
-}
 
 
 

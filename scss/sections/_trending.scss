@@ -17,7 +17,7 @@
     margin-bottom: 12px;
   }
 
-  .poster:hover .poster-overlay {
+  .poster-overlay:hover {
     opacity: 0.25;
     transition: $transition-global;
   }

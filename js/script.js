@@ -2,7 +2,6 @@ const colors = {pos: "green-txt", mid: "yellow-txt", neg: "red-txt"}
 
 document.addEventListener('DOMContentLoaded', function () {
 
-
     // SET MAX RELEASE YEAR - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     document.getElementById("min-year-input").setAttribute("max", new Date().getFullYear());
@@ -34,6 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
+    // POPUP INTERACTION - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 });
 
 // Return the appropriate color class based on the score percentage
@@ -48,4 +49,18 @@ function getColor(score) {
     }
 
 }
+
+function loadPopup() {
+    document.getElementById("popup-container").style.display = "block";
+}
+
+function reloadPopup() {
+
+}
+
+function closePopup() {
+    document.getElementById("popup-container").style.display = "none";
+}
+
+
 
