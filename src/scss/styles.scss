@@ -1,0 +1,51 @@
+// GENERIC
+@import "generic/reset";
+@import "generic/normalize";
+
+// GLOBAL
+@import "global/functions";
+@import "global/variables";
+
+// ELEMENTS
+@import "elements/bg";
+@import "elements/buttons";
+@import "elements/forms";
+@import "elements/links";
+@import "elements/lists";
+@import "elements/sections";
+@import "elements/separators";
+@import "elements/text";
+@import "elements/wrapper";
+
+// SECTIONS
+@import "sections/footer";
+@import "sections/hero";
+@import "sections/popup";
+@import "sections/trending";
+
+
+.icon {
+  font-size: rem(20);
+}
+
+.left-side-icon {
+  margin-right: 10px;
+}
+
+.right-side-icon {
+  margin-left: 10px;
+}
+
+img.poster {
+  display: block;
+  width: 100%;
+  border-radius: $border-radius-global;
+}
+
+
+
+
+
+/*:root {
+  font-size: 20px;
+}*/

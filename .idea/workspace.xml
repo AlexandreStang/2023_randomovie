@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e265784f-5024-428a-8c45-8fda0fcd2407" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/scss/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/2023_randomovie.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/normalize.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/normalize.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/styles.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/elements/_bg.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_bg.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/elements/_buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_buttons.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/elements/_forms.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_forms.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/elements/_links.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_links.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/elements/_lists.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_lists.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/elements/_sections.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_sections.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/elements/_separators.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_separators.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/elements/_text.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_text.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/elements/_wrapper.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_wrapper.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/generic/_normalize.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/generic/_normalize.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/generic/_reset.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/generic/_reset.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/global/_functions.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/global/_functions.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/global/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/global/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/sections/_footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_footer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/sections/_hero.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_hero.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/sections/_popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_popup.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/sections/_trending.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_trending.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/styles.scss" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2KnO75kjH3CC8C3YlTv1kjC5viy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Poste/Documents/0_Projects/2023_randomovie",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "watcher.settings",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie" />
+      <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie\src" />
+      <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie\js" />
+      <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie\scss\generic" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie\src" />
+      <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie" />
+      <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie\img\logo" />
+      <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie\scss" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e265784f-5024-428a-8c45-8fda0fcd2407" name="Changes" comment="" />
+      <created>1674606710611</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1674606710611</updated>
+      <workItem from="1674606712202" duration="12010000" />
+      <workItem from="1674654649690" duration="3615000" />
+      <workItem from="1674685162178" duration="16802000" />
+      <workItem from="1674748413083" duration="2191000" />
+      <workItem from="1674757945795" duration="11629000" />
+      <workItem from="1675527069894" duration="11627000" />
+      <workItem from="1675722579724" duration="3489000" />
+      <workItem from="1676604975195" duration="9413000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
