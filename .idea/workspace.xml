@@ -5,37 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e265784f-5024-428a-8c45-8fda0fcd2407" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/scss/styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/2023_randomovie.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/normalize.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/normalize.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/styles.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/elements/_bg.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_bg.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/elements/_buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_buttons.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/elements/_forms.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_forms.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/elements/_links.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_links.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/elements/_lists.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_lists.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/elements/_sections.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_sections.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/elements/_separators.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_separators.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/elements/_text.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_text.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/elements/_wrapper.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_wrapper.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/generic/_normalize.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/generic/_normalize.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/generic/_reset.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/generic/_reset.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/global/_functions.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/global/_functions.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/global/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/global/_variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/sections/_footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_footer.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/sections/_hero.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_hero.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/sections/_popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_popup.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/sections/_trending.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_trending.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scss/styles.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/banner/avatar.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/logo/randomovie.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/posters/avatar.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/posters/spider-man.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,22 +36,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Poste/Documents/0_Projects/2023_randomovie",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "watcher.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Poste/Documents/0_Projects/2023_randomovie&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;watcher.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie" />
@@ -106,7 +81,8 @@
       <workItem from="1674757945795" duration="11629000" />
       <workItem from="1675527069894" duration="11627000" />
       <workItem from="1675722579724" duration="3489000" />
-      <workItem from="1676604975195" duration="9413000" />
+      <workItem from="1676604975195" duration="9547000" />
+      <workItem from="1677621134738" duration="6034000" />
     </task>
     <servers />
   </component>
