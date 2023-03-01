@@ -18,9 +18,11 @@ const MINOR_POSTER_WIDTH = "w300";
 const minYear = 1920;
 const maxProviders = 10;
 const maxTrendingFilms = 6;
+let trendingTimeWindow = "day";
 
 const App = () => {
 
+    const [active, setActive] = useState("");
     const [genres, setGenres] = useState([]);
     const [providers, setProviders] = useState([]);
     const [trendingFilms, setTrendingFilms] = useState([]);
@@ -49,10 +51,16 @@ const App = () => {
         return data.results;
     }
 
+    function updateFilms(timeWindow) {
+        trendingTimeWindow = timeWindow;
+
+        searchTrendingFilms(trendingTimeWindow).then(data => setTrendingFilms(data));
+    }
+
     useEffect(() => {
         searchGenres().then(data => setGenres(data));
         searchProviders().then(data => setProviders(data));
-        searchTrendingFilms("day").then(data => setTrendingFilms(data));
+        searchTrendingFilms(trendingTimeWindow).then(data => setTrendingFilms(data));
     }, [])
 
 
@@ -122,7 +130,7 @@ const App = () => {
                             </div>
 
                             <div className="button-container">
-                                <button onClick="loadPopup()" id="random-movie-submit">Search</button>
+                                <button id="random-movie-submit">Search</button>
                             </div>
 
                         </form>
@@ -143,9 +151,9 @@ const App = () => {
                         <p>Check out what movies are trending right now!</p>
                     </hgroup>
                     <div className="button-container">
-                        <button className="small-btn selected-btn" id="trending-today">Today</button>
-                        <button className="small-btn unselected-btn" id="trending-week">This week</button>
-                        <button className="small-btn" id="trending-refresh">Refresh</button>
+                        <button onClick={() => updateFilms("day")} className="small-btn selected-btn" id="trending-day">Today</button>
+                        <button onClick={() => updateFilms("week")} className="small-btn unselected-btn" id="trending-week">This week</button>
+                        <button onClick={() => updateFilms(trendingTimeWindow)} className="small-btn" id="trending-refresh">Refresh</button>
                     </div>
                     <div className="movie-grid">
                         {
