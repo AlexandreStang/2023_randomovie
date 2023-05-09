@@ -2,10 +2,6 @@ const colors = {pos: "green-txt", mid: "yellow-txt", neg: "red-txt"}
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    // SET MAX RELEASE YEAR - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    document.getElementById("min-year-input").setAttribute("max", new Date().getFullYear());
-
     // INTERACTIVE SCORE SLIDER - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     // Variables

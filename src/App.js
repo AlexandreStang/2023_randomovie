@@ -25,6 +25,7 @@ const App = () => {
     const [active, setActive] = useState("");
     const [genres, setGenres] = useState([]);
     const [providers, setProviders] = useState([]);
+    const [score, setScore] = useState([50, ]);
     const [trendingFilms, setTrendingFilms] = useState([]);
 
     const searchGenres = async () => {
@@ -56,6 +57,13 @@ const App = () => {
 
         searchTrendingFilms(trendingTimeWindow).then(data => setTrendingFilms(data));
     }
+
+    const updateScore = (e) => {
+        setScore(e.target.value);
+
+
+
+    };
 
     useEffect(() => {
         searchGenres().then(data => setGenres(data));
@@ -97,7 +105,7 @@ const App = () => {
 
                                 <div className="form-item">
                                     <label htmlFor="min-year-input">Min. Release Year</label>
-                                    <input type="number" min={minYear} max={new Date().getFullYear()} placeholder="1920"
+                                    <input type="number" min={minYear} max={new Date().getFullYear()} placeholder={minYear}
                                            step="1" name="min-year"
                                            id="min-year-input"/>
                                 </div>
@@ -118,8 +126,8 @@ const App = () => {
                                 <div className="form-item">
                                     <div className="range-label"><label htmlFor="min-score-input">Min. User
                                         Score</label><span
-                                        className="min-score-percentage" id="min-score-percentage"></span></div>
-                                    <input type="range" min="0" max="100" step="1" placeholder="50" name="min-score"
+                                        className={"min-score-percentage " + (score > 69 ? "green-txt" : (score > 39 ? "yellow-txt" : "red-txt"))} id="min-score-percentage">{score + "%" }</span></div>
+                                    <input type="range" min="0" max="100" step="1" placeholder={score} onChange={updateScore} name="min-score"
                                            id="min-score-input"/>
                                 </div>
 
@@ -148,7 +156,7 @@ const App = () => {
                 <div className="wrapper">
                     <hgroup className="separator">
                         <h1>Want some options right away?</h1>
-                        <p>Check out what movies are trending right now!</p>
+                        <p>Check out what movies are trending at the moment!</p>
                     </hgroup>
                     <div className="button-container">
                         <button onClick={() => updateFilms("day")} className="small-btn selected-btn" id="trending-day">Today</button>
