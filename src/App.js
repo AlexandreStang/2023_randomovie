@@ -13,14 +13,24 @@ const REGION = "&watch_region=CA";
 // IMAGES
 const IMAGE_URL = "https://image.tmdb.org/t/p/";
 const MINOR_POSTER_WIDTH = "w300";
-const MINOR_BACKDROP_WIDTH = "w1280"; // BANNER
+const MINOR_BACKDROP_WIDTH = "w1280"; // BANNER SIZE
 
-// GLOBAL VARIABLES
+//GENERAL VARIABLES
+const moviesPerPage = 20;
+
+// BANNER VARIABLES
+const randomBannerIndex = Math.floor(Math.random() * moviesPerPage);
+
+// FORM VARIABLES
 const minYear = 1920;
 const maxProviders = 10;
+
+// TRENDING FILMS VARIABLES
+const timeWindowDay = "day";
+const timeWindowWeek = "week";
 const maxTrendingFilms = 6;
-let trendingTimeWindow = "day";
-const movieIndex = Math.floor(Math.random() * 20);
+let trendingTimeWindow = timeWindowDay;
+
 
 const App = () => {
 
@@ -38,7 +48,7 @@ const App = () => {
     // FUNCTIONS
 
    const searchBanner = async () => {
-       const response = await fetch(API_URL + "trending/movie/day" + API_KEY + LANGUAGE);
+       const response = await fetch(API_URL + "trending/movie/" + timeWindowWeek + API_KEY + LANGUAGE);
        const data = await response.json();
 
        return data.results;
@@ -154,7 +164,7 @@ const App = () => {
                             </div>
 
                             <div className="button-container">
-                                <button id="random-movie-submit">Search</button>
+                                <button id="random-movie-submit" type="submit">Search</button>
                             </div>
 
                         </form>
@@ -163,7 +173,7 @@ const App = () => {
 
                 </div>
 
-                <img className="banner" src={banner.length > 0 ? (IMAGE_URL + MINOR_BACKDROP_WIDTH + banner[movieIndex].backdrop_path) : ""} alt="Avatar Banner"/>
+                <img className="banner" src={banner.length > 0 ? (IMAGE_URL + MINOR_BACKDROP_WIDTH + banner[randomBannerIndex].backdrop_path) : ""} alt="Avatar Banner"/>
                 <div className="banner-overlay"></div>
 
             </section>
@@ -175,8 +185,8 @@ const App = () => {
                         <p>Check out what movies are trending at the moment!</p>
                     </hgroup>
                     <div className="button-container">
-                        <button onClick={() => updateTrendingFilms("day")} className="small-btn selected-btn" id="trending-day">Today</button>
-                        <button onClick={() => updateTrendingFilms("week")} className="small-btn unselected-btn" id="trending-week">This week</button>
+                        <button onClick={() => updateTrendingFilms(timeWindowDay)} className={"small-btn " + (trendingTimeWindow === timeWindowDay ? "selected-btn" : "unselected-btn")}    id="trending-day">Today</button>
+                        <button onClick={() => updateTrendingFilms(timeWindowWeek)} className={"small-btn " + (trendingTimeWindow === timeWindowWeek ? "selected-btn" : "unselected-btn")} id="trending-week">This week</button>
                         <button onClick={() => updateTrendingFilms(trendingTimeWindow)} className="small-btn" id="trending-refresh">Refresh</button>
                     </div>
                     <div className="movie-grid">
