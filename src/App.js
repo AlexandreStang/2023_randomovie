@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import './css/styles.css';
 import Logo from './img/logo/randomovie.svg';
-import Banner from './img/banner/avatar.jpg';
-import Poster from './img/posters/avatar.jpg';
+//import Banner from './img/banner/avatar.jpg';
+//import Poster from './img/posters/avatar.jpg';
 
 // API
 const API_URL = "https://api.themoviedb.org/3/";
@@ -13,20 +13,41 @@ const REGION = "&watch_region=CA";
 // IMAGES
 const IMAGE_URL = "https://image.tmdb.org/t/p/";
 const MINOR_POSTER_WIDTH = "w300";
+const MINOR_BACKDROP_WIDTH = "w1280"; // BANNER
 
 // GLOBAL VARIABLES
 const minYear = 1920;
 const maxProviders = 10;
 const maxTrendingFilms = 6;
 let trendingTimeWindow = "day";
+const movieIndex = Math.floor(Math.random() * 20);
 
 const App = () => {
 
-    const [active, setActive] = useState("");
+    //const [active, setActive] = useState("");
+
+    // STATES
+    const [banner, setBanner] = useState([]);
+    const [score, setScore] = useState([50, ]);
+
     const [genres, setGenres] = useState([]);
     const [providers, setProviders] = useState([]);
-    const [score, setScore] = useState([50, ]);
     const [trendingFilms, setTrendingFilms] = useState([]);
+
+
+    // FUNCTIONS
+
+   const searchBanner = async () => {
+       const response = await fetch(API_URL + "trending/movie/day" + API_KEY + LANGUAGE);
+       const data = await response.json();
+
+       return data.results;
+   }
+
+
+    const updateScore = (e) => {
+        setScore(e.target.value);
+    };
 
     const searchGenres = async () => {
         const response = await fetch(API_URL + "genre/movie/list" + API_KEY + LANGUAGE);
@@ -46,32 +67,27 @@ const App = () => {
         const response = await fetch(API_URL + "trending/movie/" + timeWindow + API_KEY + LANGUAGE);
         const data = await response.json();
 
-        //console.log(data);
-        console.log(data.results);
-
         return data.results;
     }
 
-    function updateFilms(timeWindow) {
+    function updateTrendingFilms(timeWindow) {
         trendingTimeWindow = timeWindow;
 
         searchTrendingFilms(trendingTimeWindow).then(data => setTrendingFilms(data));
     }
 
-    const updateScore = (e) => {
-        setScore(e.target.value);
 
-
-
-    };
-
+    // EFFECTS
     useEffect(() => {
+
+        searchBanner().then(data => setBanner(data));
         searchGenres().then(data => setGenres(data));
         searchProviders().then(data => setProviders(data));
         searchTrendingFilms(trendingTimeWindow).then(data => setTrendingFilms(data));
     }, [])
 
 
+    // INDEX.HTML
     return (
 
         <div>
@@ -147,7 +163,7 @@ const App = () => {
 
                 </div>
 
-                <img className="banner" src={Banner} alt="Avatar Banner"/>
+                <img className="banner" src={banner.length > 0 ? (IMAGE_URL + MINOR_BACKDROP_WIDTH + banner[movieIndex].backdrop_path) : ""} alt="Avatar Banner"/>
                 <div className="banner-overlay"></div>
 
             </section>
@@ -159,9 +175,9 @@ const App = () => {
                         <p>Check out what movies are trending at the moment!</p>
                     </hgroup>
                     <div className="button-container">
-                        <button onClick={() => updateFilms("day")} className="small-btn selected-btn" id="trending-day">Today</button>
-                        <button onClick={() => updateFilms("week")} className="small-btn unselected-btn" id="trending-week">This week</button>
-                        <button onClick={() => updateFilms(trendingTimeWindow)} className="small-btn" id="trending-refresh">Refresh</button>
+                        <button onClick={() => updateTrendingFilms("day")} className="small-btn selected-btn" id="trending-day">Today</button>
+                        <button onClick={() => updateTrendingFilms("week")} className="small-btn unselected-btn" id="trending-week">This week</button>
+                        <button onClick={() => updateTrendingFilms(trendingTimeWindow)} className="small-btn" id="trending-refresh">Refresh</button>
                     </div>
                     <div className="movie-grid">
                         {
