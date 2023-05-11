@@ -15,17 +15,17 @@ const IMAGE_URL = "https://image.tmdb.org/t/p/";
 const MINOR_POSTER_WIDTH = "w300";
 const MINOR_BACKDROP_WIDTH = "w1280"; // BANNER SIZE
 
-//GENERAL VARIABLES
+// GENERAL
 const moviesPerPage = 20;
 
-// BANNER VARIABLES
+// BANNER
 const randomBannerIndex = Math.floor(Math.random() * moviesPerPage);
 
-// FORM VARIABLES
+// FORM
 const minYear = 1920;
 const maxProviders = 10;
 
-// TRENDING FILMS VARIABLES
+// TRENDING FILMS
 const timeWindowDay = "day";
 const timeWindowWeek = "week";
 const maxTrendingFilms = 6;
@@ -38,7 +38,7 @@ const App = () => {
 
     // STATES
     const [banner, setBanner] = useState([]);
-    const [score, setScore] = useState([50, ]);
+    const [score, setScore] = useState([50,]);
 
     const [genres, setGenres] = useState([]);
     const [providers, setProviders] = useState([]);
@@ -47,12 +47,12 @@ const App = () => {
 
     // FUNCTIONS
 
-   const searchBanner = async () => {
-       const response = await fetch(API_URL + "trending/movie/" + timeWindowWeek + API_KEY + LANGUAGE);
-       const data = await response.json();
+    const searchBanner = async () => {
+        const response = await fetch(API_URL + "trending/movie/" + timeWindowWeek + API_KEY + LANGUAGE);
+        const data = await response.json();
 
-       return data.results;
-   }
+        return data.results;
+    }
 
 
     const updateScore = (e) => {
@@ -89,7 +89,6 @@ const App = () => {
 
     // EFFECTS
     useEffect(() => {
-
         searchBanner().then(data => setBanner(data));
         searchGenres().then(data => setGenres(data));
         searchProviders().then(data => setProviders(data));
@@ -110,7 +109,7 @@ const App = () => {
                     <div className="welcome">
                         <hgroup className="separator">
                             <h1>Looking for new cinematic experiences?</h1>
-                            <p>Tell us what you're looking for and receive something random!</p>
+                            <p>Tell us what you're looking for and receive something at random!</p>
                         </hgroup>
 
                         <form action="#" id="random-movie-form">
@@ -131,7 +130,8 @@ const App = () => {
 
                                 <div className="form-item">
                                     <label htmlFor="min-year-input">Min. Release Year</label>
-                                    <input type="number" min={minYear} max={new Date().getFullYear()} placeholder={minYear}
+                                    <input type="number" min={minYear} max={new Date().getFullYear()}
+                                           placeholder={minYear}
                                            step="1" name="min-year"
                                            id="min-year-input"/>
                                 </div>
@@ -142,7 +142,8 @@ const App = () => {
                                         <select name="streaming" id="streaming-select">
                                             {
                                                 providers.slice(0, maxProviders).map((provider) => (
-                                                    <option value={provider.provider_id}>{provider.provider_name}</option>
+                                                    <option
+                                                        value={provider.provider_id}>{provider.provider_name}</option>
                                                 ))
                                             }
                                         </select>
@@ -152,8 +153,10 @@ const App = () => {
                                 <div className="form-item">
                                     <div className="range-label"><label htmlFor="min-score-input">Min. User
                                         Score</label><span
-                                        className={"min-score-percentage " + (score > 69 ? "green-txt" : (score > 39 ? "yellow-txt" : "red-txt"))} id="min-score-percentage">{score + "%" }</span></div>
-                                    <input type="range" min="0" max="100" step="1" placeholder={score} onChange={updateScore} name="min-score"
+                                        className={"min-score-percentage " + (score > 69 ? "green-txt" : (score > 39 ? "yellow-txt" : "red-txt"))}
+                                        id="min-score-percentage">{score + "%"}</span></div>
+                                    <input type="range" min="0" max="100" step="1" placeholder={score}
+                                           onChange={updateScore} name="min-score"
                                            id="min-score-input"/>
                                 </div>
 
@@ -173,7 +176,9 @@ const App = () => {
 
                 </div>
 
-                <img className="banner" src={banner.length > 0 ? (IMAGE_URL + MINOR_BACKDROP_WIDTH + banner[randomBannerIndex].backdrop_path) : ""} alt="Avatar Banner"/>
+                <img className="banner"
+                     src={banner.length > 0 ? (IMAGE_URL + MINOR_BACKDROP_WIDTH + banner[randomBannerIndex].backdrop_path) : ""}
+                     alt="Avatar Banner"/>
                 <div className="banner-overlay"></div>
 
             </section>
@@ -185,19 +190,29 @@ const App = () => {
                         <p>Check out what movies are trending at the moment!</p>
                     </hgroup>
                     <div className="button-container">
-                        <button onClick={() => updateTrendingFilms(timeWindowDay)} className={"small-btn " + (trendingTimeWindow === timeWindowDay ? "selected-btn" : "unselected-btn")}    id="trending-day">Today</button>
-                        <button onClick={() => updateTrendingFilms(timeWindowWeek)} className={"small-btn " + (trendingTimeWindow === timeWindowWeek ? "selected-btn" : "unselected-btn")} id="trending-week">This week</button>
-                        <button onClick={() => updateTrendingFilms(trendingTimeWindow)} className="small-btn" id="trending-refresh">Refresh</button>
+                        <button onClick={() => updateTrendingFilms(timeWindowDay)}
+                                className={"small-btn " + (trendingTimeWindow === timeWindowDay ? "selected-btn" : "unselected-btn")}
+                                id="trending-day">Today
+                        </button>
+                        <button onClick={() => updateTrendingFilms(timeWindowWeek)}
+                                className={"small-btn " + (trendingTimeWindow === timeWindowWeek ? "selected-btn" : "unselected-btn")}
+                                id="trending-week">This week
+                        </button>
+                        <button onClick={() => updateTrendingFilms(trendingTimeWindow)} className="small-btn"
+                                id="trending-refresh">Refresh
+                        </button>
                     </div>
                     <div className="movie-grid">
                         {
                             trendingFilms.slice(0, maxTrendingFilms).map((film) => (
                                 <div className="movie-item">
                                     <a href="" className="poster-link">
-                                        <img src={IMAGE_URL + MINOR_POSTER_WIDTH + film.poster_path} alt="Avatar Poster" className="poster"></img>
+                                        <img src={IMAGE_URL + MINOR_POSTER_WIDTH + film.poster_path} alt="Avatar Poster"
+                                             className="poster"></img>
                                         <div className="poster-overlay"></div>
                                     </a>
-                                    <a href="#"><h4>{film.title} <span className="year">({film.release_date.substring(0, 4)})</span></h4></a>
+                                    <a href="#"><h4>{film.title} <span
+                                        className="year">({film.release_date.substring(0, 4)})</span></h4></a>
                                 </div>
                             ))
                         }
