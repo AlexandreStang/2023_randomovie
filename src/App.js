@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './css/styles.css';
 import Logo from './img/logo/randomovie.svg';
+import PopUp from "./PopUp";
 //import Banner from './img/banner/avatar.jpg';
 //import Poster from './img/posters/avatar.jpg';
 
@@ -26,6 +27,11 @@ const maxTrendingFilms = 6;
 let trendingTimeWindow = timeWindowDay;
 
 
+let releaseYear = 1290; // TEST
+let genre = "28" // TEST
+let watchProvider = "8"; // TEST
+let minScore = 7.0; // TEST
+
 const App = () => {
 
     //const [active, setActive] = useState("");
@@ -36,6 +42,7 @@ const App = () => {
 
     const [genres, setGenres] = useState([]);
     const [providers, setProviders] = useState([]);
+    const [randomMovie, setRandomMovie] = useState([]);
     const [trendingFilms, setTrendingFilms] = useState([]);
 
 
@@ -69,6 +76,18 @@ const App = () => {
         return data.results;
     }
 
+    // TODO: Currently just a placeholder function
+    const searchRandomMovie = async () => {
+        //https://api.themoviedb.org/3/discover/movie?api_key=<<api_key>>&language=en-US&region=CA
+        const response = await fetch(API_URL + "discover/movie" + API_KEY + LANGUAGE + "&region=" + REGION + "&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&" + releaseYear + "&vote_average.gte=" + minScore + "&with_genres=" + genre + "&with_watch_providers=" + watchProvider + REGION + "&with_watch_monetization_types=flatrate");
+        const data = await response.json();
+
+        console.log("Hello!");
+        console.log(data.results[0]);
+
+        return data.results[0];
+    }
+
     const searchTrendingFilms = async (timeWindow) => {
         const response = await fetch(API_URL + "trending/movie/" + timeWindow + API_KEY + LANGUAGE);
         const data = await response.json();
@@ -80,6 +99,10 @@ const App = () => {
         trendingTimeWindow = timeWindow;
 
         searchTrendingFilms(trendingTimeWindow).then(data => setTrendingFilms(data));
+    }
+
+    function handleSubmit() {
+        searchRandomMovie().then(data => setRandomMovie(data));
     }
 
 
@@ -96,6 +119,9 @@ const App = () => {
     return (
 
         <div>
+
+            {randomMovie.title ? <PopUp movie={randomMovie} /> : ""}
+
             <section className="hero dark-bg">
                 <div className="wrapper">
                     <header>
@@ -108,7 +134,7 @@ const App = () => {
                             <p>Tell us what you're looking for and receive something at random!</p>
                         </hgroup>
 
-                        <form action="#" id="random-movie-form">
+                        <form id="random-movie-form" onSubmit={handleSubmit}>
 
                             <div className="form-grid">
                                 <div className="form-item">
