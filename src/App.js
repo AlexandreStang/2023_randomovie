@@ -15,12 +15,6 @@ const IMAGE_URL = "https://image.tmdb.org/t/p/";
 const MINOR_POSTER_WIDTH = "w300";
 const MINOR_BACKDROP_WIDTH = "w1280"; // BANNER SIZE
 
-// GENERAL
-const moviesPerPage = 20;
-
-// BANNER
-const randomBannerIndex = Math.floor(Math.random() * moviesPerPage);
-
 // FORM
 const minYear = 1920;
 const maxProviders = 10;
@@ -37,7 +31,7 @@ const App = () => {
     //const [active, setActive] = useState("");
 
     // STATES
-    const [banner, setBanner] = useState([]);
+    const [bannerPath, setBannerPath] = useState([]);
     const [score, setScore] = useState([50,]);
 
     const [genres, setGenres] = useState([]);
@@ -51,7 +45,9 @@ const App = () => {
         const response = await fetch(API_URL + "trending/movie/" + timeWindowWeek + API_KEY + LANGUAGE);
         const data = await response.json();
 
-        return data.results;
+        const randomBannerIndex = Math.floor(Math.random() * data.results.length);
+
+        return data.results[randomBannerIndex].backdrop_path;
     }
 
 
@@ -89,7 +85,7 @@ const App = () => {
 
     // EFFECTS
     useEffect(() => {
-        searchBanner().then(data => setBanner(data));
+        searchBanner().then(data => setBannerPath(data));
         searchGenres().then(data => setGenres(data));
         searchProviders().then(data => setProviders(data));
         searchTrendingFilms(trendingTimeWindow).then(data => setTrendingFilms(data));
@@ -177,7 +173,7 @@ const App = () => {
                 </div>
 
                 <img className="banner"
-                     src={banner.length > 0 ? (IMAGE_URL + MINOR_BACKDROP_WIDTH + banner[randomBannerIndex].backdrop_path) : ""}
+                     src={bannerPath.length > 0 ? (IMAGE_URL + MINOR_BACKDROP_WIDTH + bannerPath) : ""}
                      alt="Avatar Banner"/>
                 <div className="banner-overlay"></div>
 
