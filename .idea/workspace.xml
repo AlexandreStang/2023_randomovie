@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e265784f-5024-428a-8c45-8fda0fcd2407" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PopUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/PopUp.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,8 +57,8 @@
       <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie\scss\generic" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie" />
       <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie\src" />
+      <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie" />
       <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie\img\logo" />
       <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie\scss" />
     </key>
@@ -82,7 +82,8 @@
       <workItem from="1677621134738" duration="9752000" />
       <workItem from="1683649131930" duration="9634000" />
       <workItem from="1683750315379" duration="11897000" />
-      <workItem from="1683807542432" duration="17976000" />
+      <workItem from="1683807542432" duration="20143000" />
+      <workItem from="1683856427356" duration="298000" />
     </task>
     <servers />
   </component>

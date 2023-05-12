@@ -1,14 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import './css/styles.css';
 import Logo from './img/logo/randomovie.svg';
+import './config.js';
 import PopUp from "./PopUp";
-
-// API
-const API_URL = "https://api.themoviedb.org/3/";
-const API_KEY = "?api_key=f4f9e1b6b219580330ca8cc48f5b1165";
-const LANGUAGE = "&language=en-CA";
-const REGION = "&watch_region=CA";
-const IMAGE_URL = "https://image.tmdb.org/t/p/";
 
 // IMAGES
 const MINOR_POSTER_WIDTH = "w300";
@@ -24,7 +18,7 @@ const timeWindowWeek = "week";
 const maxTrendingFilms = 6;
 let trendingTimeWindow = timeWindowDay;
 
-
+// TODO: PLACEHOLDER VARIABLES
 let releaseYear = 1290; // TEST
 let genre = "28" // TEST
 let watchProvider = "8"; // TEST
@@ -50,7 +44,7 @@ const App = () => {
     // FUNCTIONS
 
     const searchBanner = async () => {
-        const response = await fetch(API_URL + "trending/movie/" + timeWindowWeek + API_KEY + LANGUAGE);
+        const response = await fetch(global.config.API.URL + "trending/movie/" + timeWindowWeek + global.config.API.KEY);
         const data = await response.json();
 
         const randomBannerIndex = Math.floor(Math.random() * data.results.length);
@@ -65,7 +59,7 @@ const App = () => {
 
 
     const searchGenres = async () => {
-        const response = await fetch(API_URL + "genre/movie/list" + API_KEY + LANGUAGE);
+        const response = await fetch(global.config.API.URL + "genre/movie/list" + global.config.API.KEY + global.config.LANGUAGE);
         const data = await response.json();
 
         return data.genres;
@@ -73,7 +67,7 @@ const App = () => {
 
 
     const searchProviders = async () => {
-        const response = await fetch(API_URL + "watch/providers/movie" + API_KEY + LANGUAGE + REGION);
+        const response = await fetch(global.config.API.URL + "watch/providers/movie" + global.config.API.KEY + global.config.LANGUAGE + global.config.REGION);
         const data = await response.json();
 
         return data.results;
@@ -82,7 +76,7 @@ const App = () => {
 
     // TODO: Need to completed/renamed/moved elsewhere
     const getRandomPage = async () => {
-        let response = await fetch(API_URL + "discover/movie" + API_KEY + LANGUAGE + "&region=" + REGION + "&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&" + releaseYear + "&vote_average.gte=" + minScore + "&with_genres=" + genre + "&with_watch_providers=" + watchProvider + REGION + "&with_watch_monetization_types=flatrate");
+        let response = await fetch(global.config.API.URL + "discover/movie" + global.config.API.KEY + global.config.LANGUAGE + "&region=" + global.config.REGION + "&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&" + releaseYear + "&vote_average.gte=" + minScore + "&with_genres=" + genre + "&with_watch_providers=" + watchProvider + global.config.REGION + "&with_watch_monetization_types=flatrate");
         const data = await response.json();
 
         return Math.floor(Math.random() * (data.total_pages)) + 1;
@@ -91,7 +85,7 @@ const App = () => {
 
     // TODO: Need to completed/renamed/moved elsewhere
     const searchRandomMovie = async (pageNumber) => {
-        const response = await fetch(API_URL + "discover/movie" + API_KEY + LANGUAGE + "&region=" + REGION + "&sort_by=popularity.desc&include_adult=false&include_video=false&page=" + pageNumber + "&" + releaseYear + "&vote_average.gte=" + minScore + "&with_genres=" + genre + "&with_watch_providers=" + watchProvider + REGION + "&with_watch_monetization_types=flatrate");
+        const response = await fetch(global.config.API.URL + "discover/movie" + global.config.API.KEY + global.config.LANGUAGE + "&region=" + global.config.REGION + "&sort_by=popularity.desc&include_adult=false&include_video=false&page=" + pageNumber + "&" + releaseYear + "&vote_average.gte=" + minScore + "&with_genres=" + genre + "&with_watch_providers=" + watchProvider + global.config.REGION + "&with_watch_monetization_types=flatrate");
         const data = await response.json();
 
         return data.results[Math.floor(Math.random() * data.results.length)];
@@ -99,7 +93,7 @@ const App = () => {
 
 
     const searchTrendingFilms = async (timeWindow) => {
-        const response = await fetch(API_URL + "trending/movie/" + timeWindow + API_KEY + LANGUAGE);
+        const response = await fetch(global.config.API.URL + "trending/movie/" + timeWindow + global.config.API.KEY + global.config.LANGUAGE);
         const data = await response.json();
 
         return data.results;
@@ -142,7 +136,7 @@ const App = () => {
 
                     <div className="welcome">
                         <hgroup className="separator">
-                            <h1>{randomMovie ? randomMovie.title : ""}</h1>
+                            <h1>Looking for new cinematic experiences?</h1>
                             <p>Tell us what you're looking for and receive something at random!</p>
                         </hgroup>
 
@@ -203,7 +197,7 @@ const App = () => {
                 </div>
 
                 <img className="banner"
-                     src={bannerPath.length > 0 ? (IMAGE_URL + MINOR_BACKDROP_WIDTH + bannerPath) : ""}
+                     src={bannerPath.length > 0 ? (global.config.API.IMAGE_URL + MINOR_BACKDROP_WIDTH + bannerPath) : ""}
                      alt="Avatar Banner"/>
                 <div className="banner-overlay"></div>
 
@@ -231,7 +225,7 @@ const App = () => {
                     <div className="movie-grid">
                         {trendingFilms.slice(0, maxTrendingFilms).map((film) => (<div className="movie-item">
                                 <a href="" className="poster-link">
-                                    <img src={IMAGE_URL + MINOR_POSTER_WIDTH + film.poster_path} alt="Avatar Poster"
+                                    <img src={global.config.API.IMAGE_URL + MINOR_POSTER_WIDTH + film.poster_path} alt="Avatar Poster"
                                          className="poster"></img>
                                     <div className="poster-overlay"></div>
                                 </a>
