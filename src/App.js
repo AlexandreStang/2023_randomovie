@@ -2,17 +2,15 @@ import React, {useState, useEffect} from 'react';
 import './css/styles.css';
 import Logo from './img/logo/randomovie.svg';
 import PopUp from "./PopUp";
-//import Banner from './img/banner/avatar.jpg';
-//import Poster from './img/posters/avatar.jpg';
 
 // API
 const API_URL = "https://api.themoviedb.org/3/";
 const API_KEY = "?api_key=f4f9e1b6b219580330ca8cc48f5b1165";
 const LANGUAGE = "&language=en-CA";
 const REGION = "&watch_region=CA";
+const IMAGE_URL = "https://image.tmdb.org/t/p/";
 
 // IMAGES
-const IMAGE_URL = "https://image.tmdb.org/t/p/";
 const MINOR_POSTER_WIDTH = "w300";
 const MINOR_BACKDROP_WIDTH = "w1280"; // BANNER SIZE
 
@@ -42,7 +40,10 @@ const App = () => {
 
     const [genres, setGenres] = useState([]);
     const [providers, setProviders] = useState([]);
+
+    const [randomPageNumber, setRandomPageNumber] = useState([]);
     const [randomMovie, setRandomMovie] = useState([]);
+
     const [trendingFilms, setTrendingFilms] = useState([]);
 
 
@@ -62,12 +63,14 @@ const App = () => {
         setScore(e.target.value);
     };
 
+
     const searchGenres = async () => {
         const response = await fetch(API_URL + "genre/movie/list" + API_KEY + LANGUAGE);
         const data = await response.json();
 
         return data.genres;
     }
+
 
     const searchProviders = async () => {
         const response = await fetch(API_URL + "watch/providers/movie" + API_KEY + LANGUAGE + REGION);
@@ -76,17 +79,24 @@ const App = () => {
         return data.results;
     }
 
-    // TODO: Currently just a placeholder function
-    const searchRandomMovie = async () => {
-        //https://api.themoviedb.org/3/discover/movie?api_key=<<api_key>>&language=en-US&region=CA
-        const response = await fetch(API_URL + "discover/movie" + API_KEY + LANGUAGE + "&region=" + REGION + "&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&" + releaseYear + "&vote_average.gte=" + minScore + "&with_genres=" + genre + "&with_watch_providers=" + watchProvider + REGION + "&with_watch_monetization_types=flatrate");
+
+    // TODO: Need to completed/renamed/moved elsewhere
+    const getRandomPage = async () => {
+        let response = await fetch(API_URL + "discover/movie" + API_KEY + LANGUAGE + "&region=" + REGION + "&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&" + releaseYear + "&vote_average.gte=" + minScore + "&with_genres=" + genre + "&with_watch_providers=" + watchProvider + REGION + "&with_watch_monetization_types=flatrate");
         const data = await response.json();
 
-        console.log("Hello!");
-        console.log(data.results[0]);
-
-        return data.results[0];
+        return Math.floor(Math.random() * (data.total_pages)) + 1;
     }
+
+
+    // TODO: Need to completed/renamed/moved elsewhere
+    const searchRandomMovie = async (pageNumber) => {
+        const response = await fetch(API_URL + "discover/movie" + API_KEY + LANGUAGE + "&region=" + REGION + "&sort_by=popularity.desc&include_adult=false&include_video=false&page=" + pageNumber + "&" + releaseYear + "&vote_average.gte=" + minScore + "&with_genres=" + genre + "&with_watch_providers=" + watchProvider + REGION + "&with_watch_monetization_types=flatrate");
+        const data = await response.json();
+
+        return data.results[Math.floor(Math.random() * data.results.length)];
+    }
+
 
     const searchTrendingFilms = async (timeWindow) => {
         const response = await fetch(API_URL + "trending/movie/" + timeWindow + API_KEY + LANGUAGE);
@@ -95,14 +105,17 @@ const App = () => {
         return data.results;
     }
 
+
     function updateTrendingFilms(timeWindow) {
         trendingTimeWindow = timeWindow;
 
         searchTrendingFilms(trendingTimeWindow).then(data => setTrendingFilms(data));
     }
 
+
     function handleSubmit() {
-        searchRandomMovie().then(data => setRandomMovie(data));
+        getRandomPage().then(data => setRandomPageNumber((data)));
+        searchRandomMovie(randomPageNumber).then(data => setRandomMovie(data));
     }
 
 
@@ -120,7 +133,6 @@ const App = () => {
 
         <div>
 
-            {randomMovie.title ? <PopUp movie={randomMovie} /> : ""}
 
             <section className="hero dark-bg">
                 <div className="wrapper">
@@ -130,7 +142,7 @@ const App = () => {
 
                     <div className="welcome">
                         <hgroup className="separator">
-                            <h1>Looking for new cinematic experiences?</h1>
+                            <h1>{randomMovie ? randomMovie.title : ""}</h1>
                             <p>Tell us what you're looking for and receive something at random!</p>
                         </hgroup>
 
@@ -141,11 +153,7 @@ const App = () => {
                                     <label htmlFor="genre-select">Genre</label>
                                     <div className="select-container">
                                         <select name="genre" id="genre-select">
-                                            {
-                                                genres.map((genre) => (
-                                                    <option value={genre.id}>{genre.name}</option>
-                                                ))
-                                            }
+                                            {genres.map((genre) => (<option value={genre.id}>{genre.name}</option>))}
                                         </select>
                                     </div>
                                 </div>
@@ -162,12 +170,8 @@ const App = () => {
                                     <label htmlFor="streaming-select">Watch Provider</label>
                                     <div className="select-container">
                                         <select name="streaming" id="streaming-select">
-                                            {
-                                                providers.slice(0, maxProviders).map((provider) => (
-                                                    <option
-                                                        value={provider.provider_id}>{provider.provider_name}</option>
-                                                ))
-                                            }
+                                            {providers.slice(0, maxProviders).map((provider) => (<option
+                                                    value={provider.provider_id}>{provider.provider_name}</option>))}
                                         </select>
                                     </div>
                                 </div>
@@ -225,19 +229,15 @@ const App = () => {
                         </button>
                     </div>
                     <div className="movie-grid">
-                        {
-                            trendingFilms.slice(0, maxTrendingFilms).map((film) => (
-                                <div className="movie-item">
-                                    <a href="" className="poster-link">
-                                        <img src={IMAGE_URL + MINOR_POSTER_WIDTH + film.poster_path} alt="Avatar Poster"
-                                             className="poster"></img>
-                                        <div className="poster-overlay"></div>
-                                    </a>
-                                    <a href="#"><h4>{film.title} <span
-                                        className="year">({film.release_date.substring(0, 4)})</span></h4></a>
-                                </div>
-                            ))
-                        }
+                        {trendingFilms.slice(0, maxTrendingFilms).map((film) => (<div className="movie-item">
+                                <a href="" className="poster-link">
+                                    <img src={IMAGE_URL + MINOR_POSTER_WIDTH + film.poster_path} alt="Avatar Poster"
+                                         className="poster"></img>
+                                    <div className="poster-overlay"></div>
+                                </a>
+                                <a href="#"><h4>{film.title} <span
+                                    className="year">({film.release_date.substring(0, 4)})</span></h4></a>
+                            </div>))}
 
                     </div>
                 </div>

@@ -1,14 +1,14 @@
 import React from 'react';
 
-const PopUp = ({ movie }) => {
+function closePopup() {
+    //
+}
 
-    function closePopup() {
-        //
-    }
+function reloadPopup() {
 
-    function reloadPopup() {
+}
 
-    }
+const PopUp = ({}) => {
 
     return (
         <div className="popup-container" id="popup-container">
@@ -25,8 +25,8 @@ const PopUp = ({ movie }) => {
                 </aside>
                 <div className="popup-text">
                     <hgroup className="green-separator">
-                        <h1>{movie.title}</h1>
-                        <p>{movie.release_date.split('-')[0]} • PG-13 • Action, Adventure, Science Fiction
+                        <h1>HELLO</h1>
+                        <p>2021 • PG-13 • Action, Adventure, Science Fiction
                             • 2h 28m</p>
                     </hgroup>
                     <div className="separator">
