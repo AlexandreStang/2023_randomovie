@@ -8,7 +8,7 @@ function reloadPopup() {
 
 }
 
-const PopUp = ({}) => {
+const PopUp = ({movieID}) => {
 
     return (
         <div className="popup-container" id="popup-container">
