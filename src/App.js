@@ -10,6 +10,7 @@ const MINOR_BACKDROP_WIDTH = "w1280"; // BANNER SIZE
 
 // FORM
 const minYear = 1920;
+const defaultScore = 50;
 const maxProviders = 10;
 
 // TRENDING FILMS
@@ -30,7 +31,6 @@ const App = () => {
 
     // STATES
     const [bannerPath, setBannerPath] = useState([]);
-    const [score, setScore] = useState([50,]);
 
     const [genres, setGenres] = useState([]);
     const [providers, setProviders] = useState([]);
@@ -39,6 +39,11 @@ const App = () => {
     const [randomMovie, setRandomMovie] = useState([]);
 
     const [trendingFilms, setTrendingFilms] = useState([]);
+
+    const [rmGenre, setRmGenre] = useState(28);
+    const [rmReleaseYear, setRmReleaseYear] = useState(minYear);
+    const [rmWatchProvider, setRmWatchProvider] = useState(8);
+    const [rmMinScore, setRmMinScore] = useState(defaultScore);
 
 
     // FUNCTIONS
@@ -53,16 +58,12 @@ const App = () => {
     }
 
 
-    const updateScore = (e) => {
-        setScore(e.target.value);
-    };
-
-
     const searchGenres = async () => {
         const response = await fetch(global.config.API.URL + "genre/movie/list" + global.config.API.KEY +
             global.config.LANGUAGE);
         const data = await response.json();
 
+        //setRmGenre(data.genres[0].id);
         return data.genres;
     }
 
@@ -72,6 +73,7 @@ const App = () => {
             global.config.LANGUAGE + global.config.REGION);
         const data = await response.json();
 
+        //setRmWatchProvider(data.results[0].provider_id);
         return data.results;
     }
 
@@ -80,8 +82,8 @@ const App = () => {
     const getRandomPage = async () => {
         let response = await fetch(global.config.API.URL + "discover/movie" + global.config.API.KEY +
             global.config.LANGUAGE + "&region=" + global.config.REGION +
-            "&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&" + releaseYear +
-            "&vote_average.gte=" + minScore + "&with_genres=" + genre + "&with_watch_providers=" + watchProvider +
+            "&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&" + rmReleaseYear +
+            "&vote_average.gte=" + rmMinScore/10 + "&with_genres=" + rmGenre + "&with_watch_providers=" + rmWatchProvider +
             global.config.REGION + "&with_watch_monetization_types=flatrate");
         const data = await response.json();
 
@@ -93,11 +95,18 @@ const App = () => {
     const searchRandomMovie = async (pageNumber) => {
         const response = await fetch(global.config.API.URL + "discover/movie" + global.config.API.KEY +
             global.config.LANGUAGE + "&region=" + global.config.REGION +
-            "&sort_by=popularity.desc&include_adult=false&include_video=false&page=" + pageNumber + "&" + releaseYear +
-            "&vote_average.gte=" + minScore + "&with_genres=" + genre + "&with_watch_providers=" + watchProvider +
+            "&sort_by=popularity.desc&include_adult=false&include_video=false&page=" + getRandomPage() + "&" + rmReleaseYear +
+            "&vote_average.gte=" + rmMinScore/10 + "&with_genres=" + rmGenre + "&with_watch_providers=" + rmWatchProvider +
             global.config.REGION + "&with_watch_monetization_types=flatrate");
         const data = await response.json();
 
+        // TODO: DEBUG CONSOLE
+        console.log(rmGenre);
+        console.log(rmReleaseYear);
+        console.log(rmWatchProvider);
+        console.log(rmMinScore);
+
+        console.log(data.results[Math.floor(Math.random() * data.results.length)]);
         return data.results[Math.floor(Math.random() * data.results.length)];
     }
 
@@ -157,7 +166,7 @@ const App = () => {
                                 <div className="form-item">
                                     <label htmlFor="genre-select">Genre</label>
                                     <div className="select-container">
-                                        <select name="genre" id="genre-select">
+                                        <select name="genre" id="genre-select" value={rmGenre} onChange={(e) => setRmGenre(e.target.value)}>
                                             {genres.map((genre) => (<option value={genre.id}>{genre.name}</option>))}
                                         </select>
                                     </div>
@@ -166,15 +175,16 @@ const App = () => {
                                 <div className="form-item">
                                     <label htmlFor="min-year-input">Min. Release Year</label>
                                     <input type="number" min={minYear} max={new Date().getFullYear()}
-                                           placeholder={minYear}
                                            step="1" name="min-year"
-                                           id="min-year-input"/>
+                                           id="min-year-input"
+                                           value={rmReleaseYear}
+                                           onChange={(e) => setRmReleaseYear(e.target.value)}/>
                                 </div>
 
                                 <div className="form-item">
                                     <label htmlFor="streaming-select">Watch Provider</label>
                                     <div className="select-container">
-                                        <select name="streaming" id="streaming-select">
+                                        <select name="streaming" id="streaming-select" value={rmWatchProvider} onChange={(e) => setRmWatchProvider(e.target.value)}>
                                             {providers.slice(0, maxProviders).map((provider) => (<option
                                                 value={provider.provider_id}>{provider.provider_name}</option>))}
                                         </select>
@@ -184,12 +194,14 @@ const App = () => {
                                 <div className="form-item">
                                     <div className="range-label"><label htmlFor="min-score-input">Min. User
                                         Score</label><span
-                                        className={"min-score-percentage " + (score > 69 ? "green-txt" :
-                                            (score > 39 ? "yellow-txt" : "red-txt"))}
-                                        id="min-score-percentage">{score + "%"}</span></div>
-                                    <input type="range" min="0" max="100" step="1" placeholder={score}
-                                           onChange={updateScore} name="min-score"
-                                           id="min-score-input"/>
+                                        className={"min-score-percentage " + (rmMinScore > 69 ? "green-txt" :
+                                            (rmMinScore > 39 ? "yellow-txt" : "red-txt"))}
+                                        id="min-score-percentage">{rmMinScore + "%"}</span></div>
+                                    <input type="range" min="0" max="100" step="1" placeholder={rmMinScore}
+                                           name="min-score"
+                                           id="min-score-input"
+                                           value={rmMinScore}
+                                           onChange={(e) => setRmMinScore(e.target.value)}/>
                                 </div>
 
                                 <div className="form-item checkbox-container">
@@ -198,11 +210,11 @@ const App = () => {
                                 </div>
                             </div>
 
-                            <div className="button-container">
-                                <button id="random-movie-submit" type="submit">Search</button>
-                            </div>
-
                         </form>
+
+                        <div className="button-container">
+                            <button id="random-movie-submit" onClick={() => searchRandomMovie()}>Search</button>
+                        </div>
 
                     </div>
 
@@ -232,9 +244,9 @@ const App = () => {
                                     "unselected-btn")}
                                 id="trending-week">This week
                         </button>
-                        <button onClick={() => updateTrendingFilms(trendingTimeWindow)} className="small-btn"
-                                id="trending-refresh">Refresh
-                        </button>
+                        {/*<button onClick={() => updateTrendingFilms(trendingTimeWindow)} className="small-btn"*/}
+                        {/*        id="trending-refresh">Refresh*/}
+                        {/*</button>*/}
                     </div>
                     <div className="movie-grid">
                         {trendingFilms.slice(0, maxTrendingFilms).map((film) => (<div className="movie-item">
