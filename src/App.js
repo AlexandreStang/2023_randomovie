@@ -10,7 +10,7 @@ const MINOR_BACKDROP_WIDTH = "w1280"; // BANNER SIZE
 
 // FORM
 const minYear = 1920;
-const defaultScore = 50;
+const defaultMinScore = 50;
 const maxProviders = 10;
 
 // TRENDING FILMS
@@ -20,10 +20,10 @@ const maxTrendingFilms = 6;
 let trendingTimeWindow = timeWindowDay;
 
 // TODO: PLACEHOLDER VARIABLES
-let releaseYear = 1290; // TEST
-let genre = "28" // TEST
-let watchProvider = "8"; // TEST
-let minScore = 7.0; // TEST
+// let releaseYear = 1290; // TEST
+// let genre = "28" // TEST
+// let watchProvider = "8"; // TEST
+// let minScore = 7.0; // TEST
 
 const App = () => {
 
@@ -43,7 +43,7 @@ const App = () => {
     const [rmGenre, setRmGenre] = useState(28);
     const [rmReleaseYear, setRmReleaseYear] = useState(minYear);
     const [rmWatchProvider, setRmWatchProvider] = useState(8);
-    const [rmMinScore, setRmMinScore] = useState(defaultScore);
+    const [rmMinScore, setRmMinScore] = useState(defaultMinScore);
 
 
     // FUNCTIONS
