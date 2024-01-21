@@ -16,7 +16,7 @@ const maxProviders = 10;
 // TRENDING FILMS
 const timeWindowDay = "day";
 const timeWindowWeek = "week";
-const maxTrendingFilms = 6;
+const maxTrendingFilms = 12;
 let trendingTimeWindow = timeWindowDay;
 
 // TODO: PLACEHOLDER VARIABLES
@@ -92,10 +92,12 @@ const App = () => {
 
 
     // TODO: Need to completed/renamed/moved elsewhere
-    const searchRandomMovie = async (pageNumber) => {
+    const searchRandomMovie = async () => {
+        const pageNumber = await getRandomPage();
+
         const response = await fetch(global.config.API.URL + "discover/movie" + global.config.API.KEY +
             global.config.LANGUAGE + "&region=" + global.config.REGION +
-            "&sort_by=popularity.desc&include_adult=false&include_video=false&page=" + getRandomPage() + "&" + rmReleaseYear +
+            "&sort_by=popularity.desc&include_adult=false&include_video=false&page=" + pageNumber + "&" + rmReleaseYear +
             "&vote_average.gte=" + rmMinScore/10 + "&with_genres=" + rmGenre + "&with_watch_providers=" + rmWatchProvider +
             global.config.REGION + "&with_watch_monetization_types=flatrate");
         const data = await response.json();
@@ -106,7 +108,7 @@ const App = () => {
         console.log(rmWatchProvider);
         console.log(rmMinScore);
 
-        console.log(data.results[Math.floor(Math.random() * data.results.length)]);
+        console.log(data.results);
         return data.results[Math.floor(Math.random() * data.results.length)];
     }
 

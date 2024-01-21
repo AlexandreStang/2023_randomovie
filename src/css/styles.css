@@ -805,6 +805,12 @@ footer {
   color: #747c92;
 }
 
+img.poster {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+}
+
 .poster-overlay {
   position: absolute;
   top: 0;
@@ -836,12 +842,6 @@ footer {
 
 .right-side-icon {
   margin-left: 10px;
-}
-
-img.poster {
-  display: block;
-  width: 100%;
-  border-radius: 5px;
 }
 
 /*:root {
