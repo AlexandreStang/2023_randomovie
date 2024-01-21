@@ -37,9 +37,9 @@ const App = () => {
 
     const [movieDetails, setMovieDetails] = useState([]);
     const [movieCredits, setMovieCredits] = useState([]);
-    const [movieReleaseDates, setMovieReleaseDates] = useState([]);
+    const [movieReleaseDate, setMovieReleaseDate] = useState([]);
 
-    const [trendingFilms, setTrendingFilms] = useState([]);
+    const [trendingMovies, setTrendingMovies] = useState([]);
 
     const [formGenre, setFormGenre] = useState(28);
     const [formReleaseYear, setFormReleaseYear] = useState(minYear);
@@ -60,7 +60,7 @@ const App = () => {
 
     const getGenres = async () => {
         const response = await fetch(global.config.API.URL + "genre/movie/list" + global.config.API.KEY +
-            global.config.LANGUAGE);
+            "&language=" + global.config.LANGUAGE);
         const data = await response.json();
 
         //setRmGenre(data.genres[0].id);
@@ -70,7 +70,7 @@ const App = () => {
 
     const getProviders = async () => {
         const response = await fetch(global.config.API.URL + "watch/providers/movie" + global.config.API.KEY +
-            global.config.LANGUAGE + global.config.REGION);
+            "&language=" + global.config.LANGUAGE + "&watch_region=" + global.config.REGION);
         const data = await response.json();
 
         //setRmWatchProvider(data.results[0].provider_id);
@@ -80,7 +80,7 @@ const App = () => {
 
     const getRandomPage = async () => {
         let response = await fetch(global.config.API.URL + "discover/movie" + global.config.API.KEY +
-            global.config.LANGUAGE + "&region=" + global.config.REGION +
+            "&language=" + global.config.LANGUAGE + "&region=" + global.config.REGION +
             "&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&" + formReleaseYear +
             "&vote_average.gte=" + formMinScore/10 + "&with_genres=" + formGenre + "&with_watch_providers=" + formWatchProvider +
             global.config.REGION + "&with_watch_monetization_types=flatrate");
@@ -94,7 +94,7 @@ const App = () => {
         const pageNumber = await getRandomPage();
 
         const response = await fetch(global.config.API.URL + "discover/movie" + global.config.API.KEY +
-            global.config.LANGUAGE + "&region=" + global.config.REGION +
+            "&language=" + global.config.LANGUAGE + "&region=" + global.config.REGION +
             "&sort_by=popularity.desc&include_adult=false&include_video=false&page=" + pageNumber + "&" + formReleaseYear +
             "&vote_average.gte=" + formMinScore/10 + "&with_genres=" + formGenre + "&with_watch_providers=" + formWatchProvider +
             global.config.REGION + "&with_watch_monetization_types=flatrate");
@@ -110,8 +110,27 @@ const App = () => {
         return data.results[Math.floor(Math.random() * data.results.length)].id;
     }
 
+
     const getMovieDetails = async (movieID) => {
-        const response = await fetch(global.config.API.URL + "movie/" + movieID + global.config.API.KEY + global.config.LANGUAGE)
+        const response = await fetch(global.config.API.URL + "movie/" + movieID + global.config.API.KEY +
+            "&language=" + global.config.LANGUAGE)
+        const data = await response.json();
+
+        return data;
+    }
+
+
+    const getMovieCredits = async (movieID) => {
+        const response = await fetch(global.config.API.URL + "movie/" + movieID + "/credits" + global.config.API.KEY +
+            "&language=" + global.config.LANGUAGE)
+        const data = await response.json();
+
+        return data;
+    }
+
+    const getMovieReleaseDate = async (movieID) => {
+        const response = await fetch(global.config.API.URL + "movie/" + movieID + global.config.API.KEY +
+            "&language=" + global.config.LANGUAGE)
         const data = await response.json();
 
         return data;
@@ -119,7 +138,7 @@ const App = () => {
 
     const getTrendingMovies = async (timeWindow) => {
         const response = await fetch(global.config.API.URL + "trending/movie/" + timeWindow +
-            global.config.API.KEY + global.config.LANGUAGE);
+            global.config.API.KEY + "&language=" + global.config.LANGUAGE);
         const data = await response.json();
 
         return data.results;
@@ -127,9 +146,22 @@ const App = () => {
 
 
     // OTHER METHODS
+    function calculateRuntime(time) {
+        const minutes = time % 60;
+
+        if (time < 60) {
+            return (minutes + "m");
+        }
+
+        var hours = Math.floor(time/60);
+
+        return (hours + "h " + minutes + "m");
+    }
+
+
     function updateTrendingFilms(timeWindow) {
         trendingTimeWindow = timeWindow;
-        getTrendingMovies(timeWindow).then(data => setTrendingFilms(data));
+        getTrendingMovies(timeWindow).then(data => setTrendingMovies(data));
     }
 
 
@@ -137,8 +169,9 @@ const App = () => {
 
         getRandomMovieID().then(id => {
             getMovieDetails(id).then(data => setMovieDetails(data));
+            getMovieCredits(id).then(data => setMovieCredits(data));
+            getMovieReleaseDate(id).then(data => setMovieReleaseDate(data))
         })
-
 
     }
 
@@ -148,7 +181,7 @@ const App = () => {
 
 
     // POPUP COMPONENT - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    function PopUp ({movie}) {
+    function PopUp ({}) {
 
         return (
             <div className="popup-container" id="popup-container">
@@ -159,29 +192,34 @@ const App = () => {
                     </header>
                     <div className="flex-container">
                         <aside>
+                            {/*POSTER*/}
                             <div className="separator"><img src="img/posters/spider-man.jpg" alt="Avatar Poster" className="poster"></img></div>
-                            <h4 className="separator">Available for streaming on Netflix</h4>
+                            {/*WATCH PROVIDER*/}
+                            <h4 className="separator">Available on {""}</h4>
+                            {/*TRAILER*/}
                             <h4 className="separator"><a href=""><i className="fas fa-link left-side-icon"></i> Watch Trailer</a></h4>
                         </aside>
                         <div className="popup-text">
                             <hgroup className="green-separator">
-                                <h1>{movie.title}</h1>
-                                <p>2021 • PG-13 • Action, Adventure, Science Fiction
-                                    • 2h 28m</p>
+                                {/*TITLE*/}
+                                <h1>{movieDetails.title}</h1>
+                                {/*RELEASE DATE, , GENRES, RUNTIME*/}
+                                <p>{movieDetails.release_date.split('-')[0]} • PG-13 • Action, Adventure, Science Fiction
+                                    • {calculateRuntime(movieDetails.runtime)}</p>
                             </hgroup>
                             <div className="separator">
                                 <div className="tagline-score">
-                                    <h4>The Multiverse unleashed.</h4>
-                                    <h4>User Score: <span className="green-txt" id="popup-score">84%</span></h4>
+                                    {/*TAGLINE*/}
+                                    <h4>{movieDetails.tagline}</h4>
+                                    {/*USER SCORE*/}
+                                    <h4>User Score: <span className="green-txt" id="popup-score">{Math.round(movieDetails.vote_average*10)}%</span></h4>
                                 </div>
                                 <p>
-                                    Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of
-                                    being a
-                                    super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous,
-                                    forcing him
-                                    to discover what it truly means to be Spider-Man.
+                                    {/*OVERVIEW*/}
+                                    {movieDetails.overview}
                                 </p>
                             </div>
+                            {/*PEOPLE*/}
                             <div className="people">
                                 <ul>
                                     <li><h4>Director</h4></li>
@@ -229,7 +267,7 @@ const App = () => {
         getBanner().then(data => setBannerPath(data));
         getGenres().then(data => setGenres(data));
         getProviders().then(data => setProviders(data));
-        getTrendingMovies(trendingTimeWindow).then(data => setTrendingFilms(data));
+        getTrendingMovies(trendingTimeWindow).then(data => setTrendingMovies(data));
     }, [])
 
 
@@ -341,15 +379,15 @@ const App = () => {
                         {/*</button>*/}
                     </div>
                     <div className="movie-grid">
-                        {trendingFilms.slice(0, maxTrendingFilms).map((film) => (<div className="movie-item">
+                        {trendingMovies.slice(0, maxTrendingFilms).map((movie) => (<div className="movie-item">
                             <a href="" className="poster-link">
-                                <img src={global.config.API.IMAGE_URL + MINOR_POSTER_WIDTH + film.poster_path}
+                                <img src={global.config.API.IMAGE_URL + MINOR_POSTER_WIDTH + movie.poster_path}
                                      alt="Avatar Poster"
                                      className="poster"></img>
                                 <div className="poster-overlay"></div>
                             </a>
-                            <a href="#"><h4>{film.title} <span
-                                className="year">({film.release_date.substring(0, 4)})</span></h4></a>
+                            <a href="#"><h4>{movie.title} <span
+                                className="year">({movie.release_date.split('-')[0]})</span></h4></a>
                         </div>))}
 
                     </div>
