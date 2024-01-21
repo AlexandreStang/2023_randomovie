@@ -48,7 +48,7 @@ const App = () => {
 
     // FUNCTIONS
 
-    const searchBanner = async () => {
+    const getBanner = async () => {
         const response = await fetch(global.config.API.URL + "trending/movie/" + timeWindowWeek + global.config.API.KEY);
         const data = await response.json();
 
@@ -58,7 +58,7 @@ const App = () => {
     }
 
 
-    const searchGenres = async () => {
+    const getGenres = async () => {
         const response = await fetch(global.config.API.URL + "genre/movie/list" + global.config.API.KEY +
             global.config.LANGUAGE);
         const data = await response.json();
@@ -68,7 +68,7 @@ const App = () => {
     }
 
 
-    const searchProviders = async () => {
+    const getProviders = async () => {
         const response = await fetch(global.config.API.URL + "watch/providers/movie" + global.config.API.KEY +
             global.config.LANGUAGE + global.config.REGION);
         const data = await response.json();
@@ -92,7 +92,7 @@ const App = () => {
 
 
     // TODO: Need to completed/renamed/moved elsewhere
-    const searchRandomMovie = async () => {
+    const getRandomMovie = async () => {
         const pageNumber = await getRandomPage();
 
         const response = await fetch(global.config.API.URL + "discover/movie" + global.config.API.KEY +
@@ -113,7 +113,7 @@ const App = () => {
     }
 
 
-    const searchTrendingFilms = async (timeWindow) => {
+    const getTrendingFilms = async (timeWindow) => {
         const response = await fetch(global.config.API.URL + "trending/movie/" + timeWindow +
             global.config.API.KEY + global.config.LANGUAGE);
         const data = await response.json();
@@ -123,24 +123,22 @@ const App = () => {
 
 
     function updateTrendingFilms(timeWindow) {
-        trendingTimeWindow = timeWindow;
-
-        searchTrendingFilms(trendingTimeWindow).then(data => setTrendingFilms(data));
+        getTrendingFilms(timeWindow).then(data => setTrendingFilms(data));
     }
 
 
     function handleSubmit() {
         getRandomPage().then(data => setRandomPageNumber((data)));
-        searchRandomMovie(randomPageNumber).then(data => setRandomMovie(data));
+        getRandomMovie(randomPageNumber).then(data => setRandomMovie(data));
     }
 
 
     // EFFECTS
     useEffect(() => {
-        searchBanner().then(data => setBannerPath(data));
-        searchGenres().then(data => setGenres(data));
-        searchProviders().then(data => setProviders(data));
-        searchTrendingFilms(trendingTimeWindow).then(data => setTrendingFilms(data));
+        getBanner().then(data => setBannerPath(data));
+        getGenres().then(data => setGenres(data));
+        getProviders().then(data => setProviders(data));
+        getTrendingFilms(trendingTimeWindow).then(data => setTrendingFilms(data));
     }, [])
 
 
@@ -215,7 +213,7 @@ const App = () => {
                         </form>
 
                         <div className="button-container">
-                            <button id="random-movie-submit" onClick={() => searchRandomMovie()}>Search</button>
+                            <button id="random-movie-submit" onClick={() => getRandomMovie()}>Search</button>
                         </div>
 
                     </div>
