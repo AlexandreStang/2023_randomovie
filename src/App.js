@@ -5,7 +5,8 @@ import './config.js';
 //import PopUp from "./PopUp";
 
 // IMAGES
-const MINOR_POSTER_WIDTH = "w300";
+const SMALL_POSTER_WIDTH = "w300";
+const MEDIUM_POSTER_WIDTH = "w500";
 const MINOR_BACKDROP_WIDTH = "w1280"; // BANNER SIZE
 
 // FORM
@@ -13,17 +14,15 @@ const minYear = 1920;
 const defaultMinScore = 50;
 const maxProviders = 10;
 
+// POPUP
+const maxCrew = 6;
+
 // TRENDING FILMS
 const timeWindowDay = "day";
 const timeWindowWeek = "week";
 const maxTrendingFilms = 12;
 let trendingTimeWindow = timeWindowDay;
 
-// TODO: PLACEHOLDER VARIABLES
-// let releaseYear = 1290; // TEST
-// let genre = "28" // TEST
-// let watchProvider = "8"; // TEST
-// let minScore = 7.0; // TEST
 
 const App = () => {
 
@@ -37,7 +36,7 @@ const App = () => {
 
     const [movieDetails, setMovieDetails] = useState([]);
     const [movieCredits, setMovieCredits] = useState([]);
-    const [movieReleaseDate, setMovieReleaseDate] = useState([]);
+    const [movieReleaseDates, setMovieReleaseDates] = useState([]);
 
     const [trendingMovies, setTrendingMovies] = useState([]);
 
@@ -128,12 +127,21 @@ const App = () => {
         return data;
     }
 
-    const getMovieReleaseDate = async (movieID) => {
-        const response = await fetch(global.config.API.URL + "movie/" + movieID + global.config.API.KEY +
+    const getMovieReleaseDates = async (movieID) => {
+        const response = await fetch(global.config.API.URL + "movie/" + movieID + "/release_dates" + global.config.API.KEY +
             "&language=" + global.config.LANGUAGE)
         const data = await response.json();
 
-        return data;
+        let regionIndex = 0;
+
+        for (let i = 0; i < data.results.length + 1; i++) {
+            if (data.results[i].iso_3166_1 === global.config.REGION) {
+                regionIndex = i;
+                break;
+            }
+        }
+
+        return data.results[regionIndex].release_dates;
     }
 
     const getTrendingMovies = async (timeWindow) => {
@@ -170,7 +178,7 @@ const App = () => {
         getRandomMovieID().then(id => {
             getMovieDetails(id).then(data => setMovieDetails(data));
             getMovieCredits(id).then(data => setMovieCredits(data));
-            getMovieReleaseDate(id).then(data => setMovieReleaseDate(data))
+            getMovieReleaseDates(id).then(data => setMovieReleaseDates(data))
         })
 
     }
@@ -192,20 +200,26 @@ const App = () => {
                     </header>
                     <div className="flex-container">
                         <aside>
+
                             {/*POSTER*/}
-                            <div className="separator"><img src="img/posters/spider-man.jpg" alt="Avatar Poster" className="poster"></img></div>
+                            <div className="separator"><img src={global.config.API.IMAGE_URL + MEDIUM_POSTER_WIDTH + movieDetails.poster_path} alt="Poster"
+                                                            className="poster"></img></div>
                             {/*WATCH PROVIDER*/}
                             <h4 className="separator">Available on {""}</h4>
                             {/*TRAILER*/}
-                            <h4 className="separator"><a href=""><i className="fas fa-link left-side-icon"></i> Watch Trailer</a></h4>
+                            <h4 className="separator"><a href=""><i className="fas fa-link left-side-icon"></i> Watch
+                                Trailer</a></h4>
                         </aside>
+
                         <div className="popup-text">
                             <hgroup className="green-separator">
                                 {/*TITLE*/}
                                 <h1>{movieDetails.title}</h1>
-                                {/*RELEASE DATE, , GENRES, RUNTIME*/}
-                                <p>{movieDetails.release_date.split('-')[0]} • PG-13 • Action, Adventure, Science Fiction
-                                    • {calculateRuntime(movieDetails.runtime)}</p>
+                                {/*RELEASE DATE, CERTIFICATION, GENRES, RUNTIME*/}
+                                <p>{movieDetails.release_date.split('-')[0]}
+                                    {movieReleaseDates[0].certification?.length !== 0 ? " • " + movieReleaseDates[0].certification + " • " : " • "}
+                                    {movieDetails.genres.map((genre, i) => i+1 === movieDetails.genres.length ? genre.name + " • " : genre.name + ", " )}
+                                    {calculateRuntime(movieDetails.runtime)}</p>
                             </hgroup>
                             <div className="separator">
                                 <div className="tagline-score">
@@ -381,7 +395,7 @@ const App = () => {
                     <div className="movie-grid">
                         {trendingMovies.slice(0, maxTrendingFilms).map((movie) => (<div className="movie-item">
                             <a href="" className="poster-link">
-                                <img src={global.config.API.IMAGE_URL + MINOR_POSTER_WIDTH + movie.poster_path}
+                                <img src={global.config.API.IMAGE_URL + SMALL_POSTER_WIDTH + movie.poster_path}
                                      alt="Avatar Poster"
                                      className="poster"></img>
                                 <div className="poster-overlay"></div>

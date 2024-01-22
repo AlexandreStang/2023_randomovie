@@ -733,7 +733,7 @@ footer {
 .popup .tagline-score h4 {
   margin-bottom: 0;
 }
-.popup .tagline-score:first-child {
+.popup .tagline-score :first-child {
   margin-right: 15px;
 }
 .popup .people {
