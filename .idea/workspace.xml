@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e265784f-5024-428a-8c45-8fda0fcd2407" name="Changes" comment="" />
+    <list default="true" id="e265784f-5024-428a-8c45-8fda0fcd2407" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PopUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +44,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/Alexandre Stang/Documents/0_Projects/Web/2023_randomovie",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -57,6 +64,7 @@
       <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie\scss\generic" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Alexandre Stang\Documents\0_Projects\Web\2023_randomovie\src\components" />
       <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie\src" />
       <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie" />
       <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie\img\logo" />

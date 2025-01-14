@@ -1,13 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import './css/styles.css';
-import Logo from './img/logo/randomovie.svg';
-import './config.js';
+import '../css/styles.css';
+import Logo from '../img/logo/randomovie.svg';
+import '../config.js';
 //import PopUp from "./PopUp";
-
-// IMAGES
-const SMALL_POSTER_WIDTH = "w300";
-const MEDIUM_POSTER_WIDTH = "w500";
-const MINOR_BACKDROP_WIDTH = "w1280"; // BANNER SIZE
 
 // FORM
 const minYear = 1920;
@@ -202,7 +197,7 @@ const App = () => {
                         <aside>
 
                             {/*POSTER*/}
-                            <div className="separator"><img src={global.config.API.IMAGE_URL + MEDIUM_POSTER_WIDTH + movieDetails.poster_path} alt="Poster"
+                            <div className="separator"><img src={global.config.API.IMAGE_URL + global.config.IMAGE_WIDTH.MEDIUM_POSTER + movieDetails.poster_path} alt="Poster"
                                                             className="poster"></img></div>
                             {/*WATCH PROVIDER*/}
                             <h4 className="separator">Available on {""}</h4>
@@ -365,7 +360,7 @@ const App = () => {
                 </div>
 
                 <img className="banner"
-                     src={bannerPath.length > 0 ? (global.config.API.IMAGE_URL + MINOR_BACKDROP_WIDTH + bannerPath) : ""}
+                     src={bannerPath.length > 0 ? (global.config.API.IMAGE_URL + global.config.IMAGE_WIDTH.BANNER + bannerPath) : ""}
                      alt="Avatar Banner"/>
                 <div className="banner-overlay"></div>
 
@@ -395,7 +390,7 @@ const App = () => {
                     <div className="movie-grid">
                         {trendingMovies.slice(0, maxTrendingFilms).map((movie) => (<div className="movie-item">
                             <a href="" className="poster-link">
-                                <img src={global.config.API.IMAGE_URL + SMALL_POSTER_WIDTH + movie.poster_path}
+                                <img src={global.config.API.IMAGE_URL + global.config.IMAGE_WIDTH.SMALL_POSTER + movie.poster_path}
                                      alt="Avatar Poster"
                                      className="poster"></img>
                                 <div className="poster-overlay"></div>

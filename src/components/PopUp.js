@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './config.js';
+import '../config.js';
 
 function calculateRuntime(time) {
     const minutes = time % 60;
@@ -62,7 +62,7 @@ const PopUp = ({movieID}) => {
                 <div className="flex-container">
                     <aside>
                         {/*POSTER*/}
-                        <div className="separator"><img src="img/posters/spider-man.jpg" alt="Avatar Poster" className="poster"></img></div>
+                        <div className="separator"><img src="../img/posters/spider-man.jpg" alt="Avatar Poster" className="poster"></img></div>
                         {/*WATCH PROVIDER*/}
                         <h4 className="separator">Available on {""}</h4>
                         {/*TRAILER*/}

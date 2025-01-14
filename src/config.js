@@ -5,6 +5,10 @@ module.exports = global.config = {
         IMAGE_URL : "https://image.tmdb.org/t/p/"
     },
     LANGUAGE : "en-CA",
-    REGION : 'CA'
-
+    REGION : 'CA',
+    IMAGE_WIDTH : {
+        SMALL_POSTER: "w300",
+        MEDIUM_POSTER: "w500",
+        BANNER: "w1280"
+    }
 };
