@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import '../css/styles.css';
 import Logo from '../img/logo/randomovie.svg';
 import '../config.js';
+import Trending from "./section/Trending";
 //import PopUp from "./PopUp";
 
 // FORM
@@ -12,14 +13,8 @@ const maxProviders = 10;
 // POPUP
 const maxCrew = 6;
 
-// TRENDING FILMS
-const timeWindowDay = "day";
-const timeWindowWeek = "week";
-const maxTrendingFilms = 12;
-let trendingTimeWindow = timeWindowDay;
 
-
-const App = () => {
+export default function App() {
 
     //const [active, setActive] = useState("");
 
@@ -33,8 +28,6 @@ const App = () => {
     const [movieCredits, setMovieCredits] = useState([]);
     const [movieReleaseDates, setMovieReleaseDates] = useState([]);
 
-    const [trendingMovies, setTrendingMovies] = useState([]);
-
     const [formGenre, setFormGenre] = useState(28);
     const [formReleaseYear, setFormReleaseYear] = useState(minYear);
     const [formWatchProvider, setFormWatchProvider] = useState(8);
@@ -43,7 +36,7 @@ const App = () => {
 
     // GET METHODS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const getBanner = async () => {
-        const response = await fetch(global.config.API.URL + "trending/movie/" + timeWindowWeek + global.config.API.KEY);
+        const response = await fetch(global.config.API.URL + "trending/movie/" + global.config.API.TIME_WINDOW.WEEK + global.config.API.KEY);
         const data = await response.json();
 
         const randomBannerIndex = Math.floor(Math.random() * data.results.length);
@@ -76,7 +69,7 @@ const App = () => {
         let response = await fetch(global.config.API.URL + "discover/movie" + global.config.API.KEY +
             "&language=" + global.config.LANGUAGE + "&region=" + global.config.REGION +
             "&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&" + formReleaseYear +
-            "&vote_average.gte=" + formMinScore/10 + "&with_genres=" + formGenre + "&with_watch_providers=" + formWatchProvider +
+            "&vote_average.gte=" + formMinScore / 10 + "&with_genres=" + formGenre + "&with_watch_providers=" + formWatchProvider +
             global.config.REGION + "&with_watch_monetization_types=flatrate");
         const data = await response.json();
 
@@ -90,7 +83,7 @@ const App = () => {
         const response = await fetch(global.config.API.URL + "discover/movie" + global.config.API.KEY +
             "&language=" + global.config.LANGUAGE + "&region=" + global.config.REGION +
             "&sort_by=popularity.desc&include_adult=false&include_video=false&page=" + pageNumber + "&" + formReleaseYear +
-            "&vote_average.gte=" + formMinScore/10 + "&with_genres=" + formGenre + "&with_watch_providers=" + formWatchProvider +
+            "&vote_average.gte=" + formMinScore / 10 + "&with_genres=" + formGenre + "&with_watch_providers=" + formWatchProvider +
             global.config.REGION + "&with_watch_monetization_types=flatrate");
         const data = await response.json();
 
@@ -139,13 +132,7 @@ const App = () => {
         return data.results[regionIndex].release_dates;
     }
 
-    const getTrendingMovies = async (timeWindow) => {
-        const response = await fetch(global.config.API.URL + "trending/movie/" + timeWindow +
-            global.config.API.KEY + "&language=" + global.config.LANGUAGE);
-        const data = await response.json();
 
-        return data.results;
-    }
 
 
     // OTHER METHODS
@@ -156,17 +143,10 @@ const App = () => {
             return (minutes + "m");
         }
 
-        var hours = Math.floor(time/60);
+        var hours = Math.floor(time / 60);
 
         return (hours + "h " + minutes + "m");
     }
-
-
-    function updateTrendingFilms(timeWindow) {
-        trendingTimeWindow = timeWindow;
-        getTrendingMovies(timeWindow).then(data => setTrendingMovies(data));
-    }
-
 
     function handleSubmit() {
 
@@ -184,21 +164,25 @@ const App = () => {
 
 
     // POPUP COMPONENT - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    function PopUp ({}) {
+    function PopUp({}) {
 
         return (
             <div className="popup-container" id="popup-container">
                 <div className="popup light-bg">
                     <header>
-                        <a href="#" onClick={handleSubmit}>Not what you’re looking for? Click here for another random movie!</a>
-                        <a href="#" className="right-side-icon" onClick={closePopup}><i className="fas fa-times icon"></i></a>
+                        <a href="#" onClick={handleSubmit}>Not what you’re looking for? Click here for another random
+                            movie!</a>
+                        <a href="#" className="right-side-icon" onClick={closePopup}><i
+                            className="fas fa-times icon"></i></a>
                     </header>
                     <div className="flex-container">
                         <aside>
 
                             {/*POSTER*/}
-                            <div className="separator"><img src={global.config.API.IMAGE_URL + global.config.IMAGE_WIDTH.MEDIUM_POSTER + movieDetails.poster_path} alt="Poster"
-                                                            className="poster"></img></div>
+                            <div className="separator"><img
+                                src={global.config.API.IMAGE_URL + global.config.API.IMAGE_WIDTH.MEDIUM_POSTER + movieDetails.poster_path}
+                                alt="Poster"
+                                className="poster"></img></div>
                             {/*WATCH PROVIDER*/}
                             <h4 className="separator">Available on {""}</h4>
                             {/*TRAILER*/}
@@ -213,7 +197,7 @@ const App = () => {
                                 {/*RELEASE DATE, CERTIFICATION, GENRES, RUNTIME*/}
                                 <p>{movieDetails.release_date.split('-')[0]}
                                     {movieReleaseDates[0].certification?.length !== 0 ? " • " + movieReleaseDates[0].certification + " • " : " • "}
-                                    {movieDetails.genres.map((genre, i) => i+1 === movieDetails.genres.length ? genre.name + " • " : genre.name + ", " )}
+                                    {movieDetails.genres.map((genre, i) => i + 1 === movieDetails.genres.length ? genre.name + " • " : genre.name + ", ")}
                                     {calculateRuntime(movieDetails.runtime)}</p>
                             </hgroup>
                             <div className="separator">
@@ -221,7 +205,9 @@ const App = () => {
                                     {/*TAGLINE*/}
                                     <h4>{movieDetails.tagline}</h4>
                                     {/*USER SCORE*/}
-                                    <h4>User Score: <span className="green-txt" id="popup-score">{Math.round(movieDetails.vote_average*10)}%</span></h4>
+                                    <h4>User Score: <span className="green-txt"
+                                                          id="popup-score">{Math.round(movieDetails.vote_average * 10)}%</span>
+                                    </h4>
                                 </div>
                                 <p>
                                     {/*OVERVIEW*/}
@@ -276,16 +262,14 @@ const App = () => {
         getBanner().then(data => setBannerPath(data));
         getGenres().then(data => setGenres(data));
         getProviders().then(data => setProviders(data));
-        getTrendingMovies(trendingTimeWindow).then(data => setTrendingMovies(data));
     }, [])
-
 
 
     // INDEX.HTML - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     return (
 
         <div>
-            {movieDetails?.length !== 0 ? <PopUp movie={movieDetails} /> : ""}
+            {movieDetails?.length !== 0 ? <PopUp movie={movieDetails}/> : ""}
 
             <section className="hero dark-bg">
                 <div className="wrapper">
@@ -305,7 +289,8 @@ const App = () => {
                                 <div className="form-item">
                                     <label htmlFor="genre-select">Genre</label>
                                     <div className="select-container">
-                                        <select name="genre" id="genre-select" value={formGenre} onChange={(e) => setFormGenre(e.target.value)}>
+                                        <select name="genre" id="genre-select" value={formGenre}
+                                                onChange={(e) => setFormGenre(e.target.value)}>
                                             {genres.map((genre) => (<option value={genre.id}>{genre.name}</option>))}
                                         </select>
                                     </div>
@@ -323,7 +308,8 @@ const App = () => {
                                 <div className="form-item">
                                     <label htmlFor="streaming-select">Watch Provider</label>
                                     <div className="select-container">
-                                        <select name="streaming" id="streaming-select" value={formWatchProvider} onChange={(e) => setFormWatchProvider(e.target.value)}>
+                                        <select name="streaming" id="streaming-select" value={formWatchProvider}
+                                                onChange={(e) => setFormWatchProvider(e.target.value)}>
                                             {providers.slice(0, maxProviders).map((provider) => (<option
                                                 value={provider.provider_id}>{provider.provider_name}</option>))}
                                         </select>
@@ -360,51 +346,16 @@ const App = () => {
                 </div>
 
                 <img className="banner"
-                     src={bannerPath.length > 0 ? (global.config.API.IMAGE_URL + global.config.IMAGE_WIDTH.BANNER + bannerPath) : ""}
+                     src={bannerPath.length > 0 ? (global.config.API.IMAGE_URL + global.config.API.IMAGE_WIDTH.BANNER + bannerPath) : ""}
                      alt="Avatar Banner"/>
                 <div className="banner-overlay"></div>
 
             </section>
 
-            <section className="trending light-bg">
-                <div className="wrapper">
-                    <hgroup className="separator">
-                        <h1>Want some options right away?</h1>
-                        <p>Check out what movies are trending at the moment!</p>
-                    </hgroup>
-                    <div className="button-container">
-                        <button onClick={() => updateTrendingFilms(timeWindowDay)}
-                                className={"small-btn " + (trendingTimeWindow === timeWindowDay ? "selected-btn" :
-                                    "unselected-btn")}
-                                id="trending-day">Today
-                        </button>
-                        <button onClick={() => updateTrendingFilms(timeWindowWeek)}
-                                className={"small-btn " + (trendingTimeWindow === timeWindowWeek ? "selected-btn" :
-                                    "unselected-btn")}
-                                id="trending-week">This week
-                        </button>
-                        {/*<button onClick={() => updateTrendingFilms(trendingTimeWindow)} className="small-btn"*/}
-                        {/*        id="trending-refresh">Refresh*/}
-                        {/*</button>*/}
-                    </div>
-                    <div className="movie-grid">
-                        {trendingMovies.slice(0, maxTrendingFilms).map((movie) => (<div className="movie-item">
-                            <a href="" className="poster-link">
-                                <img src={global.config.API.IMAGE_URL + global.config.IMAGE_WIDTH.SMALL_POSTER + movie.poster_path}
-                                     alt="Avatar Poster"
-                                     className="poster"></img>
-                                <div className="poster-overlay"></div>
-                            </a>
-                            <a href="#"><h4>{movie.title} <span
-                                className="year">({movie.release_date.split('-')[0]})</span></h4></a>
-                        </div>))}
-
-                    </div>
-                </div>
-            </section>
+            <Trending></Trending>
 
             <footer>
-                <p>Built by <a href="http://alexandrestang.com/">Alexandre Stang</a> | Powered by <a
+                <p>Built by <a href="https://alexandrestang.github.io/">Alexandre Stang</a> | Powered by <a
                     href="https://www.themoviedb.org/">TheMovieDB</a></p>
             </footer>
         </div>
@@ -412,5 +363,3 @@ const App = () => {
     );
 
 }
-
-export default App;
