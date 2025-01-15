@@ -2,15 +2,19 @@ import Tabs from "../Tabs";
 import TrendingMovie from "../TrendingMovie";
 import React, {useEffect, useState} from "react";
 
+const timeWindows = [
+    {value: global.config.API.TIME_WINDOW.DAY, label: "Today"},
+    {value: global.config.API.TIME_WINDOW.WEEK, label: "This week"}
+]
+
+const maxMovies = 12
+
 export default function Trending() {
 
-    const timeWindows = [
-        {value: global.config.API.TIME_WINDOW.DAY, label: "Today"},
-        {value: global.config.API.TIME_WINDOW.WEEK, label: "This week"}
-    ]
-
+    // STATES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const [trendingMovies, setTrendingMovies] = useState([]);
 
+    // FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const getTrendingMovies = async (timeWindow) => {
         const response = await fetch(global.config.API.URL + "trending/movie/" + timeWindow +
             global.config.API.KEY + "&language=" + global.config.LANGUAGE);
@@ -27,6 +31,7 @@ export default function Trending() {
         updateTrending(timeWindows[0].value)
     }, [])
 
+    // RETURN - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     return (
         <section className="trending light-bg">
             <div className="wrapper">
@@ -37,7 +42,7 @@ export default function Trending() {
                 <Tabs categories={timeWindows}
                       onSelectCategory={(timeWindow) => updateTrending(timeWindow)}></Tabs>
                 <div className="movie-grid">
-                    {trendingMovies.slice(0, 12).map((movie) => (
+                    {trendingMovies.slice(0, maxMovies).map((movie) => (
                         <TrendingMovie movie={movie}></TrendingMovie>))}
                 </div>
             </div>

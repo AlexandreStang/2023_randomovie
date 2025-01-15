@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-export default function Tabs({categories, onSelectCategory, children}) {
+export default function Tabs({categories, onSelectCategory}) {
 
     const [activeTab, setActiveTab] = useState(categories[0].value);
 
