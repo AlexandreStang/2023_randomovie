@@ -14,10 +14,10 @@ export default function Hero(OnSubmit) {
     const [countries, setCountries] = useState([])
     const [providers, setProviders] = useState([]);
     const [formData, setFormData] = useState({
-        lang: global.config.LANGUAGE,
+        lang: "en",
         genre_id: 28,
         min_release_year: minYear,
-        region: global.config.REGION,
+        region: "CA",
         watch_provider_id: 8,
         min_score: defaultScore
     });
@@ -96,7 +96,7 @@ export default function Hero(OnSubmit) {
                                             onChange={(e) =>
                                                 setFormData({...formData, lang: e.target.value})}>
                                         {languages.map((language) => (<option
-                                            value={language.iso_3166_1}>{language.english_name}</option>))}
+                                            value={language.iso_639_1}>{language.english_name}</option>))}
                                     </select>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@ export default function Hero(OnSubmit) {
                             <div className="form-item">
                                 <label htmlFor="streaming-select">Your country</label>
                                 <div className="select-container">
-                                    <select name="streaming" id="streaming-select" value={formData.watch_provider_id}
+                                    <select name="streaming" id="streaming-select" value={formData.region}
                                             onChange={(e) =>
                                                 setFormData({...formData, watch_provider: e.target.value})}>
                                         {countries.map((country) => (<option
