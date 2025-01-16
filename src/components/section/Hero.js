@@ -18,17 +18,12 @@ export default function Hero(OnSubmit) {
         language: "",
         genre_id: "",
         min_release_year: minYear,
-        region: "",
+        country: "",
         provider_id: "",
         min_score: defaultScore
     });
 
-    // FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    function sortData(data) {
-        return data.sort((a, b) => a.english_name.localeCompare(b.english_name))
-    }
-
+    // GETTERS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const getLanguages = async () => {
         const response = await fetch(global.config.API.URL + "configuration/languages" + global.config.API.KEY +
             "&language=" + global.config.LANGUAGE);
@@ -53,19 +48,33 @@ export default function Hero(OnSubmit) {
         return sortData(data.results);
     }
 
-    const getProviders = async () => {
+    const getProviders = async (country) => {
         const response = await fetch(global.config.API.URL + "watch/providers/movie" + global.config.API.KEY +
-            "&language=" + global.config.LANGUAGE + "&watch_region=" + global.config.REGION);
+            "&language=" + global.config.LANGUAGE + "&watch_region=" + country);
         const data = await response.json();
 
+        console.log(country, data)
         return data.results;
     }
 
+    // FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     useEffect(() => {
         getLanguages().then(data => setLanguages(data));
         getGenres().then(data => setGenres(data));
         getCountries().then(data => setCountries(data));
     }, [])
+
+    function sortData(data) {
+        return data.sort((a, b) => a.english_name.localeCompare(b.english_name))
+    }
+
+    function updateCountry(country) {
+        setFormData({
+            ...formData,
+            country: country
+        })
+        getProviders(country).then(data => setProviders(data));
+    }
 
     function handleSubmit() {
         console.log(formData)
@@ -95,7 +104,8 @@ export default function Hero(OnSubmit) {
                                 config={{title: "Language", value: "iso_639_1", name: "english_name"}}
                                 onChangeOption={(selectedValue) => setFormData({
                                     ...formData,
-                                    language: selectedValue})}>
+                                    language: selectedValue
+                                })}>
                             </Select>
 
                             <Select
@@ -103,23 +113,7 @@ export default function Hero(OnSubmit) {
                                 config={{title: "Genre", value: "id", name: "name"}}
                                 onChangeOption={(selectedValue) => setFormData({
                                     ...formData,
-                                    genre_id: selectedValue})}>
-                            </Select>
-
-                            <Select
-                                data={countries}
-                                config={{title: "Your country", value: "iso_3166_1", name: "english_name"}}
-                                onChangeOption={(selectedValue) => setFormData({
-                                    ...formData,
-                                    region: selectedValue})}>
-                            </Select>
-
-                            <Select
-                                data={providers}
-                                config={{title: "Watch Provider", value: "provider_id", name: "provider_name"}}
-                                onChangeOption={(selectedValue) => setFormData({
-                                    ...formData,
-                                    provider_id: selectedValue
+                                    genre_id: selectedValue
                                 })}>
                             </Select>
 
@@ -146,6 +140,23 @@ export default function Hero(OnSubmit) {
                                        onChange={(e) =>
                                            setFormData({...formData, min_score: e.target.value})}/>
                             </div>
+
+                            <Select
+                                data={countries}
+                                config={{title: "Your country", value: "iso_3166_1", name: "english_name"}}
+                                onChangeOption={(selectedValue) => updateCountry(selectedValue)}>
+                            </Select>
+
+                            <Select
+                                data={providers}
+                                config={{title: "Watch Provider", value: "provider_id", name: "provider_name"}}
+                                onChangeOption={(selectedValue) => setFormData({
+                                    ...formData,
+                                    provider_id: selectedValue
+                                })}
+                                isDisabled={(formData.country) <= 0}>
+                            </Select>
+
 
                             {/*<div className="form-item checkbox-container">*/}
                             {/*    <input type="checkbox" name="popular" id="popular-input"/>*/}
