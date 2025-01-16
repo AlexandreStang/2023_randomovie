@@ -24,15 +24,18 @@ export default function Hero(OnSubmit) {
 
     // FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+    function sortData(data) {
+        return data.sort((a, b) => a.english_name.localeCompare(b.english_name))
+    }
+
     const getLanguages = async () => {
         const response = await fetch(global.config.API.URL + "configuration/languages" + global.config.API.KEY +
             "&language=" + global.config.LANGUAGE);
         const data = await response.json();
 
         const filtered_data = data.filter((lang) => lang.name !== "")
-        const sorted_data = filtered_data.sort((lang_a, lang_b) => lang_a.english_name.localeCompare(lang_b.english_name))
 
-        return sorted_data;
+        return sortData(filtered_data);
     }
 
     const getGenres = async () => {
@@ -47,9 +50,8 @@ export default function Hero(OnSubmit) {
         const response = await fetch(global.config.API.URL + "watch/providers/regions" + global.config.API.KEY +
             "&language=" + global.config.LANGUAGE);
         const data = await response.json();
-        console.log(data)
 
-        return data.results;
+        return sortData(data.results);
     }
 
     const getProviders = async () => {
