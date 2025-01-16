@@ -13,6 +13,6 @@ module.exports = global.config = {
             WEEK: "week"
         }
     },
-    LANGUAGE : "en-CA",
-    REGION : 'CA',
+    LANGUAGE : "en-US",
+    REGION : 'US',
 };

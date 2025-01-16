@@ -1,6 +1,7 @@
 import Logo from "../../img/logo/randomovie.svg";
 import React, {useEffect, useState} from "react";
 import Banner from "../Banner";
+import Select from "../form/Select";
 
 const minYear = 1920;
 const maxProviders = 10;
@@ -14,11 +15,11 @@ export default function Hero(OnSubmit) {
     const [countries, setCountries] = useState([])
     const [providers, setProviders] = useState([]);
     const [formData, setFormData] = useState({
-        lang: "en",
-        genre_id: 28,
+        language: "",
+        genre_id: "",
         min_release_year: minYear,
-        region: "CA",
-        watch_provider_id: 8,
+        region: "",
+        provider_id: "",
         min_score: defaultScore
     });
 
@@ -33,9 +34,7 @@ export default function Hero(OnSubmit) {
             "&language=" + global.config.LANGUAGE);
         const data = await response.json();
 
-        const filtered_data = data.filter((lang) => lang.name !== "")
-
-        return sortData(filtered_data);
+        return sortData(data.filter((lang) => lang.name !== ""));
     }
 
     const getGenres = async () => {
@@ -66,7 +65,6 @@ export default function Hero(OnSubmit) {
         getLanguages().then(data => setLanguages(data));
         getGenres().then(data => setGenres(data));
         getCountries().then(data => setCountries(data));
-        getProviders().then(data => setProviders(data));
     }, [])
 
     function handleSubmit() {
@@ -91,28 +89,39 @@ export default function Hero(OnSubmit) {
                     <form id="random-movie-form">
 
                         <div className="form-grid">
-                            <div className="form-item">
-                                <label htmlFor="streaming-select">Language</label>
-                                <div className="select-container">
-                                    <select name="streaming" id="language-select" value={formData.lang}
-                                            onChange={(e) =>
-                                                setFormData({...formData, lang: e.target.value})}>
-                                        {languages.map((language) => (<option
-                                            value={language.iso_639_1}>{language.english_name}</option>))}
-                                    </select>
-                                </div>
-                            </div>
 
-                            <div className="form-item">
-                                <label htmlFor="genre-select">Genre</label>
-                                <div className="select-container">
-                                    <select name="genre" id="genre-select" value={formData.genre_id}
-                                            onChange={(e) =>
-                                                setFormData({...formData, genre: e.target.value})}>
-                                        {genres.map((genre) => (<option value={genre.id}>{genre.name}</option>))}
-                                    </select>
-                                </div>
-                            </div>
+                            <Select
+                                data={languages}
+                                config={{title: "Language", value: "iso_639_1", name: "english_name"}}
+                                onChangeOption={(selectedValue) => setFormData({
+                                    ...formData,
+                                    language: selectedValue})}>
+                            </Select>
+
+                            <Select
+                                data={genres}
+                                config={{title: "Genre", value: "id", name: "name"}}
+                                onChangeOption={(selectedValue) => setFormData({
+                                    ...formData,
+                                    genre_id: selectedValue})}>
+                            </Select>
+
+                            <Select
+                                data={countries}
+                                config={{title: "Your country", value: "iso_3166_1", name: "english_name"}}
+                                onChangeOption={(selectedValue) => setFormData({
+                                    ...formData,
+                                    region: selectedValue})}>
+                            </Select>
+
+                            <Select
+                                data={providers}
+                                config={{title: "Watch Provider", value: "provider_id", name: "provider_name"}}
+                                onChangeOption={(selectedValue) => setFormData({
+                                    ...formData,
+                                    provider_id: selectedValue
+                                })}>
+                            </Select>
 
                             <div className="form-item">
                                 <label htmlFor="min-year-input">Min. Release Year</label>
@@ -122,30 +131,6 @@ export default function Hero(OnSubmit) {
                                        value={formData.min_release_year}
                                        onChange={(e) =>
                                            setFormData({...formData, min_release_year: e.target.value})}/>
-                            </div>
-
-                            <div className="form-item">
-                                <label htmlFor="streaming-select">Your country</label>
-                                <div className="select-container">
-                                    <select name="streaming" id="streaming-select" value={formData.region}
-                                            onChange={(e) =>
-                                                setFormData({...formData, watch_provider: e.target.value})}>
-                                        {countries.map((country) => (<option
-                                            value={country.iso_3166_1}>{country.english_name}</option>))}
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div className="form-item">
-                                <label htmlFor="streaming-select">Watch Provider</label>
-                                <div className="select-container">
-                                    <select name="streaming" id="streaming-select" value={formData.watch_provider_id}
-                                            onChange={(e) =>
-                                                setFormData({...formData, watch_provider: e.target.value})}>
-                                        {providers.slice(0, maxProviders).map((provider) => (<option
-                                            value={provider.provider_id}>{provider.provider_name}</option>))}
-                                    </select>
-                                </div>
                             </div>
 
                             <div className="form-item">
