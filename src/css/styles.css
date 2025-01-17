@@ -426,6 +426,11 @@ input:focus, select:focus {
   outline: none;
 }
 
+input:disabled, select:disabled {
+  background-color: rgba(30, 27, 36, 0.25);
+  border: 1px solid rgba(116, 124, 146, 0.25);
+}
+
 select {
   -webkit-appearance: none;
   appearance: none;
@@ -443,6 +448,10 @@ select {
   top: 37.5%;
   right: 7.5%;
   pointer-events: none;
+}
+
+.select-container.disabled::after {
+  color: rgba(32, 169, 114, 0.25);
 }
 
 input[type=range] {

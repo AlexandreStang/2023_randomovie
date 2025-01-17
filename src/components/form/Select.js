@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 
-export default function Select({data, config, onChangeOption, isDisabled, maxOptions}) {
+export default function Select({data, config, onChangeOption, isDisabled = false, maxOptions = undefined}) {
 
     // VARIABLES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const {title, value, name} = config
@@ -22,7 +22,7 @@ export default function Select({data, config, onChangeOption, isDisabled, maxOpt
     return (
         <div className="form-item">
             <label htmlFor={custom_id}>{title}</label>
-            <div className="select-container">
+            <div className={`select-container ${isDisabled ? "disabled" : ""}`}>
                 <select
                     id={custom_id}
                     value={selectValue}

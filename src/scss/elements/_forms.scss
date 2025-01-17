@@ -42,6 +42,11 @@ input:focus, select:focus {
   outline: none;
 }
 
+input:disabled, select:disabled {
+  background-color: $transparent-black;
+  border: 1px solid $transparent-grey;
+}
+
 // SELECT
 select {
   -webkit-appearance: none;
@@ -60,6 +65,10 @@ select {
   top: 37.5%;
   right: 7.5%;
   pointer-events: none
+}
+
+.select-container.disabled::after {
+  color: $transparent-green;
 }
 
 // RANGE
