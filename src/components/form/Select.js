@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 
-export default function Select({data, config, onChangeOption, isDisabled}) {
+export default function Select({data, config, onChangeOption, isDisabled, maxOptions}) {
 
     // VARIABLES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const {title, value, name} = config
@@ -29,7 +29,7 @@ export default function Select({data, config, onChangeOption, isDisabled}) {
                     onChange={(e) => updateValue(e.target.value)}
                     disabled={isDisabled}>
                     <option value=""></option>
-                    {data.map((item) => (
+                    {data.slice(0, maxOptions).map((item) => (
                         <option value={item[value]}
                                 key={item[value]}>
                             {item[name]}

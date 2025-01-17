@@ -154,7 +154,8 @@ export default function Hero(OnSubmit) {
                                     ...formData,
                                     provider_id: selectedValue
                                 })}
-                                isDisabled={(formData.country) <= 0}>
+                                isDisabled={(formData.country) <= 0}
+                                maxOptions={maxProviders}>
                             </Select>
 
                             {/*<div className="form-item checkbox-container">*/}
