@@ -157,7 +157,6 @@ export default function Hero(OnSubmit) {
                                 isDisabled={(formData.country) <= 0}>
                             </Select>
 
-
                             {/*<div className="form-item checkbox-container">*/}
                             {/*    <input type="checkbox" name="popular" id="popular-input"/>*/}
                             {/*    <label htmlFor="popular-input">Find me something popular at the moment</label>*/}

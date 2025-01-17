@@ -43,7 +43,7 @@ export default function Trending() {
                       onSelectCategory={(timeWindow) => updateTrending(timeWindow)}></Tabs>
                 <div className="movie-grid">
                     {trendingMovies.slice(0, maxMovies).map((movie) => (
-                        <TrendingMovie movie={movie}></TrendingMovie>))}
+                        <TrendingMovie movie={movie} key={movie.id}></TrendingMovie>))}
                 </div>
             </div>
         </section>

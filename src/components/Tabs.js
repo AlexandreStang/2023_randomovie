@@ -14,7 +14,9 @@ export default function Tabs({categories, onSelectCategory}) {
             {categories.map(category => (
                 <button onClick={() => handleTabClick(category.value)}
                         className={"small-btn " + (activeTab === category.value ? "selected-btn" :
-                            "unselected-btn")}>{category.label}
+                            "unselected-btn")}
+                        key={category.value}>
+                    {category.label}
                 </button>
             ))}
         </div>
