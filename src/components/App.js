@@ -3,6 +3,7 @@ import '../css/styles.css';
 import '../config.js';
 import Hero from "./section/Hero";
 import Trending from "./section/Trending";
+import Footer from "./section/Footer";
 //import PopUp from "./PopUp";
 
 
@@ -125,10 +126,7 @@ export default function App() {
 
             <Trending></Trending>
 
-            <footer>
-                <p>Built by <a href="https://alexandrestang.github.io/">Alexandre Stang</a> | Powered by <a
-                    href="https://www.themoviedb.org/">TheMovieDB</a></p>
-            </footer>
+            <Footer></Footer>
         </div>
 
     );
