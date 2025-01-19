@@ -4,9 +4,9 @@ export default function Tabs({categories, onSelectCategory}) {
 
     const [activeTab, setActiveTab] = useState(categories[0].value);
 
-    function handleTabClick(timeWindow) {
-        setActiveTab(timeWindow)
-        onSelectCategory(timeWindow)
+    function handleTabClick(category) {
+        setActiveTab(category)
+        onSelectCategory(category)
     }
 
     return (

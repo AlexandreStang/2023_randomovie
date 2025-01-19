@@ -4,7 +4,7 @@ import '../config.js';
 import Hero from "./section/Hero";
 import Trending from "./section/Trending";
 import Footer from "./section/Footer";
-//import PopUp from "./PopUp";
+import PopUp from "./section/PopUp";
 
 
 
@@ -16,7 +16,7 @@ export default function App() {
 
     //const [active, setActive] = useState("");
 
-    const [formData, setFormData] = useState();
+    const [movieAttributes, setMovieAttributes] = useState();
 
     const [movieDetails, setMovieDetails] = useState([]);
     const [movieCredits, setMovieCredits] = useState([]);
@@ -101,15 +101,16 @@ export default function App() {
     //     return data.results[Math.floor(Math.random() * data.results.length)].id;
     // }
 
-    // function handleSubmit() {
-    //
-    //     getRandomMovieID().then(id => {
-    //         getMovieDetails(id).then(data => setMovieDetails(data));
-    //         getMovieCredits(id).then(data => setMovieCredits(data));
-    //         getMovieReleaseDates(id).then(data => setMovieReleaseDates(data))
-    //     })
-    //
-    // }
+    function handleSubmit(formData) {
+        setMovieAttributes(formData)
+
+        // getRandomMovieID().then(id => {
+        //     getMovieDetails(id).then(data => setMovieDetails(data));
+        //     getMovieCredits(id).then(data => setMovieCredits(data));
+        //     getMovieReleaseDates(id).then(data => setMovieReleaseDates(data))
+        // })
+
+    }
 
     // function closePopup() {
     //     setMovieDetails([]);
@@ -120,9 +121,9 @@ export default function App() {
     return (
 
         <div>
-            {/*{movieDetails?.length !== 0 ? <PopUp movie={movieDetails}/> : ""}*/}
+            {movieDetails?.length !== 0 ? <PopUp movie={movieDetails}/> : ""}
 
-            <Hero></Hero>
+            <Hero onSubmit={(formData) => handleSubmit(formData)}></Hero>
 
             <Trending></Trending>
 

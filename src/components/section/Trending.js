@@ -12,6 +12,7 @@ const maxMovies = 12
 export default function Trending() {
 
     // STATES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    const [timeWindow, setTimeWindow] = useState([timeWindows[0].value]);
     const [trendingMovies, setTrendingMovies] = useState([]);
 
     // FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -23,13 +24,9 @@ export default function Trending() {
         return data.results;
     }
 
-    function updateTrending(timeWindow) {
-        getTrendingMovies(timeWindow).then(data => setTrendingMovies(data));
-    }
-
     useEffect(() => {
-        updateTrending(timeWindows[0].value)
-    }, [])
+        getTrendingMovies(timeWindow).then(data => setTrendingMovies(data));
+    }, [timeWindow])
 
     // RETURN - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     return (
@@ -40,7 +37,7 @@ export default function Trending() {
                     <p>Check out what movies are trending at the moment!</p>
                 </hgroup>
                 <Tabs categories={timeWindows}
-                      onSelectCategory={(timeWindow) => updateTrending(timeWindow)}></Tabs>
+                      onSelectCategory={(timeWindow) => setTimeWindow(timeWindow)}></Tabs>
                 <div className="movie-grid">
                     {trendingMovies.slice(0, maxMovies).map((movie) => (
                         <TrendingMovie movie={movie} key={movie.id}></TrendingMovie>))}

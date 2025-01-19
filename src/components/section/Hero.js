@@ -7,7 +7,7 @@ const minYear = 1920;
 const maxProviders = 10;
 const defaultScore = 50;
 
-export default function Hero(OnSubmit) {
+export default function Hero(onSubmit) {
 
     // STATES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const [languages, setLanguages] = useState([])
@@ -18,9 +18,9 @@ export default function Hero(OnSubmit) {
         language: "",
         genre_id: "",
         min_release_year: minYear,
+        min_score: defaultScore,
         country: "",
-        provider_id: "",
-        min_score: defaultScore
+        provider_id: ""
     });
 
     // GETTERS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -76,8 +76,7 @@ export default function Hero(OnSubmit) {
     }
 
     function handleSubmit() {
-        console.log(formData)
-        OnSubmit(formData)
+        onSubmit(formData)
     }
 
     // RETURN - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

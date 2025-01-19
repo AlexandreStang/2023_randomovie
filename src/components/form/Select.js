@@ -4,7 +4,7 @@ export default function Select({data, config, onChangeOption, isDisabled = false
 
     // VARIABLES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const {title, value, name} = config
-    const custom_id = title.toLowerCase().replace(/\s+/g, "-")
+    const custom_id = title.toLowerCase().replace(/\s+/g, "-").concat("-select")
 
     const [selectValue, setSelectValue] = useState("");
 
