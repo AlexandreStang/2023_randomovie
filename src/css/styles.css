@@ -494,6 +494,10 @@ a:active {
   transition: all 150ms ease-in-out;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 ul {
   display: block;
   list-style: none;
@@ -711,8 +715,6 @@ footer {
   padding: 20px;
   border-bottom: #cbcdd7 1px solid;
   border-radius: 5px 5px 0 0;
-}
-.popup header a {
   color: #747c92;
 }
 .popup header .icon {

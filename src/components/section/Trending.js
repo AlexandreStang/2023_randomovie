@@ -9,7 +9,7 @@ const timeWindows = [
 
 const maxMovies = 12
 
-export default function Trending() {
+export default function Trending({onSelectMovie}) {
 
     // STATES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const [timeWindow, setTimeWindow] = useState([timeWindows[0].value]);
@@ -40,7 +40,10 @@ export default function Trending() {
                       onSelectCategory={(timeWindow) => setTimeWindow(timeWindow)}></Tabs>
                 <div className="movie-grid">
                     {trendingMovies.slice(0, maxMovies).map((movie) => (
-                        <TrendingMovie movie={movie} key={movie.id}></TrendingMovie>))}
+                        <TrendingMovie
+                            movie={movie}
+                            onClickMovie={(movieID) => onSelectMovie(movieID)}
+                            key={movie.id}></TrendingMovie>))}
                 </div>
             </div>
         </section>

@@ -2,13 +2,16 @@ import React, {useState} from "react";
 
 export default function Tabs({categories, onSelectCategory}) {
 
+    // VARIABLES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const [activeTab, setActiveTab] = useState(categories[0].value);
 
+    // FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     function handleTabClick(category) {
         setActiveTab(category)
         onSelectCategory(category)
     }
 
+    // RETURN - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     return (
         <div className="button-container">
             {categories.map(category => (
