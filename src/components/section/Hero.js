@@ -2,6 +2,7 @@ import Logo from "../../img/logo/randomovie.svg";
 import React, {useEffect, useState} from "react";
 import Banner from "../Banner";
 import Select from "../form/Select";
+import Score from "../Score";
 
 const minYear = 1920;
 const maxProviders = 10;
@@ -127,10 +128,9 @@ export default function Hero(onSubmit) {
 
                             <div className="form-item">
                                 <div className="range-label"><label htmlFor="min-score-input">Min. User
-                                    Score</label><span
-                                    className={"min-score-percentage " + (formData.min_score > 69 ? "green-txt" :
-                                        (formData.min_score > 39 ? "yellow-txt" : "red-txt"))}
-                                    id="min-score-percentage">{formData.min_score + "%"}</span></div>
+                                    Score</label>
+                                <Score percentage={formData.min_score}></Score>
+                                </div>
                                 <input type="range" min="0" max="100" step="1" placeholder={defaultScore}
                                        name="min-score"
                                        id="min-score-input"

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import '../../config.js';
+import Score from "../Score";
 
 const maxCrew = 6;
 const maxCast = 7;
@@ -159,9 +160,8 @@ export default function PopUp({movieID, watchProvider, onClosePopup, onTryAgain}
                                 {/*USER SCORE*/}
                                 <h4>User Score:
                                     {" "}
-                                    <span className="green-txt" id="popup-score">
-                                        {Math.round(movieDetails.vote_average * 10)}%
-                                    </span>
+                                    {/*<span className="green-txt" id="popup-score">{Math.round(movieDetails.vote_average * 10)}%</span>*/}
+                                    <Score percentage={Math.round(movieDetails.vote_average * 10)}></Score>
                                 </h4>
                             </div>
                             <p>
