@@ -18,7 +18,7 @@ export default function TrendingMovie({movie, onClickMovie}) {
                 <div className="poster-overlay"></div>
             </div>
             <div className="clickable" onClick={handleClick}>
-                <h4>{movie.title}
+                <h4>{movie.title} {" "}
                     <span className="year">({movie.release_date.split('-')[0]})</span>
                 </h4>
             </div>
