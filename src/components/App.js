@@ -6,12 +6,6 @@ import Trending from "./section/Trending";
 import Footer from "./section/Footer";
 import PopUp from "./section/PopUp";
 
-
-
-// POPUP
-const maxCrew = 6;
-
-
 export default function App() {
 
     //const [active, setActive] = useState("");

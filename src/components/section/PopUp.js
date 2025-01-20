@@ -1,12 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import '../../config.js';
 
-export default function PopUp({movieID, onClosePopup, onTryAgain}) {
+const maxCrew = 6;
+const maxCast = 7;
+
+export default function PopUp({movieID, watchProvider, onClosePopup, onTryAgain}) {
 
     // VARIABLES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const [movieDetails, setMovieDetails] = useState([]);
     const [movieCredits, setMovieCredits] = useState([]);
-    const [movieReleaseDate, setMovieReleaseDate] = useState([]);
+    const [movieProvider, setMovieProvider] = useState([""]);
+    const [movieCertification, setMovieCertification] = useState([""]);
+    const [movieTrailer, setMovieTrailer] = useState([""])
 
     // GETTERS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const getMovieDetails = async (movieID) => {
@@ -30,24 +35,38 @@ export default function PopUp({movieID, onClosePopup, onTryAgain}) {
         return data;
     }
 
-    const getMovieReleaseDate = async (movieID) => {
+    const getMovieReleaseDates = async (movieID) => {
         const response = await fetch(global.config.API.URL + "movie/" + movieID + "/release_dates" +
             global.config.API.KEY + "&language=" + global.config.LANGUAGE)
         const data = await response.json();
 
         console.log("MovieReleaseDate", data)
 
-        return data;
+        return data.results;
+    }
+
+    const getMovieTrailers = async (movieID) => {
+        const response = await fetch(global.config.API.URL + "movie/" + movieID + "/videos" +
+            global.config.API.KEY)
+        const data = await response.json();
+
+        console.log("MovieTrailer", data)
+
+        return data.results
     }
 
     // FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     useEffect(() => {
-        console.log(movieID)
+        console.log(movieID, watchProvider)
 
         getMovieDetails(movieID).then(data => setMovieDetails(data));
         getMovieCredits(movieID).then(data => setMovieCredits(data));
-        getMovieReleaseDate(movieID).then(data => setMovieReleaseDate(data))
-    }, [movieID]);
+        getMovieReleaseDates(movieID).then(data => findMovieCertification(data));
+        getMovieTrailers(movieID).then(data => findMovieTrailer(data));
+
+        watchProvider ? setMovieProvider(watchProvider) : setMovieProvider("");
+
+    }, [movieID, watchProvider]);
 
     function calculateRuntime(time) {
         const minutes = time % 60;
@@ -56,9 +75,30 @@ export default function PopUp({movieID, onClosePopup, onTryAgain}) {
             return (minutes + "m");
         }
 
-        var hours = Math.floor(time/60);
+        var hours = Math.floor(time / 60);
 
         return (hours + "h " + minutes + "m");
+    }
+
+    function findMovieCertification(allReleases) {
+        try {
+            const localRelease = allReleases.find((release) => release.iso_3166_1 === global.config.REGION);
+            const certifiedRelease = localRelease.release_dates.find((release) => release.certification !== "");
+
+            setMovieCertification(certifiedRelease.certification ? certifiedRelease.certification : "");
+        } catch (error) {
+            setMovieCertification("");
+        }
+    }
+
+    function findMovieTrailer(trailers) {
+        try {
+            const trailer = trailers.find((video) => video.type === "Trailer" && video.site === "YouTube");
+
+            setMovieTrailer(trailer.key ? "https://www.youtube.com/watch?v=" + trailer.key : "");
+        } catch (error) {
+            setMovieTrailer("");
+        }
     }
 
     // RETURN - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -66,7 +106,9 @@ export default function PopUp({movieID, onClosePopup, onTryAgain}) {
         <div className="popup-container" id="popup-container">
             <div className="popup light-bg">
                 <header>
-                    <div className={"clickable"} onClick={onTryAgain}>Not what you’re looking for? Click here for another random movie!</div>
+                    <div className={"clickable"} onClick={onTryAgain}>Not what you’re looking for? Click here for
+                        another random movie!
+                    </div>
                     <div className="right-side-icon clickable" onClick={onClosePopup}>
                         <i className="fas fa-times icon"></i>
                     </div>
@@ -76,15 +118,21 @@ export default function PopUp({movieID, onClosePopup, onTryAgain}) {
                         {/*POSTER*/}
                         <div className="separator">
                             <img
-                                src={global.config.API.IMAGE_URL + global.config.API.IMAGE_WIDTH.MEDIUM_POSTER + movieDetails.poster_path}
+                                src={global.config.API.IMAGE_URL + global.config.API.IMAGE_WIDTH.MEDIUM_POSTER +
+                                    movieDetails.poster_path}
                                 alt="Poster"
                                 className="poster">
                             </img>
                         </div>
                         {/*WATCH PROVIDER*/}
-                        <h4 className="separator">Available on {""}</h4>
+                        {movieProvider ?
+                            <h4 className="separator">Available on {movieProvider}</h4>
+                        : ""}
                         {/*TRAILER*/}
-                        <h4 className="separator"><a href=""><i className="fas fa-link left-side-icon"></i> Watch Trailer</a></h4>
+                        {movieTrailer ?
+                            <h4 className="separator"><a href={movieTrailer}>
+                                <i className="fas fa-link left-side-icon"></i> Watch Trailer</a>
+                            </h4> : ""}
                     </aside>
                     <div className="popup-text">
                         <hgroup className="green-separator">
@@ -96,9 +144,11 @@ export default function PopUp({movieID, onClosePopup, onTryAgain}) {
                             <p>
                                 {movieDetails.release_date ? movieDetails.release_date.split('-')[0] : "Unknown"}
                                 {" • "}
+                                {movieCertification ? movieCertification + " • " : ""}
                                 {movieDetails.genres ?
-                                    movieDetails.genres.map((genre, i) => i+1 === movieDetails.genres.length ?
-                                        genre.name + " • " : genre.name + ", " ) : "Unknown"}
+                                    movieDetails.genres.map((genre, i) => i + 1 === movieDetails.genres.length ?
+                                        genre.name : genre.name + ", ") : "Unknown"}
+                                {" • "}
                                 {calculateRuntime(movieDetails.runtime)}
                             </p>
                         </hgroup>
@@ -108,8 +158,9 @@ export default function PopUp({movieID, onClosePopup, onTryAgain}) {
                                 <h4>{movieDetails.tagline}</h4>
                                 {/*USER SCORE*/}
                                 <h4>User Score:
+                                    {" "}
                                     <span className="green-txt" id="popup-score">
-                                        {Math.round(movieDetails.vote_average*10)}%
+                                        {Math.round(movieDetails.vote_average * 10)}%
                                     </span>
                                 </h4>
                             </div>
@@ -142,12 +193,8 @@ export default function PopUp({movieID, onClosePopup, onTryAgain}) {
                             </ul>
                             <ul className="casting">
                                 <li><h4>Top Casting</h4></li>
-                                <li>Tom Holland</li>
-                                <li>Zendaya</li>
-                                <li>Benedict Cumberbatch</li>
-                                <li>Jacob Batalon</li>
-                                <li>Jon Favreau</li>
-                                <li>Jamie Foxx</li>
+                                {movieCredits.cast ? movieCredits.cast.slice(0, maxCast).map(
+                                    (castMember) => <li key={castMember.id}>{castMember.name}</li>) : <li>Unknown</li>}
                             </ul>
                         </div>
                     </div>
