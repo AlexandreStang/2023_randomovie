@@ -89,13 +89,13 @@
   .people {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
     grid-auto-flow: column;
     grid-gap: 2%;
 
     margin-bottom: $popup-inner-padding;
 
-    .casting {
+    .full-row {
       grid-row: 1/-1;
     }
 

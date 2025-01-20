@@ -1,16 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import '../../config.js';
 import Score from "../Score";
+import CrewList from "../CrewList";
 
-const maxCrew = 6;
-const maxCast = 7;
+const maxCast = 6;
 
-export default function PopUp({movieID, watchProvider, onClosePopup, onTryAgain}) {
+export default function PopUp({movieID, onClosePopup, onTryAgain}) {
 
     // VARIABLES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const [movieDetails, setMovieDetails] = useState([]);
     const [movieCredits, setMovieCredits] = useState([]);
-    const [movieProvider, setMovieProvider] = useState([""]);
     const [movieCertification, setMovieCertification] = useState([""]);
     const [movieTrailer, setMovieTrailer] = useState([""])
 
@@ -58,16 +57,14 @@ export default function PopUp({movieID, watchProvider, onClosePopup, onTryAgain}
 
     // FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     useEffect(() => {
-        console.log(movieID, watchProvider)
+        console.log(movieID)
 
         getMovieDetails(movieID).then(data => setMovieDetails(data));
         getMovieCredits(movieID).then(data => setMovieCredits(data));
         getMovieReleaseDates(movieID).then(data => findMovieCertification(data));
         getMovieTrailers(movieID).then(data => findMovieTrailer(data));
 
-        watchProvider ? setMovieProvider(watchProvider) : setMovieProvider("");
-
-    }, [movieID, watchProvider]);
+    }, [movieID]);
 
     function calculateRuntime(time) {
         const minutes = time % 60;
@@ -126,9 +123,7 @@ export default function PopUp({movieID, watchProvider, onClosePopup, onTryAgain}
                             </img>
                         </div>
                         {/*WATCH PROVIDER*/}
-                        {movieProvider ?
-                            <h4 className="separator">Available on {movieProvider}</h4>
-                        : ""}
+                        {/*<h4 className="separator">Available on</h4>*/}
                         {/*TRAILER*/}
                         {movieTrailer ?
                             <h4 className="separator"><a href={movieTrailer}>
@@ -136,7 +131,7 @@ export default function PopUp({movieID, watchProvider, onClosePopup, onTryAgain}
                             </h4> : ""}
                     </aside>
                     <div className="popup-text">
-                        <hgroup className="green-separator">
+                    <hgroup className="green-separator">
                             {/*TITLE*/}
                             <h1>
                                 {movieDetails.title}
@@ -160,8 +155,8 @@ export default function PopUp({movieID, watchProvider, onClosePopup, onTryAgain}
                                 {/*USER SCORE*/}
                                 <h4>User Score:
                                     {" "}
-                                    {/*<span className="green-txt" id="popup-score">{Math.round(movieDetails.vote_average * 10)}%</span>*/}
-                                    <Score percentage={Math.round(movieDetails.vote_average * 10)}></Score>
+                                    <span className="green-txt" id="popup-score">{Math.round(movieDetails.vote_average * 10)}%</span>
+                                    {/*<Score percentage={Math.round(movieDetails.vote_average * 10)}></Score>*/}
                                 </h4>
                             </div>
                             <p>
@@ -171,28 +166,11 @@ export default function PopUp({movieID, watchProvider, onClosePopup, onTryAgain}
                         </div>
                         {/*PEOPLE*/}
                         <div className="people">
-                            <ul>
-                                <li><h4>Director</h4></li>
-                                <li>Jon Watts</li>
-                            </ul>
-                            <ul>
-                                <li><h4>Characters</h4></li>
-                                <li>Stan Lee</li>
-                            </ul>
-                            <ul>
-                                <li><h4>Characters</h4></li>
-                                <li>Steve Ditko</li>
-                            </ul>
-                            <ul>
-                                <li><h4>Writer</h4></li>
-                                <li>Chris McKenna</li>
-                            </ul>
-                            <ul>
-                                <li><h4>Writer</h4></li>
-                                <li>Erik Sommers</li>
-                            </ul>
-                            <ul className="casting">
-                                <li><h4>Top Casting</h4></li>
+
+                            <CrewList crew={movieCredits.crew}></CrewList>
+
+                            <ul className="full-row">
+                                <li><h4>Cast</h4></li>
                                 {movieCredits.cast ? movieCredits.cast.slice(0, maxCast).map(
                                     (castMember) => <li key={castMember.id}>{castMember.name}</li>) : <li>Unknown</li>}
                             </ul>

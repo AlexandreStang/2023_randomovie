@@ -750,12 +750,12 @@ footer {
 .popup .people {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
   grid-auto-flow: column;
   grid-gap: 2%;
   margin-bottom: 20px;
 }
-.popup .people .casting {
+.popup .people .full-row {
   grid-row: 1/-1;
 }
 
