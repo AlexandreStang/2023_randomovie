@@ -151,7 +151,7 @@ export default function PopUp({movieID, onClosePopup, onTryAgain}) {
                         <div className="separator">
                             <div className="tagline-score">
                                 {/*TAGLINE*/}
-                                <h4>{movieDetails.tagline}</h4>
+                                {movieDetails.tagline ? <h4>{movieDetails.tagline}</h4> : ""}
                                 {/*USER SCORE*/}
                                 <h4>User Score:
                                     {" "}

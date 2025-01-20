@@ -4,6 +4,11 @@
 
   width: 100%;
   height: 100%;
+
+  // If PopUp has a fixed position
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .popup-bg-overlay {
@@ -20,7 +25,7 @@
 }
 
 .popup {
-  position: relative;
+  position: fixed; //relative
   z-index: 999;
 
   max-width: 800px;

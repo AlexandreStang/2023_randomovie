@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../css/styles.css';
 import '../config.js';
 import Hero from "./section/Hero";
@@ -44,6 +44,17 @@ export default function App() {
     //     //console.log(data.results);
     //     return data.results[Math.floor(Math.random() * data.results.length)].id;
     // }
+
+    useEffect(() => {
+        if (movieID !== "") {
+            document.body.classList.add("no-scroll")
+        } else {
+            document.body.classList.remove("no-scroll")
+        }
+        // Cleanup on unmount and dependency change
+        // Ensure side effects from **previous** execution are undone
+        return () => document.body.classList.remove("no-scroll");
+    }, [movieID]);
 
     function handleSubmit(formData) {
         setMovieAttributes(formData)

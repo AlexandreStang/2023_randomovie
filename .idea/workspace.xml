@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e265784f-5024-428a-8c45-8fda0fcd2407" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/CrewList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scss/elements/_body.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/section/PopUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/section/PopUp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/styles.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scss/sections/_popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_popup.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/styles.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +105,7 @@
       <workItem from="1737145644925" duration="9927000" />
       <workItem from="1737218596184" duration="4688000" />
       <workItem from="1737304515992" duration="15098000" />
-      <workItem from="1737389477384" duration="6144000" />
+      <workItem from="1737389477384" duration="8267000" />
     </task>
     <servers />
   </component>
