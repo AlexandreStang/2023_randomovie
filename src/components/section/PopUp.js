@@ -29,8 +29,7 @@ export default function PopUp({movieID, onClosePopup, onTryAgain}) {
             global.config.API.KEY + "&language=" + global.config.LANGUAGE)
         const data = await response.json();
 
-        console.log("MovieDetails", data)
-        console.log(data.release_date)
+        // console.log("MovieDetails", data)
 
         return data;
     }
@@ -40,7 +39,7 @@ export default function PopUp({movieID, onClosePopup, onTryAgain}) {
             global.config.API.KEY + "&language=" + global.config.LANGUAGE)
         const data = await response.json();
 
-        console.log("MovieCredits", data)
+        // console.log("MovieCredits", data)
 
         return data;
     }
@@ -50,7 +49,7 @@ export default function PopUp({movieID, onClosePopup, onTryAgain}) {
             global.config.API.KEY + "&language=" + global.config.LANGUAGE)
         const data = await response.json();
 
-        console.log("MovieReleaseDate", data)
+        // console.log("MovieReleaseDate", data)
 
         return data.results;
     }
@@ -60,20 +59,17 @@ export default function PopUp({movieID, onClosePopup, onTryAgain}) {
             global.config.API.KEY)
         const data = await response.json();
 
-        console.log("MovieTrailer", data)
+        // console.log("MovieTrailer", data)
 
         return data.results
     }
 
     // FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     useEffect(() => {
-        console.log(movieID)
-
         getMovieDetails(movieID).then(data => setMovieDetails(data));
         getMovieCredits(movieID).then(data => setMovieCredits(data));
         getMovieReleaseDates(movieID).then(data => findMovieCertification(data));
         getMovieTrailers(movieID).then(data => findMovieTrailer(data));
-
     }, [movieID]);
 
     function calculateRuntime(time) {
@@ -141,7 +137,7 @@ export default function PopUp({movieID, onClosePopup, onTryAgain}) {
                             </h4> : ""}
                     </aside>
                     <div className="popup-text">
-                    <hgroup className="green-separator">
+                        <hgroup className="green-separator">
                             {/*TITLE*/}
                             <h1>
                                 {movieDetails.title}
@@ -165,7 +161,8 @@ export default function PopUp({movieID, onClosePopup, onTryAgain}) {
                                 {/*USER SCORE*/}
                                 <h4>User Score:
                                     {" "}
-                                    <span className="green-txt" id="popup-score">{Math.round(movieDetails.vote_average * 10)}%</span>
+                                    <span className="green-txt"
+                                          id="popup-score">{Math.round(movieDetails.vote_average * 10)}%</span>
                                     {/*<Score percentage={Math.round(movieDetails.vote_average * 10)}></Score>*/}
                                 </h4>
                             </div>
@@ -200,19 +197,17 @@ function CrewList({crew}) {
         (crew || []).some(crewMember => crewMember.job === config.job)
     ).slice(0, maxCrew);
 
-    console.log(filteredConfigs)
-
     return (
         <>
             {filteredConfigs.map((config) => (
-                <Crew key={config.job} crew={crew} config={config} />
+                <Crew key={config.job} crew={crew} config={config}/>
             ))}
         </>
     );
 }
 
-function Crew({ crew, config }) {
-    const { title, job } = config;
+function Crew({crew, config}) {
+    const {title, job} = config;
 
     const filteredCrew = (crew || []).filter((crewMember) => crewMember.job === job);
 

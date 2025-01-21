@@ -8,7 +8,7 @@ const minYear = 1920;
 const maxProviders = 10;
 const defaultScore = 50;
 
-export default function Hero(onSubmit) {
+export default function Hero({onSubmit}) {
 
     // STATES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const [languages, setLanguages] = useState([])
