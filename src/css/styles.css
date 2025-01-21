@@ -709,6 +709,7 @@ footer {
   position: fixed;
   z-index: 999;
   max-width: 800px;
+  max-height: 100vh;
   margin: 80px auto;
   background-color: #ffffff;
   border-radius: 5px;

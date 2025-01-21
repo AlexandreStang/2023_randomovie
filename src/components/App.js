@@ -61,11 +61,15 @@ export default function App() {
         // CHANGE QUERY URL
 
 
-        getRandomMovieID().then((randomMovieID) => setMovieID(randomMovieID))
+        findRandomMovie();
     }
 
     function closePopup() {
         setMovieID("")
+    }
+
+    function findRandomMovie() {
+        getRandomMovieID().then((randomMovieID) => setMovieID(randomMovieID))
     }
 
     // RETURN - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -75,6 +79,7 @@ export default function App() {
             {movieID !== "" ? <PopUp
                 movieID={movieID}
                 onClosePopup={closePopup}
+                onTryAgain={findRandomMovie}
             /> : ""}
 
             <Hero onSubmit={(formData) => handleSubmit(formData)}></Hero>
