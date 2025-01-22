@@ -15,7 +15,7 @@ const crewConfig = [
 const maxCrew = 4;
 const maxCast = 6;
 
-export default function PopUp({movieID, onClosePopup, onTryAgain}) {
+export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain}) {
 
     // VARIABLES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const [movieDetails, setMovieDetails] = useState([]);
@@ -110,8 +110,8 @@ export default function PopUp({movieID, onClosePopup, onTryAgain}) {
         <div className="popup-container" id="popup-container">
             <div className="popup light-bg">
                 <header>
-                    <div className={"clickable"} onClick={onTryAgain}>Not what you’re looking for? Click here for
-                        another random movie!
+                    <div className={"clickable"} onClick={onTryAgain}>
+                        {canTryAgain ? "Not what you’re looking for? Click here for another random movie!" : ""}
                     </div>
                     <div className="right-side-icon clickable" onClick={onClosePopup}>
                         <i className="fas fa-times icon"></i>

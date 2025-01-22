@@ -24,6 +24,7 @@ export default function App() {
     // VARIABLES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const [movieID, setMovieID] = useState("");
     const [queryURL, setQueryURL] = useState(defaultQueryURL);
+    const [canTryAgain, setCanTryAgain] = useState(false);
 
     // GETTERS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const getRandomPage = async (url) => {
@@ -76,7 +77,13 @@ export default function App() {
         })
 
         setQueryURL(url);
+        setCanTryAgain(true);
         findRandomMovie(url);
+    }
+
+    function handleSelect(id) {
+        setMovieID(id)
+        setCanTryAgain(false)
     }
 
     function closePopup() {
@@ -98,12 +105,13 @@ export default function App() {
             {movieID !== "" ? <PopUp
                 movieID={movieID}
                 onClosePopup={closePopup}
+                canTryAgain={canTryAgain}
                 onTryAgain={() => findRandomMovie(queryURL)}
             /> : ""}
 
             <Hero onSubmit={(formData) => handleSubmit(formData)}></Hero>
 
-            <Trending onSelectMovie={(movieID) => setMovieID(movieID)}></Trending>
+            <Trending onSelectMovie={(id) => handleSelect(id)}></Trending>
 
             <Footer></Footer>
         </div>
