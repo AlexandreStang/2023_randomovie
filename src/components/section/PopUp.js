@@ -12,7 +12,8 @@ const crewConfig = [
     {title: "Music by", job: "Original Music Composer"},
 ]
 
-const maxCrew = 4;
+const maxJobs = 4;
+const maxCrewMembers = 3;
 const maxCast = 6;
 
 export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain}) {
@@ -144,13 +145,11 @@ export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain}) 
                             </h1>
                             {/*RELEASE DATE, , GENRES, RUNTIME*/}
                             <p>
-                                {movieDetails.release_date ? movieDetails.release_date.split('-')[0] : "Unknown"}
-                                {" • "}
+                                {movieDetails.release_date ? movieDetails.release_date.split('-')[0] + " • " : ""}
                                 {movieCertification ? movieCertification + " • " : ""}
                                 {movieDetails.genres ?
                                     movieDetails.genres.map((genre, i) => i + 1 === movieDetails.genres.length ?
-                                        genre.name : genre.name + ", ") : "Unknown"}
-                                {" • "}
+                                        genre.name + " • " : genre.name + ", ") : ""}
                                 {calculateRuntime(movieDetails.runtime)}
                             </p>
                         </hgroup>
@@ -168,7 +167,9 @@ export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain}) 
                             </div>
                             <p>
                                 {/*OVERVIEW*/}
-                                {movieDetails.overview}
+                                {String(movieDetails.overview).length <= 400 ?
+                                    movieDetails.overview :
+                                    movieDetails.overview.slice(0, 400) + ". . ."}
                             </p>
                         </div>
                         {/*PEOPLE*/}
@@ -176,11 +177,8 @@ export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain}) 
 
                             <CrewList crew={movieCredits.crew}></CrewList>
 
-                            <ul className="full-row">
-                                <li><h4>Cast</h4></li>
-                                {movieCredits.cast ? movieCredits.cast.slice(0, maxCast).map(
-                                    (castMember) => <li key={castMember.id}>{castMember.name}</li>) : <li>Unknown</li>}
-                            </ul>
+                            <CastList cast={movieCredits.cast}></CastList>
+
                         </div>
                     </div>
                 </div>
@@ -195,7 +193,7 @@ function CrewList({crew}) {
 
     const filteredConfigs = crewConfig.filter(config =>
         (crew || []).some(crewMember => crewMember.job === config.job)
-    ).slice(0, maxCrew);
+    ).slice(0, maxJobs);
 
     return (
         <>
@@ -218,9 +216,25 @@ function Crew({crew, config}) {
     return (
         <ul>
             <li><h4>{title}</h4></li>
-            {filteredCrew.map((crewMember) => (
+            {filteredCrew.slice(0, maxCrewMembers).map((crewMember) => (
                 <li key={crewMember.id}>{crewMember.name}</li>
             ))}
+            {/*{filteredCrew.length > maxCrewMembers ? <li>. . .</li> : ""}*/}
         </ul>
     );
+}
+
+function CastList({cast}) {
+
+    if ((cast || []).length === 0) {
+        return null
+    }
+
+    return (
+        <ul className="full-row">
+            <li><h4>Cast</h4></li>
+            {cast ? cast.slice(0, maxCast).map(
+                (castMember) => <li key={castMember.id}>{castMember.name}</li>) : <li>Unknown</li>}
+        </ul>
+    )
 }

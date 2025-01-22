@@ -94,7 +94,7 @@
 
   .people {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
     grid-auto-flow: column;
     grid-gap: 2%;
@@ -102,6 +102,7 @@
     margin-bottom: $popup-inner-padding;
 
     .full-row {
+      grid-column: 3 / 4; // Start at column 3 and end before column 4
       grid-row: 1/-1;
     }
 

@@ -757,13 +757,14 @@ footer {
 }
 .popup .people {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, auto);
   grid-auto-flow: column;
   grid-gap: 2%;
   margin-bottom: 20px;
 }
 .popup .people .full-row {
+  grid-column: 3/4;
   grid-row: 1/-1;
 }
 
