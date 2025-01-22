@@ -1,37 +1,40 @@
+@use "../global/functions";
+@use "../global/variables";
+
 // BUTTONS
 button {
-  font-family: $ff-headings;
-  font-weight: $fw-extra-bold;
-  font-size: rem(16);
+  font-family: variables.$ff-headings;
+  font-weight: variables.$fw-extra-bold;
+  font-size: functions.rem(16);
   text-transform: uppercase;
-  color: $white;
+  color: variables.$white;
 
-  background-color: $green;
-  transition: $transition-global;
+  background-color: variables.$green;
+  transition: variables.$transition-global;
 
   min-width: 150px;
   height: 50px;
   margin-right: 10px;
 
   border: none;
-  border-radius: $border-radius-global;
+  border-radius: variables.$border-radius-global;
 
   cursor: pointer;
 }
 
 button:hover {
-  background-color: $green-hover;
-  transition: $transition-global;
+  background-color: variables.$green-hover;
+  transition: variables.$transition-global;
   /*transform: translateY(-2px);*/
 }
 
 button:active {
-  background-color: $green-active;
+  background-color: variables.$green-active;
 }
 
 // SMALL BUTTONS
 button.small-btn {
-  font-weight: $fw-bold;
+  font-weight: variables.$fw-bold;
   text-transform: capitalize;
 
   min-width: 125px;
@@ -40,25 +43,25 @@ button.small-btn {
 
 // SELECTED AND UNSELECTED BUTTONS
 button.unselected-btn {
-  color: $black;
-  background-color: $lighter-grey;
-  transition: $transition-global;
+  color: variables.$black;
+  background-color: variables.$lighter-grey;
+  transition: variables.$transition-global;
 }
 
 button.unselected-btn:hover {
-  background-color: $light-grey;
-  transition: $transition-global;
+  background-color: variables.$light-grey;
+  transition: variables.$transition-global;
 }
 
 button.unselected-btn:active {
-  background-color: $light-grey-active;
+  background-color: variables.$light-grey-active;
 }
 
 
 button.selected-btn {
-  color: $white;
-  background-color: $black;
-  transition: $transition-global;
+  color: variables.$white;
+  background-color: variables.$black;
+  transition: variables.$transition-global;
 }
 
 // BUTTON CONTAINER

@@ -1,0 +1,14 @@
+// ICONS
+@use "../global/functions";
+
+.icon {
+  font-size: functions.rem(20);
+}
+
+.left-side-icon {
+  margin-right: 10px;
+}
+
+.right-side-icon {
+  margin-left: 10px;
+}

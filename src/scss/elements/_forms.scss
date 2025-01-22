@@ -1,12 +1,15 @@
+@use "../global/functions";
+@use "../global/variables";
+
 // LABELS
 label {
-  font-family: $ff-headings;
-  font-weight: $fw-bold;
-  font-size: rem(16);
+  font-family: variables.$ff-headings;
+  font-weight: variables.$fw-bold;
+  font-size: functions.rem(16);
   text-transform: uppercase;
 
   display: block;
-  margin: 0 0 rem(16) rem(12);
+  margin: 0 0 functions.rem(16) functions.rem(12);
 }
 
 .range-label {
@@ -14,37 +17,37 @@ label {
   justify-content: space-between;
 
   span {
-    font-family: $ff-regular;
-    font-weight: $fw-bold;
-    margin-right: rem(12);
-    transition: $transition-global;
+    font-family: variables.$ff-regular;
+    font-weight: variables.$fw-bold;
+    margin-right: functions.rem(12);
+    transition: variables.$transition-global;
   }
 }
 
 // INPUT & SELECT
 input,
 select {
-  font-family: $ff-headings;
-  font-weight: $fw-regular;
-  color: $grey;
+  font-family: variables.$ff-headings;
+  font-weight: variables.$fw-regular;
+  color: variables.$grey;
 
   background-color: transparent;
-  border: 1px solid $grey;
-  border-radius: $border-radius-global;
+  border: 1px solid variables.$grey;
+  border-radius: variables.$border-radius-global;
 
   width: 100%;
-  height: rem(60);
-  padding: rem(16);
+  height: functions.rem(60);
+  padding: functions.rem(16);
 }
 
 input:focus, select:focus {
-  border: 1px solid $green;
+  border: 1px solid variables.$green;
   outline: none;
 }
 
 input:disabled, select:disabled {
-  background-color: $transparent-black;
-  border: 1px solid $transparent-grey;
+  background-color: variables.$transparent-black;
+  border: 1px solid variables.$transparent-grey;
 }
 
 // SELECT
@@ -60,7 +63,7 @@ select {
 .select-container::after {
   position: absolute;
   content: "▼";
-  color: $green;
+  color: variables.$green;
   font-size: 0.8rem;
   top: 37.5%;
   right: 7.5%;
@@ -68,7 +71,7 @@ select {
 }
 
 .select-container.disabled::after {
-  color: $transparent-green;
+  color: variables.$transparent-green;
 }
 
 // RANGE
@@ -92,12 +95,12 @@ input[type=checkbox] {
   margin-bottom: 0;
 
   +label {
-    font-family: $ff-regular;
-    font-weight: $fw-regular;
+    font-family: variables.$ff-regular;
+    font-weight: variables.$fw-regular;
     text-transform: initial;
-    color: $grey;
-    line-height: rem(28);
+    color: variables.$grey;
+    line-height: functions.rem(28);
 
-    margin: 0 0 0 rem(16);
+    margin: 0 0 0 functions.rem(16);
   }
 }

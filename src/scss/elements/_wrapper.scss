@@ -1,14 +1,16 @@
+@use "../global/variables";
+
 .wrapper {
   position: relative;
   z-index: 100;
 
-  max-width: $wrapper;
+  max-width: variables.$wrapper;
 
   margin: 0 auto;
   padding: 0 40px;
 }
 
-@media screen and (max-width: $vw-mobile) {
+@media screen and (max-width: variables.$vw-mobile) {
   .wrapper {
     padding: 0 20px;
   }

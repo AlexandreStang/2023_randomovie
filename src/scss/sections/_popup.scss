@@ -1,3 +1,5 @@
+@use "../global/variables";
+
 .popup-container {
   position: absolute;
   z-index: 990;
@@ -20,7 +22,7 @@
   bottom: 0;
   left: 0;
 
-  background-color: $black;
+  background-color: variables.$black;
   opacity: 0.7;
 }
 
@@ -30,10 +32,10 @@
 
   max-width: 800px;
   max-height: 100vh;
-  margin: $header-height auto;
+  margin: variables.$header-height auto;
 
-  background-color: $white;
-  border-radius: $border-radius-global;
+  background-color: variables.$white;
+  border-radius: variables.$border-radius-global;
 
   overflow: hidden;
 
@@ -42,17 +44,17 @@
     justify-content: space-between;
 
     width: 100%;
-    background-color: $lightest-grey;
+    background-color: variables.$lightest-grey;
 
-    padding: $popup-inner-padding;
+    padding: variables.$popup-inner-padding;
 
-    border-bottom: $light-grey 1px solid;
-    border-radius: $border-radius-global $border-radius-global 0 0;
+    border-bottom: variables.$light-grey 1px solid;
+    border-radius: variables.$border-radius-global variables.$border-radius-global 0 0;
 
-    color: $grey;
+    color: variables.$grey;
 
     .icon {
-      color: $light-grey;
+      color: variables.$light-grey;
     }
 
   }
@@ -65,7 +67,7 @@
   aside {
     width: 40%;
     max-width: 280px;
-    margin-right: $popup-inner-padding;
+    margin-right: variables.$popup-inner-padding;
 
     text-align: center;
   }
@@ -99,7 +101,7 @@
     grid-auto-flow: column;
     grid-gap: 2%;
 
-    margin-bottom: $popup-inner-padding;
+    margin-bottom: variables.$popup-inner-padding;
 
     .full-row {
       grid-column: 3 / 4; // Start at column 3 and end before column 4
@@ -110,7 +112,7 @@
 
 }
 
-@media screen and (max-width: $vw-tablet) {
+@media screen and (max-width: variables.$vw-tablet) {
   .popup {
 
     .people {
@@ -121,7 +123,7 @@
   }
 }
 
-@media screen and (max-width: $vw-mobile) {
+@media screen and (max-width: variables.$vw-mobile) {
 
   .popup {
     header {
@@ -140,7 +142,7 @@
 
 }
 
-@media screen and (max-width: $vw-small-mobile) {
+@media screen and (max-width: variables.$vw-small-mobile) {
 
   .popup {
 

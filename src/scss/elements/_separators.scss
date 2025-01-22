@@ -1,3 +1,5 @@
+@use "../global/variables";
+
 .separator::after {
   content: "";
   display: block;
@@ -7,11 +9,11 @@
 }
 
 .light-bg .separator::after {
-  background-color: $lighter-grey;
+  background-color: variables.$lighter-grey;
 }
 
 .dark-bg .separator::after {
-  background-color: $grey;
+  background-color: variables.$grey;
   opacity: 0.5;
 }
 
@@ -21,6 +23,6 @@
   width: 100%;
   height: 4px;
   margin: 24px 0;
-  background-color: $green;
-  border-radius: $border-radius-global;
+  background-color: variables.$green;
+  border-radius: variables.$border-radius-global;
 }

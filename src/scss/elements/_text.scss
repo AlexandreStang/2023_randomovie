@@ -1,24 +1,27 @@
+@use "../global/functions";
+@use "../global/variables";
+
 // BODY
 body {
-  font-family: $ff-regular;
-  font-weight: $fw-regular;
-  font-size: rem(16);
+  font-family: variables.$ff-regular;
+  font-weight: variables.$fw-regular;
+  font-size: functions.rem(16);
 }
 
 // HEADINGS
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  font-family: $ff-headings;
-  font-weight: $fw-bold;
+  font-family: variables.$ff-headings;
+  font-weight: variables.$fw-bold;
 }
 
 h1 {
-  font-size: rem(32);
-  margin-bottom: rem(16);
+  font-size: functions.rem(32);
+  margin-bottom: functions.rem(16);
 }
 
 h4 {
-  font-size: rem(16);
+  font-size: functions.rem(16);
 }
 
 hgroup {
@@ -29,42 +32,42 @@ hgroup {
 
 // PARAGRAPHS
 p {
-  color: $grey;
-  line-height: rem(28);
+  color: variables.$grey;
+  line-height: functions.rem(28);
 }
 
 // COLORED TEXTS
 .green-txt {
-  color: $green;
+  color: variables.$green;
 }
 
 .yellow-txt {
-  color: $yellow;
+  color: variables.$yellow;
 }
 
 .red-txt {
-  color: $red;
+  color: variables.$red;
 }
 
 // DEPENDING ON BACKGROUND COLORS
 .dark-bg {
   h1, h2, h3, h4, h5, h6, label {
-    color: $white;
+    color: variables.$white;
   }
 }
 
 .light-bg {
   h1, h2, h3, h4, h5, h6, label {
-    color: $black;
+    color: variables.$black;
   }
 }
 
 // MEDIA
-@media screen and (max-width: $vw-mobile) {
+@media screen and (max-width: variables.$vw-mobile) {
 
   h1 {
-    font-size: rem(24);
-    margin-bottom: rem(12);
+    font-size: functions.rem(24);
+    margin-bottom: functions.rem(12);
   }
 
 }

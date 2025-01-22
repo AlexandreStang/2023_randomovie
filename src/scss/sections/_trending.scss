@@ -1,3 +1,6 @@
+@use "../global/functions";
+@use "../global/variables";
+
 .movie-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -19,23 +22,23 @@
 
   .poster-overlay:hover {
     opacity: 0.25;
-    transition: $transition-global;
+    transition: variables.$transition-global;
   }
 
   h4 {
-    color: $black;
-    transition: $transition-global;
+    color: variables.$black;
+    transition: variables.$transition-global;
   }
 
   h4:hover {
-    color: $green;
-    transition: $transition-global;
+    color: variables.$green;
+    transition: variables.$transition-global;
   }
 
   .year {
-    font-weight: $fw-regular;
-    font-size: rem(14);
-    color: $grey;
+    font-weight: variables.$fw-regular;
+    font-size: functions.rem(14);
+    color: variables.$grey;
   }
 
 }
@@ -43,31 +46,31 @@
 img.poster {
   display: block;
   width: 100%;
-  border-radius: $border-radius-global;
+  border-radius: variables.$border-radius-global;
 }
 
 .poster-overlay {
   position: absolute;
   top: 0;
 
-  background-color: $black;
+  background-color: variables.$black;
   opacity: 0;
 
-  border-radius: $border-radius-global;
+  border-radius: variables.$border-radius-global;
 
   width: 100%;
   height: 100%;
 
-  transition: $transition-global;
+  transition: variables.$transition-global;
 }
 
-@media screen and (max-width: $vw-tablet) {
+@media screen and (max-width: variables.$vw-tablet) {
   .movie-grid {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-@media screen and (max-width: $vw-mobile) {
+@media screen and (max-width: variables.$vw-mobile) {
   .movie-grid {
     grid-template-columns: 1fr 1fr;
   }

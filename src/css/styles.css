@@ -481,6 +481,18 @@ input[type=checkbox] + label {
   margin: 0 0 0 1rem;
 }
 
+.icon {
+  font-size: 1.25rem;
+}
+
+.left-side-icon {
+  margin-right: 10px;
+}
+
+.right-side-icon {
+  margin-left: 10px;
+}
+
 a {
   color: #20A972;
   text-decoration: none;
@@ -852,20 +864,5 @@ img.poster {
     grid-template-columns: 1fr 1fr;
   }
 }
-.icon {
-  font-size: 1.25rem;
-}
-
-.left-side-icon {
-  margin-right: 10px;
-}
-
-.right-side-icon {
-  margin-left: 10px;
-}
-
-/*:root {
-  font-size: 20px;
-}*/
 
 /*# sourceMappingURL=styles.css.map */

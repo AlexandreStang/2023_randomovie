@@ -1,3 +1,5 @@
+@use "../global/variables";
+
 ul {
 
   display: block;
@@ -7,7 +9,7 @@ ul {
 
   li:not(:first-child) {
 
-    color: $grey;
+    color: variables.$grey;
     padding-bottom: 12px;
 
   }

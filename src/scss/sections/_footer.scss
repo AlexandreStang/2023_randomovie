@@ -1,9 +1,11 @@
+@use "../global/variables";
+
 footer {
   text-align: center;
-  color: $grey;
+  color: variables.$grey;
 
   padding: 40px 0;
 
-  border-top: 1px solid $light-grey;
-  background-color: $lightest-grey;
+  border-top: 1px solid variables.$light-grey;
+  background-color: variables.$lightest-grey;
 }

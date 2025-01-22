@@ -1,8 +1,10 @@
+@use "../global/variables";
+
 // BACKGROUND COLOR
 .dark-bg {
-  background-color: $black;
+  background-color: variables.$black;
 }
 
 .light-bg {
-  background-color: $white;
+  background-color: variables.$white;
 }
