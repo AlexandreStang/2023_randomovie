@@ -6,7 +6,9 @@ import Trending from "./section/Trending";
 import Footer from "./section/Footer";
 import PopUp from "./section/PopUp";
 
-const defaultQueryURL = global.config.API.URL + "discover/movie" + global.config.API.KEY + "&language=" + global.config.LANGUAGE
+const defaultQueryURL = global.config.API.URL + "discover/movie" + global.config.API.KEY +
+    "&language=" + global.config.LANGUAGE +
+    "&vote_count.gte=" + 50
 
 const queryParameters = {
     language: "&with_original_language=",
@@ -24,22 +26,28 @@ export default function App() {
     const [queryURL, setQueryURL] = useState(defaultQueryURL);
 
     // GETTERS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    const getRandomPage = async () => {
-        const response = await fetch(queryURL + "&page=1");
+    const getRandomPage = async (url) => {
+        const response = await fetch(url + "&page=1");
         const data = await response.json();
 
         return Math.floor(Math.random() * (Math.min(data.total_pages, 500))) + 1;
     }
 
-    const getRandomMovieID = async () => {
-        const pageNumber = await getRandomPage();
+    const getRandomMovieID = async (url) => {
+        const pageNumber = await getRandomPage(url);
 
-        const response = await fetch(queryURL + "&page=" + pageNumber);
+        const response = await fetch(url + "&page=" + pageNumber);
         const data = await response.json();
 
         console.log(data)
 
-        return data.results[Math.floor(Math.random() * data.results.length)].id;
+        if (!data.results.length) {
+            alert("Sorry! We could not find any movies with your chosen attributes!");
+            return null
+        } else {
+            return data.results[Math.floor(Math.random() * data.results.length)].id;
+        }
+
     }
 
     // FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -55,21 +63,32 @@ export default function App() {
     }, [movieID]);
 
     function handleSubmit(formData) {
-        console.log(formData)
+        const formDataCopy = { ...formData };
+        formDataCopy.min_score /= 10;
 
+        let url = defaultQueryURL
 
         // CHANGE QUERY URL
+        Object.keys(formDataCopy).forEach(key => {
+            if (formDataCopy[key]) {
+                url += queryParameters[key] + formDataCopy[key]
+            }
+        })
 
-
-        findRandomMovie();
+        setQueryURL(url);
+        findRandomMovie(url);
     }
 
     function closePopup() {
         setMovieID("")
     }
 
-    function findRandomMovie() {
-        getRandomMovieID().then((randomMovieID) => setMovieID(randomMovieID))
+    function findRandomMovie(url) {
+        getRandomMovieID(url).then((randomMovieID) => {
+            if (randomMovieID !== null) {
+                setMovieID(randomMovieID);
+            }
+        })
     }
 
     // RETURN - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -79,7 +98,7 @@ export default function App() {
             {movieID !== "" ? <PopUp
                 movieID={movieID}
                 onClosePopup={closePopup}
-                onTryAgain={findRandomMovie}
+                onTryAgain={() => findRandomMovie(queryURL)}
             /> : ""}
 
             <Hero onSubmit={(formData) => handleSubmit(formData)}></Hero>
