@@ -1,12 +1,6 @@
 // BODY
+@use "../global/variables";
+
 body.no-scroll {
   overflow: hidden;
 }
-
-//@media screen and (max-width: $vw-mobile) {
-//
-//  body.no-scroll {
-//    overflow: auto;
-//  }
-//
-//}

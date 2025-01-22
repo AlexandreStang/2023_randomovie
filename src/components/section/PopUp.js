@@ -231,7 +231,7 @@ function CastList({cast}) {
     }
 
     return (
-        <ul className="full-row">
+        <ul className="full-row last-row">
             <li><h4>Cast</h4></li>
             {cast ? cast.slice(0, maxCast).map(
                 (castMember) => <li key={castMember.id}>{castMember.name}</li>) : <li>Unknown</li>}

@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { useMediaQuery } from 'react-responsive';
 import '../css/styles.css';
 import '../config.js';
 import Hero from "./section/Hero";
@@ -25,6 +26,7 @@ export default function App() {
     const [movieID, setMovieID] = useState("");
     const [queryURL, setQueryURL] = useState(defaultQueryURL);
     const [canTryAgain, setCanTryAgain] = useState(false);
+    const isSmallScreen = useMediaQuery({query: '(max-width: 1024px)' })
 
     // GETTERS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const getRandomPage = async (url) => {
@@ -40,7 +42,7 @@ export default function App() {
         const response = await fetch(url + "&page=" + pageNumber);
         const data = await response.json();
 
-        console.log(data)
+        // console.log(data)
 
         if (!data.results.length) {
             alert("Sorry! We could not find any movies with your chosen attributes!");
@@ -53,7 +55,7 @@ export default function App() {
 
     // FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     useEffect(() => {
-        if (movieID !== "") {
+        if (movieID !== "" && !isSmallScreen) {
             document.body.classList.add("no-scroll")
         } else {
             document.body.classList.remove("no-scroll")
@@ -61,7 +63,7 @@ export default function App() {
         // Cleanup on unmount and dependency change
         // Ensure side effects from **previous** execution are undone
         return () => document.body.classList.remove("no-scroll");
-    }, [movieID]);
+    }, [movieID, isSmallScreen]);
 
     function handleSubmit(formData) {
         const formDataCopy = { ...formData };
@@ -101,7 +103,7 @@ export default function App() {
     // RETURN - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     return (
 
-        <div>
+        <>
             {movieID !== "" ? <PopUp
                 movieID={movieID}
                 onClosePopup={closePopup}
@@ -109,12 +111,15 @@ export default function App() {
                 onTryAgain={() => findRandomMovie(queryURL)}
             /> : ""}
 
-            <Hero onSubmit={(formData) => handleSubmit(formData)}></Hero>
+            {movieID === "" || (!isSmallScreen && movieID !== "") ?
+                <>
+                    <Hero onSubmit={(formData) => handleSubmit(formData)}></Hero>
 
-            <Trending onSelectMovie={(id) => handleSelect(id)}></Trending>
+                    <Trending onSelectMovie={(id) => handleSelect(id)}></Trending>
 
-            <Footer></Footer>
-        </div>
+                    <Footer></Footer>
+                </> : null}
+        </>
 
     );
 

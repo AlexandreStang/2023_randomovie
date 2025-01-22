@@ -5,24 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e265784f-5024-428a-8c45-8fda0fcd2407" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/scss/elements/_icons.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/section/PopUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/section/PopUp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/styles.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scss/elements/_bg.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_bg.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/elements/_buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_buttons.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/elements/_forms.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_forms.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/elements/_links.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_links.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/elements/_lists.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_lists.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/elements/_separators.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_separators.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/elements/_text.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_text.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/elements/_wrapper.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_wrapper.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/global/_functions.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/global/_functions.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/sections/_footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_footer.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/sections/_hero.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_hero.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/elements/_body.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_body.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scss/sections/_popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_popup.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/sections/_trending.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_trending.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/styles.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,25 +43,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Alexandre Stang/Documents/0_Projects/Web/2021_portfolio",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alexandre Stang/Documents/0_Projects/Web/2021_portfolio&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.inline.completion&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.3.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Poste\Documents\0_Projects\2023_randomovie" />
@@ -127,7 +119,8 @@
       <workItem from="1737474640355" duration="3000" />
       <workItem from="1737474691094" duration="213000" />
       <workItem from="1737475247847" duration="2832000" />
-      <workItem from="1737509308211" duration="9253000" />
+      <workItem from="1737509308211" duration="10234000" />
+      <workItem from="1737569986275" duration="7761000" />
     </task>
     <servers />
   </component>

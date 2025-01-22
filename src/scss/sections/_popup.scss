@@ -101,18 +101,44 @@
     grid-auto-flow: column;
     grid-gap: 2%;
 
-    margin-bottom: variables.$popup-inner-padding;
-
     .full-row {
-      grid-column: 3 / 4; // Start at column 3 and end before column 4
       grid-row: 1/-1;
+    }
+
+    .last-row {
+      grid-column: -2 / -1;
     }
 
   }
 
 }
 
+@media screen and (max-width: variables.$vw-small-screen) {
+
+  .popup-container {
+    display: block;
+  }
+
+  .popup {
+
+    position: static;
+    max-width: 100%;
+    max-height: none;
+
+    margin: 0;
+
+    border-radius: 0;
+
+  }
+
+  .popup-bg-overlay {
+    display: none;
+  }
+
+}
+
 @media screen and (max-width: variables.$vw-tablet) {
+
   .popup {
 
     .people {
@@ -121,6 +147,7 @@
     }
 
   }
+
 }
 
 @media screen and (max-width: variables.$vw-mobile) {

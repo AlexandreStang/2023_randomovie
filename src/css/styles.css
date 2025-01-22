@@ -773,13 +773,29 @@ footer {
   grid-template-rows: repeat(2, auto);
   grid-auto-flow: column;
   grid-gap: 2%;
-  margin-bottom: 20px;
 }
 .popup .people .full-row {
-  grid-column: 3/4;
   grid-row: 1/-1;
 }
+.popup .people .last-row {
+  grid-column: -2/-1;
+}
 
+@media screen and (max-width: 1024px) {
+  .popup-container {
+    display: block;
+  }
+  .popup {
+    position: static;
+    max-width: 100%;
+    max-height: none;
+    margin: 0;
+    border-radius: 0;
+  }
+  .popup-bg-overlay {
+    display: none;
+  }
+}
 @media screen and (max-width: 768px) {
   .popup .people {
     grid-template-columns: 1fr 1fr;
