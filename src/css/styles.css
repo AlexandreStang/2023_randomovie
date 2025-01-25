@@ -781,21 +781,20 @@ footer {
   grid-column: -2/-1;
 }
 
-@media screen and (max-width: 1024px) {
-  .popup-container {
-    display: block;
-  }
-  .popup {
-    position: static;
-    max-width: 100%;
-    max-height: none;
-    margin: 0;
-    border-radius: 0;
-  }
-  .popup-bg-overlay {
-    display: none;
-  }
+.popup-container.small-screen {
+  display: block;
 }
+.popup-container.small-screen .popup {
+  position: static;
+  max-width: 100%;
+  max-height: none;
+  margin: 0;
+  border-radius: 0;
+}
+.popup-container.small-screen .popup-bg-overlay {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .popup .people {
     grid-template-columns: 1fr 1fr;

@@ -16,7 +16,7 @@ const maxJobs = 4;
 const maxCrewMembers = 3;
 const maxCast = 6;
 
-export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain}) {
+export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain, isSmallScreen}) {
 
     // VARIABLES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const [movieDetails, setMovieDetails] = useState([]);
@@ -108,7 +108,7 @@ export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain}) 
 
     // RETURN - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     return (
-        <div className="popup-container" id="popup-container">
+        <div className={`popup-container ${isSmallScreen ? "small-screen" : ""}`} id="popup-container">
             <div className="popup light-bg">
                 <header>
                     <div className={"clickable"} onClick={onTryAgain}>

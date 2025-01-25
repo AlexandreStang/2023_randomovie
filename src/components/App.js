@@ -26,7 +26,9 @@ export default function App() {
     const [movieID, setMovieID] = useState("");
     const [queryURL, setQueryURL] = useState(defaultQueryURL);
     const [canTryAgain, setCanTryAgain] = useState(false);
-    const isSmallScreen = useMediaQuery({query: '(max-width: 1024px)' })
+
+    const [scrollPosition, setScrollPosition] = useState(window.scrollY)
+    const isSmallScreen = useMediaQuery({query: '(max-width: 900px)' })
 
     // GETTERS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const getRandomPage = async (url) => {
@@ -79,25 +81,43 @@ export default function App() {
         })
 
         setQueryURL(url);
-        setCanTryAgain(true);
-        findRandomMovie(url);
+        searchRandomMovie(url);
     }
 
-    function handleSelect(id) {
-        setMovieID(id)
-        setCanTryAgain(false)
+    function searchRandomMovie(url) {
+        getRandomMovieID(url).then((randomMovieID) => {
+            if (randomMovieID !== null) {
+                openPopup(randomMovieID, true)
+            }
+        })
+    }
+
+    function openPopup(id, canTryAgain) {
+        saveScrollPosition();
+        setMovieID(id);
+        setCanTryAgain(canTryAgain);
     }
 
     function closePopup() {
-        setMovieID("")
+        setMovieID("");
+        restoreScrollPosition(scrollPosition);
     }
 
-    function findRandomMovie(url) {
-        getRandomMovieID(url).then((randomMovieID) => {
-            if (randomMovieID !== null) {
-                setMovieID(randomMovieID);
+    function saveScrollPosition() {
+        setScrollPosition(window.scrollY);
+    }
+
+    function restoreScrollPosition(position) {
+        const scrollRestoration = setInterval(() => {
+            window.scrollTo({top: position})
+
+            if (window.scrollY === position) {
+                clearInterval(scrollRestoration)
             }
-        })
+
+        }, 10)
+
+        setTimeout(() => {clearInterval(scrollRestoration)}, 5000);
     }
 
     // RETURN - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -108,14 +128,15 @@ export default function App() {
                 movieID={movieID}
                 onClosePopup={closePopup}
                 canTryAgain={canTryAgain}
-                onTryAgain={() => findRandomMovie(queryURL)}
+                onTryAgain={() => searchRandomMovie(queryURL)}
+                isSmallScreen={isSmallScreen}
             /> : ""}
 
             {movieID === "" || (!isSmallScreen && movieID !== "") ?
                 <>
                     <Hero onSubmit={(formData) => handleSubmit(formData)}></Hero>
 
-                    <Trending onSelectMovie={(id) => handleSelect(id)}></Trending>
+                    <Trending onSelectMovie={(id) => openPopup(id, false)}></Trending>
 
                     <Footer></Footer>
                 </> : null}

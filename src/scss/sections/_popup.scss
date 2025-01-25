@@ -113,11 +113,8 @@
 
 }
 
-@media screen and (max-width: variables.$vw-small-screen) {
-
-  .popup-container {
-    display: block;
-  }
+.popup-container.small-screen {
+  display: block;
 
   .popup {
 
@@ -134,7 +131,6 @@
   .popup-bg-overlay {
     display: none;
   }
-
 }
 
 @media screen and (max-width: variables.$vw-tablet) {
