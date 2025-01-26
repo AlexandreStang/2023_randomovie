@@ -4,7 +4,7 @@ footer {
   text-align: center;
   color: variables.$grey;
 
-  padding: 40px 0;
+  padding: variables.$large-inner-padding variables.$inner-padding;
 
   border-top: 1px solid variables.$light-grey;
   background-color: variables.$lightest-grey;

@@ -109,7 +109,7 @@ export default function App() {
 
     function restoreScrollPosition(position) {
         const scrollRestoration = setInterval(() => {
-            window.scrollTo({top: position})
+            window.scrollTo({top: position, behavior: "instant"})
 
             if (window.scrollY === position) {
                 clearInterval(scrollRestoration)

@@ -4,14 +4,14 @@
 .movie-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 2%;
+  grid-gap: 10px 2%;
 
   margin-top: 30px;
 }
 
 .movie-item {
 
-  overflow: hidden;
+  //overflow: hidden;
 
   .poster-link {
     display: block;

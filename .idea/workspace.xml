@@ -7,10 +7,13 @@
     <list default="true" id="e265784f-5024-428a-8c45-8fda0fcd2407" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/section/PopUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/section/PopUp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/styles.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/elements/_wrapper.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/elements/_wrapper.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/global/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/global/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/sections/_footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_footer.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scss/sections/_popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_popup.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/sections/_trending.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_trending.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,6 +122,7 @@
       <workItem from="1737569986275" duration="13080000" />
       <workItem from="1737655363302" duration="5021000" />
       <workItem from="1737745894774" duration="8674000" />
+      <workItem from="1737911113417" duration="371000" />
     </task>
     <servers />
   </component>

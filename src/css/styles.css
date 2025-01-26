@@ -629,7 +629,7 @@ p {
 footer {
   text-align: center;
   color: #747c92;
-  padding: 40px 0;
+  padding: 40px 20px;
   border-top: 1px solid #cbcdd7;
   background-color: #F2F2F5;
 }
@@ -822,13 +822,10 @@ footer {
 .movie-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 2%;
+  grid-gap: 10px 2%;
   margin-top: 30px;
 }
 
-.movie-item {
-  overflow: hidden;
-}
 .movie-item .poster-link {
   display: block;
   position: relative;

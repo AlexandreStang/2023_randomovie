@@ -46,7 +46,7 @@
     width: 100%;
     background-color: variables.$lightest-grey;
 
-    padding: variables.$popup-inner-padding;
+    padding: variables.$inner-padding;
 
     border-bottom: variables.$light-grey 1px solid;
     border-radius: variables.$border-radius-global variables.$border-radius-global 0 0;
@@ -67,7 +67,7 @@
   aside {
     width: 40%;
     max-width: 280px;
-    margin-right: variables.$popup-inner-padding;
+    margin-right: variables.$inner-padding;
 
     text-align: center;
   }
