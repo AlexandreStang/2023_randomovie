@@ -91,7 +91,7 @@ export default function Hero({onSubmit}) {
                 <div className="welcome">
                     <hgroup className="separator">
                         <h1>Looking for new cinematic experiences?</h1>
-                        <p>Tell us what you're looking for and receive a new movie at random!</p>
+                        <p>Tell us what you're looking for and receive something new to watch at random!</p>
                     </hgroup>
 
                     <form id="random-movie-form">

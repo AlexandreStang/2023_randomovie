@@ -47,6 +47,7 @@ img.poster {
   display: block;
   width: 100%;
   border-radius: variables.$border-radius-global;
+  box-shadow: variables.$box-shadow-global;
 }
 
 .poster-overlay {

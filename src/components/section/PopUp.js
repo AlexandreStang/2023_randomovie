@@ -121,7 +121,16 @@ export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain, i
                 <div className="flex-container">
                     <aside>
                         {/*POSTER*/}
-                        <div className="separator">
+                        <div className={"popup-poster-banner"}>
+                            <div className="popup-banner">
+                                <img
+                                    src={global.config.API.IMAGE_URL +
+                                        global.config.API.IMAGE_WIDTH.BANNER +
+                                        movieDetails.backdrop_path}
+                                    alt="Poster">
+                                </img>
+                                <div className={"popup-banner-overlay"}></div>
+                            </div>
                             <img
                                 src={global.config.API.IMAGE_URL + global.config.API.IMAGE_WIDTH.MEDIUM_POSTER +
                                     movieDetails.poster_path}
@@ -133,7 +142,7 @@ export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain, i
                         {/*<h4 className="separator">Available on</h4>*/}
                         {/*TRAILER*/}
                         {movieTrailer ?
-                            <h4 className="separator"><a href={movieTrailer}>
+                            <h4 className="separator pre-separator"><a href={movieTrailer}>
                                 <i className="fas fa-link left-side-icon"></i> Watch Trailer</a>
                             </h4> : ""}
                     </aside>

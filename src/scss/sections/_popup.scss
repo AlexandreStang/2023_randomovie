@@ -39,6 +39,8 @@
 
   overflow: hidden;
 
+  box-shadow: variables.$box-shadow-global;
+
   header {
     display: flex;
     justify-content: space-between;
@@ -70,6 +72,35 @@
     margin-right: variables.$inner-padding;
 
     text-align: center;
+
+    .poster {
+      box-shadow: variables.$box-shadow-global
+    }
+  }
+
+  .popup-banner {
+    position: relative;
+
+    img {
+      width: 100%;
+      display: none;
+
+      overflow: hidden;
+    }
+
+    .popup-banner-overlay {
+      position: absolute;
+
+      width: 100%;
+      height: 100%;
+
+      top: 0;
+
+      background: variables.$white;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.5) 25%, rgba(255, 255, 255, 0) 50%);
+
+      backdrop-filter: blur(8px);
+    }
   }
 
   .popup-text {
@@ -126,6 +157,8 @@
 
     border-radius: 0;
 
+    box-shadow: none;
+
   }
 
   .popup-bg-overlay {
@@ -136,12 +169,10 @@
 @media screen and (max-width: variables.$vw-tablet) {
 
   .popup {
-
     .people {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: repeat(6, auto);
     }
-
   }
 
 }
@@ -149,17 +180,47 @@
 @media screen and (max-width: variables.$vw-mobile) {
 
   .popup {
-    header {
-      padding: 10px;
-    }
-
     .flex-container {
-      display: flex;
-      padding: 20px 12px;
+      padding: 0;
+      flex-direction: column;
     }
 
     aside {
-      margin-right: 10px;
+      max-width: none;
+      width: 100%;
+
+      h4 {
+        padding: 0 variables.$inner-padding;
+      }
+    }
+
+    .popup-banner img {
+      display: block;
+    }
+
+    .popup-poster-banner {
+      position: relative;
+      margin-bottom: 60px;
+    }
+
+    .poster {
+      position: absolute;
+
+      width: 40%;
+
+      top: variables.$inner-padding;
+      left: 0;
+      right: 0;
+      margin-inline: auto;
+    }
+
+    .popup-text {
+      padding: 0 variables.$inner-padding variables.$inner-padding variables.$inner-padding;
+    }
+
+    .people {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
     }
   }
 
@@ -170,8 +231,8 @@
   .popup {
 
     .people {
-      display: block;
-      margin-bottom: 0;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(6, auto);
     }
 
   }

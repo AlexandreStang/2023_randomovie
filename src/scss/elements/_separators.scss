@@ -1,6 +1,6 @@
 @use "../global/variables";
 
-.separator::after {
+.separator::after, .pre-separator::before {
   content: "";
   display: block;
   width: 100%;
@@ -8,7 +8,7 @@
   margin: 20px 0;
 }
 
-.light-bg .separator::after {
+.light-bg .separator::after, .light-bg .pre-separator::before {
   background-color: variables.$lighter-grey;
 }
 
