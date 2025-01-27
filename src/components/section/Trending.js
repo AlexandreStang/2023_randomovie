@@ -44,6 +44,10 @@ export default function Trending({onSelectMovie}) {
                             onClickMovie={(movieID) => onSelectMovie(movieID)}
                             key={movie.id}></TrendingMovie>))}
                 </div>
+                {/*<div className={"page-navigation"}>*/}
+                {/*    <div className={"clickable"} onClick={x => changePage(-1)}><i className="fas fa-angle-left"></i> Prev</div>*/}
+                {/*    <div className={"clickable"} onClick={x=> changePage(1)}>Next <i className="fas fa-angle-right"></i> </div>*/}
+                {/*</div>*/}
             </div>
         </section>
     )

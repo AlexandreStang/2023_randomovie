@@ -12,6 +12,8 @@ module.exports = global.config = {
             DAY: "day",
             WEEK: "week"
         }
+        ,
+        MAX_PAGES: 500
     },
     LANGUAGE : "en-US",
     REGION : 'US',

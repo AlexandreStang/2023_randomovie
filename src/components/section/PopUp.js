@@ -172,7 +172,7 @@ export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain, i
                             </div>
                             <p>
                                 {/*OVERVIEW*/}
-                                {isSmallScreen && String(movieDetails.overview).length > 400 ?
+                                {!isSmallScreen && String(movieDetails.overview).length > 400 ?
                                     movieDetails.overview.slice(0, 400) + ". . ." :
                                     movieDetails.overview}
 

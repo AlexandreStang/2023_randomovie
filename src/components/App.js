@@ -35,7 +35,7 @@ export default function App() {
         const response = await fetch(url + "&page=1");
         const data = await response.json();
 
-        return Math.floor(Math.random() * (Math.min(data.total_pages, 500))) + 1;
+        return Math.floor(Math.random() * (Math.min(data.total_pages, global.config.API.MAX_PAGES))) + 1;
     }
 
     const getRandomMovieID = async (url) => {
