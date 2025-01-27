@@ -117,7 +117,7 @@ export default function App() {
 
         }, 10)
 
-        setTimeout(() => {clearInterval(scrollRestoration)}, 5000);
+        setTimeout(() => {clearInterval(scrollRestoration)}, 1000);
     }
 
     // RETURN - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

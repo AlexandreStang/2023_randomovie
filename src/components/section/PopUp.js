@@ -12,10 +12,6 @@ const crewConfig = [
     {title: "Music by", job: "Original Music Composer"},
 ]
 
-const maxJobs = 4;
-const maxCrewMembers = 3;
-const maxCast = 6;
-
 export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain, isSmallScreen}) {
 
     // VARIABLES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -176,17 +172,18 @@ export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain, i
                             </div>
                             <p>
                                 {/*OVERVIEW*/}
-                                {String(movieDetails.overview).length <= 400 ?
-                                    movieDetails.overview :
-                                    movieDetails.overview.slice(0, 400) + ". . ."}
+                                {isSmallScreen && String(movieDetails.overview).length > 400 ?
+                                    movieDetails.overview.slice(0, 400) + ". . ." :
+                                    movieDetails.overview}
+
                             </p>
                         </div>
                         {/*PEOPLE*/}
                         <div className="people">
 
-                            <CrewList crew={movieCredits.crew}></CrewList>
+                            <CrewList crew={movieCredits.crew} maxJobs={4}></CrewList>
 
-                            <CastList cast={movieCredits.cast}></CastList>
+                            <CastList cast={movieCredits.cast} maxCast={6}></CastList>
 
                         </div>
                     </div>
@@ -198,7 +195,7 @@ export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain, i
     )
 }
 
-function CrewList({crew}) {
+function CrewList({crew, maxJobs}) {
 
     const filteredConfigs = crewConfig.filter(config =>
         (crew || []).some(crewMember => crewMember.job === config.job)
@@ -207,13 +204,13 @@ function CrewList({crew}) {
     return (
         <>
             {filteredConfigs.map((config) => (
-                <Crew key={config.job} crew={crew} config={config}/>
+                <Crew key={config.job} crew={crew} config={config} maxCrewMembers={3}/>
             ))}
         </>
     );
 }
 
-function Crew({crew, config}) {
+function Crew({crew, config, maxCrewMembers}) {
     const {title, job} = config;
 
     const filteredCrew = (crew || []).filter((crewMember) => crewMember.job === job);
@@ -233,7 +230,7 @@ function Crew({crew, config}) {
     );
 }
 
-function CastList({cast}) {
+function CastList({cast, maxCast}) {
 
     if ((cast || []).length === 0) {
         return null
