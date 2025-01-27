@@ -1,5 +1,5 @@
 import Logo from "../../img/logo/randomovie.svg";
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 
 import Select from "../form/Select";
 import Score from "../Score";
@@ -25,29 +25,29 @@ export default function Hero({onSubmit}) {
     });
 
     // GETTERS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    const getLanguages = async () => {
-        const response = await fetch(global.config.API.URL + "configuration/languages" + global.config.API.KEY +
-            "&language=" + global.config.LANGUAGE);
+    const getLanguages = useCallback(async () => {
+        const response = await fetch(
+            global.config.API.URL + "configuration/languages" + global.config.API.KEY + "&language=" + global.config.LANGUAGE
+        );
         const data = await response.json();
-
         return sortData(data.filter((lang) => lang.name !== ""), "english_name");
-    }
+    }, []);
 
-    const getGenres = async () => {
-        const response = await fetch(global.config.API.URL + "genre/movie/list" + global.config.API.KEY +
-            "&language=" + global.config.LANGUAGE);
+    const getGenres = useCallback(async () => {
+        const response = await fetch(
+            global.config.API.URL + "genre/movie/list" + global.config.API.KEY + "&language=" + global.config.LANGUAGE
+        );
         const data = await response.json();
-
         return data.genres;
-    }
+    }, []);
 
-    const getCountries = async () => {
-        const response = await fetch(global.config.API.URL + "watch/providers/regions" + global.config.API.KEY +
-            "&language=" + global.config.LANGUAGE);
+    const getCountries = useCallback(async () => {
+        const response = await fetch(
+            global.config.API.URL + "watch/providers/regions" + global.config.API.KEY + "&language=" + global.config.LANGUAGE
+        );
         const data = await response.json();
-
         return sortData(data.results, "english_name");
-    }
+    }, []);
 
     const getProviders = async (country) => {
         const response = await fetch(global.config.API.URL + "watch/providers/movie" + global.config.API.KEY +
@@ -62,19 +62,40 @@ export default function Hero({onSubmit}) {
         getLanguages().then(data => setLanguages(data));
         getGenres().then(data => setGenres(data));
         getCountries().then(data => setCountries(data));
-    }, [])
+    }, [getLanguages, getGenres, getCountries]);
 
     function sortData(data, value) {
         return data.sort((a, b) => a[value].localeCompare(b[value]))
     }
 
-    function updateCountry(country) {
+    const handleLanguageChange = useCallback((selectedValue) => {
+        setFormData((prevData) => ({
+            ...prevData,
+            language: selectedValue,
+        }));
+    }, []);
+
+    const handleGenreChange = useCallback((selectedValue) => {
+        setFormData((prevData) => ({
+            ...prevData,
+            genre_id: selectedValue,
+        }));
+    }, []);
+
+    const handleCountryChange = useCallback((selectedValue) => {
         setFormData({
             ...formData,
-            country: country
+            country: selectedValue
         })
-        getProviders(country).then(data => setProviders(data));
-    }
+        getProviders(selectedValue).then(data => setProviders(data));
+    }, []);
+
+    const handleProviderChange = useCallback((selectedValue) => {
+        setFormData((prevData) => ({
+            ...prevData,
+            provider_id: selectedValue,
+        }));
+    }, []);
 
     function handleSubmit() {
         onSubmit(formData)
@@ -85,7 +106,7 @@ export default function Hero({onSubmit}) {
         <section className="hero dark-bg">
             <div className="wrapper">
                 <header>
-                    <a className="logo" href="#"><img src={Logo} alt="Randomovie Logo"/></a>
+                    <img src={Logo} alt="Randomovie Logo"/>
                 </header>
 
                 <div className="welcome">
@@ -101,19 +122,13 @@ export default function Hero({onSubmit}) {
                             <Select
                                 data={languages}
                                 config={{title: "Language", value: "iso_639_1", name: "english_name"}}
-                                onChangeOption={(selectedValue) => setFormData({
-                                    ...formData,
-                                    language: selectedValue
-                                })}>
+                                onChangeOption={handleLanguageChange}>
                             </Select>
 
                             <Select
                                 data={genres}
                                 config={{title: "Genre", value: "id", name: "name"}}
-                                onChangeOption={(selectedValue) => setFormData({
-                                    ...formData,
-                                    genre_id: selectedValue
-                                })}>
+                                onChangeOption={handleGenreChange}>
                             </Select>
 
                             <div className="form-item">
@@ -142,16 +157,13 @@ export default function Hero({onSubmit}) {
                             <Select
                                 data={countries}
                                 config={{title: "Your country", value: "iso_3166_1", name: "english_name"}}
-                                onChangeOption={(selectedValue) => updateCountry(selectedValue)}>
+                                onChangeOption={handleCountryChange}>
                             </Select>
 
                             <Select
                                 data={providers}
                                 config={{title: "Watch Provider", value: "provider_id", name: "provider_name"}}
-                                onChangeOption={(selectedValue) => setFormData({
-                                    ...formData,
-                                    provider_id: selectedValue
-                                })}
+                                onChangeOption={handleProviderChange}
                                 isDisabled={(formData.country) <= 0}
                                 maxOptions={maxProviders}>
                             </Select>

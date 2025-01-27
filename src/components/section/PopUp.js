@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import '../../config.js';
-import Score from "../Score";
+// import Score from "../Score";
 
 const crewConfig = [
     {title: "Directed by", job: "Director"},

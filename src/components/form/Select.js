@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 
 export default function Select({data, config, onChangeOption, isDisabled = false, maxOptions = undefined}) {
 
@@ -9,14 +9,14 @@ export default function Select({data, config, onChangeOption, isDisabled = false
     const [selectValue, setSelectValue] = useState("");
 
     // FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    useEffect(() => {
-        updateValue("")
-    }, [data])
-
-    function updateValue(value) {
+    const updateValue = useCallback((value) => {
         setSelectValue(value)
         onChangeOption(value)
-    }
+    }, [onChangeOption])
+
+    useEffect(() => {
+        updateValue("")
+    }, [data, updateValue])
 
     // RETURN - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     return (
