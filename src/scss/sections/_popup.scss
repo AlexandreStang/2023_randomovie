@@ -1,4 +1,5 @@
 @use "../global/variables";
+@use "../global/functions";
 
 .popup-container {
   position: absolute;
@@ -46,22 +47,19 @@
     justify-content: space-between;
 
     width: 100%;
+
     background-color: variables.$lightest-grey;
 
-    padding: variables.$inner-padding;
+    padding: 14px variables.$inner-padding;
 
     border-bottom: variables.$light-grey 1px solid;
     border-radius: variables.$border-radius-global variables.$border-radius-global 0 0;
 
     color: variables.$grey;
 
-    .icon {
-      //color: variables.$light-grey;
-    }
-
     button {
       min-width: auto;
-      height: 35px;
+      height: 32px;
 
       padding: 0 10px;
 
@@ -73,7 +71,7 @@
     }
 
     button:hover {
-      background-color: variables.$lighter-grey;
+      background-color: variables.$lightest-grey-hover;
     }
 
     button:active {

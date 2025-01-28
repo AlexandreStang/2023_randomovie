@@ -733,14 +733,14 @@ footer {
   justify-content: space-between;
   width: 100%;
   background-color: #F2F2F5;
-  padding: 20px;
+  padding: 14px 20px;
   border-bottom: #cbcdd7 1px solid;
   border-radius: 5px 5px 0 0;
   color: #747c92;
 }
 .popup header button {
   min-width: auto;
-  height: 35px;
+  height: 32px;
   padding: 0 10px;
   font-weight: 400;
   text-transform: none;
@@ -748,7 +748,7 @@ footer {
   background-color: transparent;
 }
 .popup header button:hover {
-  background-color: #D6D8DF;
+  background-color: #e0e0e8;
 }
 .popup header button:active {
   background-color: #cbcdd7;
