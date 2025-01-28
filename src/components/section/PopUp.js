@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faUndoAlt, faLink } from "@fortawesome/free-solid-svg-icons"
 import '../../config.js';
 // import Score from "../Score";
 
@@ -108,10 +110,10 @@ export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain, i
             <div className="popup light-bg">
                 <header>
                     <div className={"clickable"} onClick={onTryAgain}>
-                        {canTryAgain ? "Not what you’re looking for? Click here for another random movie!" : ""}
+                        {canTryAgain ? <><FontAwesomeIcon icon={faUndoAlt} className={"icon"} /> Find another movie</> : ""}
                     </div>
                     <div className="right-side-icon clickable" onClick={onClosePopup}>
-                        <i className="fas fa-times icon"></i>
+                        <FontAwesomeIcon icon={faTimes} className={"icon"} />
                     </div>
                 </header>
                 <div className="flex-container">
@@ -139,7 +141,7 @@ export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain, i
                         {/*TRAILER*/}
                         {movieTrailer ?
                             <h4 className="separator pre-separator"><a href={movieTrailer}>
-                                <i className="fas fa-link left-side-icon"></i> Watch Trailer</a>
+                                <FontAwesomeIcon icon={faLink} className={"icon left-side-icon"} /> Watch Trailer</a>
                             </h4> : ""}
                     </aside>
                     <div className="popup-text">
