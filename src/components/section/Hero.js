@@ -83,10 +83,10 @@ export default function Hero({onSubmit}) {
     }, []);
 
     const handleCountryChange = useCallback((selectedValue) => {
-        setFormData({
-            ...formData,
-            country: selectedValue
-        })
+        setFormData((prevData) => ({
+            ...prevData,
+            country: selectedValue,
+        }));
         getProviders(selectedValue).then(data => setProviders(data));
     }, []);
 
