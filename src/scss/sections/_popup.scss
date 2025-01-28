@@ -186,9 +186,9 @@
 
 @media screen and (max-width: variables.$vw-tablet) {
 
-  .popup {
+  .popup-container.small-screen {
     .people {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(6, auto);
     }
   }
@@ -197,7 +197,7 @@
 
 @media screen and (max-width: variables.$vw-mobile) {
 
-  .popup {
+  .popup-container.small-screen {
     .flex-container {
       padding: 0;
       flex-direction: column;
@@ -248,7 +248,7 @@
 
 @media screen and (max-width: variables.$vw-small-mobile) {
 
-  .popup {
+  .popup-container.small-screen {
 
     .people {
       grid-template-columns: 1fr 1fr;
@@ -258,3 +258,4 @@
   }
 
 }
+
