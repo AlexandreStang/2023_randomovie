@@ -68,15 +68,12 @@ export default function App() {
     }, [movieID, isSmallScreen]);
 
     function handleSubmit(formData) {
-        const formDataCopy = { ...formData };
-        formDataCopy.min_score /= 10;
-
         let url = defaultQueryURL
 
         // CHANGE QUERY URL
-        Object.keys(formDataCopy).forEach(key => {
-            if (formDataCopy[key]) {
-                url += queryParameters[key] + formDataCopy[key]
+        Object.keys(formData).forEach(key => {
+            if (formData[key]) {
+                url += queryParameters[key] + formData[key]
             }
         })
 

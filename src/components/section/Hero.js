@@ -98,7 +98,10 @@ export default function Hero({onSubmit}) {
     }, []);
 
     function handleSubmit() {
-        onSubmit(formData)
+        const formDataCopy = { ...formData };
+        formDataCopy.min_release_year += "-01-01"
+        formDataCopy.min_score /= 10;
+        onSubmit(formDataCopy)
     }
 
     // RETURN - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
