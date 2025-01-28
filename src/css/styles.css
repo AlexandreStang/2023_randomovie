@@ -814,7 +814,17 @@ footer {
 .popup-container.small-screen .popup-bg-overlay {
   display: none;
 }
+.popup-container.small-screen .people {
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(1, auto);
+}
 
+@media screen and (max-width: 1024px) {
+  .popup-container.small-screen .people {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+}
 @media screen and (max-width: 768px) {
   .popup .people {
     grid-template-columns: 1fr 1fr;

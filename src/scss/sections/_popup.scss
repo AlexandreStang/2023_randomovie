@@ -166,6 +166,22 @@
   .popup-bg-overlay {
     display: none;
   }
+
+  .people {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(1, auto);
+  }
+}
+
+@media screen and (max-width: variables.$vw-small-screen) {
+
+  .popup-container.small-screen {
+    .people {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
+    }
+  }
+
 }
 
 @media screen and (max-width: variables.$vw-tablet) {
