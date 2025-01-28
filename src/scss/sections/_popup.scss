@@ -56,7 +56,28 @@
     color: variables.$grey;
 
     .icon {
-      color: variables.$light-grey;
+      //color: variables.$light-grey;
+    }
+
+    button {
+      min-width: auto;
+      height: 35px;
+
+      padding: 0 10px;
+
+      font-weight: variables.$fw-regular;
+      text-transform: none;
+
+      color: variables.$grey;
+      background-color: transparent;
+    }
+
+    button:hover {
+      background-color: variables.$lighter-grey;
+    }
+
+    button:active {
+      background-color: variables.$light-grey;
     }
 
   }

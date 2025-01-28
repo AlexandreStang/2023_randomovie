@@ -738,8 +738,20 @@ footer {
   border-radius: 5px 5px 0 0;
   color: #747c92;
 }
-.popup header .icon {
-  color: #cbcdd7;
+.popup header button {
+  min-width: auto;
+  height: 35px;
+  padding: 0 10px;
+  font-weight: 400;
+  text-transform: none;
+  color: #747c92;
+  background-color: transparent;
+}
+.popup header button:hover {
+  background-color: #D6D8DF;
+}
+.popup header button:active {
+  background-color: #cbcdd7;
 }
 .popup .flex-container {
   display: flex;

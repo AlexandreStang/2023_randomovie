@@ -165,7 +165,7 @@ export default function Hero({onSubmit}) {
 
                             <Select
                                 data={providers}
-                                config={{title: "Watch Provider", value: "provider_id", name: "provider_name"}}
+                                config={{title: "Your Watch Provider", value: "provider_id", name: "provider_name"}}
                                 onChangeOption={handleProviderChange}
                                 isDisabled={(formData.country) <= 0}
                                 maxOptions={maxProviders}>
