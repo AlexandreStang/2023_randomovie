@@ -28,7 +28,7 @@ export default function App() {
     const [canTryAgain, setCanTryAgain] = useState(false);
 
     const [scrollPosition, setScrollPosition] = useState(window.scrollY)
-    const isSmallScreen = useMediaQuery({query: '(max-width: 900px) or (max-height: 700px)' })
+    const isSmallScreen = useMediaQuery({query: '(max-width: 900px) or (max-height: 750px)' })
 
     // GETTERS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const getRandomPage = async (url) => {
@@ -114,7 +114,7 @@ export default function App() {
 
         }, 10)
 
-        setTimeout(() => {clearInterval(scrollRestoration)}, 1000);
+        setTimeout(() => {clearInterval(scrollRestoration)}, 100);
     }
 
     // RETURN - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
