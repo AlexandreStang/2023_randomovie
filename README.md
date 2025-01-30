@@ -29,7 +29,7 @@ This website is currently hosted on Netlify. [Click here to try it out yourself!
 1. Create an account on TheMovieDB and request an API key
 2. Create an .env file in the root of the project with the following (replace * with your own key):
    `REACT_APP_API_KEY = ?api_key=*`
-3. Install all dependencies with `npm install`
+3. Navigate into the project's directory and install all dependencies with `npm install`
 4. Run the project locally with `npm start`
        
 Use `npm run build` to build the app for production inside the `builder` folder
@@ -39,4 +39,4 @@ Use `npm run build` to build the app for production inside the `builder` folder
 For questions or feedback, reach out at:
 
 - **Email:** alexandre.stang.web@gmail.com
-
+- **LinkedIn:** [/alexandre-stang](https://www.linkedin.com/in/alexandre-stang-163208a7/)
