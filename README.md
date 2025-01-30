@@ -39,4 +39,4 @@ Use `npm run build` to build the app for production inside the `builder` folder
 For questions or feedback, reach out at:
 
 - **Email:** alexandre.stang.web@gmail.com
-- **GitHub:** AlexandreStang
+
