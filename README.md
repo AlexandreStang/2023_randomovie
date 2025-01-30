@@ -12,7 +12,7 @@ This website is currently hosted on Netlify. [Click here to visit the site!](htt
 
 ## ⚡ Technologies Used
 
-- **Frontend:** HTML, SCSS, JavaScript, React
+- **Frontend:** React, Javascript, SCSS, HTML
 - **API:** TheMovieDB API
 - **Design:** Figma
 
