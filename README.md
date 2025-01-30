@@ -8,7 +8,7 @@ interests. It also features a small selection of trending films. All movie data 
 
 ## 🚀 Live Demo
 
-This website is currently hosted on Netlify. [Click here to try it out yourself!](https://randomovie-as.netlify.app/)
+This website is currently hosted on Netlify. [Click here to visit the site!](https://randomovie-as.netlify.app/)
 
 ## ⚡ Technologies Used
 
