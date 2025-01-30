@@ -729,14 +729,18 @@ footer {
   box-shadow: rgba(30, 27, 36, 0.25) 0px 1px 5px;
 }
 .popup header {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
   background-color: #F2F2F5;
   padding: 14px 20px;
   border-bottom: #cbcdd7 1px solid;
   border-radius: 5px 5px 0 0;
   color: #747c92;
+}
+.popup header .header-container {
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
 }
 .popup header button {
   min-width: auto;
@@ -755,6 +759,8 @@ footer {
 }
 .popup .flex-container {
   display: flex;
+  max-width: 800px;
+  margin: auto;
   padding: 30px 24px;
 }
 .popup aside {
@@ -823,12 +829,11 @@ footer {
   border-radius: 0;
   box-shadow: none;
 }
+.popup-container.small-screen .popup header {
+  border-radius: 0;
+}
 .popup-container.small-screen .popup-bg-overlay {
   display: none;
-}
-.popup-container.small-screen .people {
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(1, auto);
 }
 
 @media screen and (max-width: 1024px) {

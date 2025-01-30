@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e265784f-5024-428a-8c45-8fda0fcd2407" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/section/PopUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/section/PopUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/styles.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/global/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/global/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/sections/_popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/sections/_popup.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +126,8 @@
       <workItem from="1738031909438" duration="7357000" />
       <workItem from="1738079376971" duration="2810000" />
       <workItem from="1738084319555" duration="1518000" />
+      <workItem from="1738195589020" duration="2539000" />
+      <workItem from="1738252626406" duration="1263000" />
     </task>
     <servers />
   </component>

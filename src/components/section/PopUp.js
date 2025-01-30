@@ -107,15 +107,17 @@ export default function PopUp({movieID, onClosePopup, canTryAgain, onTryAgain, i
         <div className={`popup-container ${isSmallScreen ? "small-screen" : ""}`} id="popup-container">
             <div className="popup light-bg">
                 <header>
-                    <button onClick={onTryAgain}>
-                        {canTryAgain ?
-                            <><i className="fas fa-undo-alt left-side-icon"></i>
-                                <span>Find another movie!</span></>
-                             : ""}
-                    </button>
-                    <button onClick={onClosePopup}>
-                        <i className="fas fa-times icon"></i>
-                    </button>
+                    <div className={"header-container"}>
+                        <button onClick={onTryAgain}>
+                            {canTryAgain ?
+                                <><i className="fas fa-undo-alt left-side-icon"></i>
+                                    <span>Find another movie!</span></>
+                                : ""}
+                        </button>
+                        <button onClick={onClosePopup}>
+                            <i className="fas fa-times icon"></i>
+                        </button>
+                    </div>
                 </header>
                 <div className="flex-container">
                     <aside>

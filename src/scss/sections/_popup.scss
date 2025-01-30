@@ -31,7 +31,7 @@
   position: fixed; //relative
   z-index: 999;
 
-  max-width: 800px;
+  max-width: variables.$popup-wrapper;
   max-height: 100vh;
   margin: variables.$header-height auto;
 
@@ -43,9 +43,6 @@
   box-shadow: variables.$box-shadow-global;
 
   header {
-    display: flex;
-    justify-content: space-between;
-
     width: 100%;
 
     background-color: variables.$lightest-grey;
@@ -56,6 +53,14 @@
     border-radius: variables.$border-radius-global variables.$border-radius-global 0 0;
 
     color: variables.$grey;
+
+    .header-container {
+      max-width: variables.$popup-wrapper;
+      margin: auto;
+
+      display: flex;
+      justify-content: space-between;
+    }
 
     button {
       min-width: auto;
@@ -82,6 +87,9 @@
 
   .flex-container {
     display: flex;
+
+    max-width: variables.$popup-wrapper;
+    margin: auto;
     padding: 30px 24px;
   }
 
@@ -180,16 +188,20 @@
 
     box-shadow: none;
 
+    header {
+      border-radius: 0;
+    }
+
   }
 
   .popup-bg-overlay {
     display: none;
   }
 
-  .people {
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(1, auto);
-  }
+  //.people {
+  //  grid-template-columns: repeat(5, 1fr);
+  //  grid-template-rows: repeat(1, auto);
+  //}
 }
 
 @media screen and (max-width: variables.$vw-small-screen) {
