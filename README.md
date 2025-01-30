@@ -12,10 +12,9 @@ This website is currently hosted on Netlify. [Click here to visit the site!](htt
 
 ## ⚡ Technologies Used
 
-- HTML, SCSS & Javascript
-- React
-- TheMovieDB API
-- Figma (for design)
+- **Frontend:** HTML, SCSS, JavaScript, React
+- **API:** TheMovieDB API
+- **Design:** Figma
 
 ## 🛠 Set Up
 
