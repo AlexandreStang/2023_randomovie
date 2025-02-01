@@ -737,7 +737,7 @@ footer {
   color: #747c92;
 }
 .popup header .header-container {
-  max-width: 800px;
+  max-width: 752px;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -831,9 +831,6 @@ footer {
 }
 .popup-container.small-screen .popup header {
   border-radius: 0;
-}
-.popup-container.small-screen .popup .header-container {
-  padding: 0 24px;
 }
 .popup-container.small-screen .popup-bg-overlay {
   display: none;

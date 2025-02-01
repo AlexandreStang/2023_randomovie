@@ -55,7 +55,7 @@
     color: variables.$grey;
 
     .header-container {
-      max-width: variables.$popup-wrapper;
+      max-width: variables.$popup-wrapper - 2 * variables.$popup-inner-side-padding;
       margin: auto;
 
       display: flex;
@@ -90,7 +90,7 @@
 
     max-width: variables.$popup-wrapper;
     margin: auto;
-    padding: 30px 24px;
+    padding: 30px variables.$popup-inner-side-padding;
   }
 
   aside {
@@ -190,10 +190,6 @@
 
     header {
       border-radius: 0;
-    }
-
-    .header-container {
-      padding: 0 24px;
     }
 
   }
