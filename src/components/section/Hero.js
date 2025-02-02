@@ -5,8 +5,11 @@ import Select from "../form/Select";
 import Score from "../Score";
 
 const minYear = 1920;
+const maxYear = new Date().getFullYear()
+// const maxLength = 400
 const maxProviders = 10;
 const defaultScore = 50;
+// const defaultLength = maxLength/2
 
 export default function Hero({onSubmit}) {
 
@@ -18,8 +21,10 @@ export default function Hero({onSubmit}) {
     const [formData, setFormData] = useState({
         language: "",
         genre_id: "",
-        min_release_year: minYear,
+        // min_release_year: minYear,
+        max_release_year: maxYear,
         min_score: defaultScore,
+        // max_length: defaultLength,
         country: "",
         provider_id: ""
     });
@@ -99,7 +104,8 @@ export default function Hero({onSubmit}) {
 
     function handleSubmit() {
         const formDataCopy = { ...formData };
-        formDataCopy.min_release_year += "-01-01"
+        // formDataCopy.min_release_year += "-01-01"
+        formDataCopy.max_release_year += "-12-31"
         formDataCopy.min_score /= 10;
         onSubmit(formDataCopy)
     }
@@ -134,14 +140,24 @@ export default function Hero({onSubmit}) {
                                 onChangeOption={handleGenreChange}>
                             </Select>
 
+                            {/*<div className="form-item">*/}
+                            {/*    <label htmlFor="min-year-input">Min. Release Year</label>*/}
+                            {/*    <input type="number" min={minYear} max={new Date().getFullYear()}*/}
+                            {/*           step="1" name="min-year"*/}
+                            {/*           id="min-year-input"*/}
+                            {/*           value={formData.min_release_year}*/}
+                            {/*           onChange={(e) =>*/}
+                            {/*               setFormData({...formData, min_release_year: e.target.value})}/>*/}
+                            {/*</div>*/}
+
                             <div className="form-item">
-                                <label htmlFor="min-year-input">Min. Release Year</label>
-                                <input type="number" min={minYear} max={new Date().getFullYear()}
+                                <label htmlFor="max-year-input">Max. Release Year</label>
+                                <input type="number" min={minYear} max={maxYear}
                                        step="1" name="min-year"
-                                       id="min-year-input"
-                                       value={formData.min_release_year}
+                                       id="max-year-input"
+                                       value={formData.max_release_year}
                                        onChange={(e) =>
-                                           setFormData({...formData, min_release_year: e.target.value})}/>
+                                           setFormData({...formData, max_release_year: e.target.value})}/>
                             </div>
 
                             <div className="form-item">
@@ -156,6 +172,18 @@ export default function Hero({onSubmit}) {
                                        onChange={(e) =>
                                            setFormData({...formData, min_score: e.target.value})}/>
                             </div>
+
+                            {/*<div className="form-item">*/}
+                            {/*    <div className="range-label"><label htmlFor="max-length-input">Max. Length</label>*/}
+                            {/*        <Score percentage={formData.max_length}></Score>*/}
+                            {/*    </div>*/}
+                            {/*    <input type="range" min="0" max={maxLength} step="1" placeholder={defaultLength}*/}
+                            {/*           name="max-length"*/}
+                            {/*           id="max-length-input"*/}
+                            {/*           value={formData.max_length}*/}
+                            {/*           onChange={(e) =>*/}
+                            {/*               setFormData({...formData, max_length: e.target.value})}/>*/}
+                            {/*</div>*/}
 
                             <Select
                                 data={countries}
