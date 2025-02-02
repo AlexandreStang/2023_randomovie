@@ -1,7 +1,7 @@
 # Randomovie
 
-> This website helps users discover new movies at random, with the option to set specific preferences based on their
-interests. It also features a small selection of trending films. All movie data is sourced from [TheMovieDB API](https://www.themoviedb.org/).
+> This website helps users discover new movies to watch, with the option to set specific preferences based on their
+interests. It also features a small selection of trending films for instant recommendations. All movie data is sourced from [TheMovieDB API](https://www.themoviedb.org/).
 
 
 ![Home page](/public/og-image.png)
