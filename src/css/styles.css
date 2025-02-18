@@ -703,7 +703,6 @@ footer {
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .popup-bg-overlay {
@@ -722,7 +721,7 @@ footer {
   z-index: 999;
   max-width: 800px;
   max-height: 100vh;
-  margin: 80px auto;
+  top: 60px;
   background-color: #ffffff;
   border-radius: 5px;
   overflow: hidden;

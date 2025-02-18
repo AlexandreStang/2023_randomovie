@@ -11,7 +11,7 @@
   // If PopUp has a fixed position
   display: flex;
   justify-content: center;
-  align-items: center;
+  //align-items: center;
 }
 
 .popup-bg-overlay {
@@ -33,7 +33,8 @@
 
   max-width: variables.$popup-wrapper;
   max-height: 100vh;
-  margin: variables.$header-height auto;
+  //margin: variables.$header-height auto;
+  top: 60px;
 
   background-color: variables.$white;
   border-radius: variables.$border-radius-global;
