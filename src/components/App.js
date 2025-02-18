@@ -29,7 +29,7 @@ export default function App() {
     const [canTryAgain, setCanTryAgain] = useState(false);
 
     const [scrollPosition, setScrollPosition] = useState(window.scrollY)
-    const isSmallScreen = useMediaQuery({query: '(max-width: 900px) or (max-height: 750px)' })
+    const isSmallScreen = useMediaQuery({query: '(max-width: 900px) or (max-height: 800px)' })
 
     // GETTERS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     const getRandomPage = async (url) => {
